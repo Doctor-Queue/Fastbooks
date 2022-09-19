@@ -9,33 +9,85 @@
 
 <section>
     <style>
-        .Logo{
-        background-color: LightGrey ;
-        padding: 30px ;
+        .Band{
+        background-color: Beige ;
+        padding: 0.1px ;
         border: 0px LightGrey ;
         }
-        .center {
+        .Logo {
         display: block;
-        width: 20%;
+        width: 10%;
         position:relative;
-        float:right;
+        float:left;
         clip-path: circle();
+        }
+        .appic{
+        width: 30%;
+        }
+        .tab1{
+        display: inline-block;
+        margin-left: 20px;
+        }
+        .column {
+        float: left;
+        width: 30%;
+        padding: 10px;
+        height: 300px;
+        column-gap: 20px;
+        }
+        .row:after {
+        content: "";
+        display: table;
+        clear: both;
         }
     </style>
 
-    <div class="Logo">
-        <img src="app_logo.png" class="center">
-        <b><p> <h1> Welcome to one accounting stop </h1>
-        </p></b>
+
+<!-- Our software brand is here, MAY OR MAY NOT BE KEPT -->
+    <div class="Band">
+        <h2> <font size="+1.5">  <center>  Fast Accounting Happens Here! </center>  </font></h2>
     </div>
 
+<!-- Adding our logo -->
+     <img src="app_logo.png" class="Logo">
+
+<!-- Adding Sign In, Contact Us and Self help -->
     <div>
-        <p> Hello, you're at the right spot. Please select user!</p>
+        <p style="text-align:left; font-size:20px">
+        <b>Fast Accounts</b>
+        <span style="float:right;">
+            <b>Self Help <span class="tab1"> </span> Contact Us <span class="tab1"> Sign-In  </b>
+        </span>
+        </p>
     </div>
-</section>
 
 
+<br> </br>
+    <br> </br>
+    <br> </br>
 
+    <img src="homepage_pic1.jpeg" class="appic">
+        <span class="tab1"> </span>
+    <img src="homepage_pic2.jpeg" class="appic">
+        <span class="tab1"> </span>
+    <img src="homepage_pic3.jpeg" class="appic">
+
+
+<div class="row">
+  <div class="column">
+    <p>Some text..</p>
+  </div>
+
+  <div class="column">
+    <p>Some text..</p>
+  </div>
+
+  <div class="column">
+    <p>Some text..</p>
+  </div>
+</div>
+
+<!--
 <div>
     <style>
     .dem {background-color: LightGrey; border: none; font-family: Tahoma, Arial, sans-serif; font-size: 16px;}
@@ -44,6 +96,10 @@
     <br> <center> <button class="button dem" onclick="location.href='manager.html'"> Manager</button> </center> </br>
     <br> <center> <button class="button dem" onclick="location.href='user.html'"> User</button> </center> </br>
 </div>
+-->
+
+</section>
+
 
 </body>
 </html>
