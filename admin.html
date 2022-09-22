@@ -3,33 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="  crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"  crossorigin="anonymous"></script>
+
 </head>
 <body>
 
 <section>
     <style>
-        .Logo{
-        background-color: LightGrey ;
+        .Band{
+        background-color: Beige ;
         padding: 30px ;
         border: 0px LightGrey ;
         }
-        .center{
+
+        .Logo{
         display: block;
-        width: 20%;
+        width: 10%;
         position:relative;
         float:right;
         clip-path: circle();
         }
+
+        .Button{
+        border:none;
+        background-color: LightGrey;
+        color: grey;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        }
+
     </style>
-    <div class="Logo">
-        <img src="app_logo.png" class="center">
-        <b><p> <h1> Welcome administrative User </h1>
-        </p></b>
+    <div class="Band">
+        <img src="app_logo.png" class="Logo">
+        <b> <h1> <font size="+5"> Welcome administrative User </font></h1>
+        </b>
     </div>
 
-    <br> <center> <button class="button dem" onclick="location.href='admin.html'"> Create User</button> </center> </br>
-    <br> <center> <button class="button dem" onclick="location.href='admin.html'"> View a user </button> </center> </br>
-
+    <span style="float:center;">
+    <br> <center> <button class="Button" type="button"> Create User</button> </center> </br>
+    <br> <center> <button class="Button" type="button"> View a user </button> </center> </br>
+    </span>
 
 
 
