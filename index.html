@@ -19,13 +19,20 @@ https://getbootstrap.com/docs/4.0/components/dropdowns/
 
 <body>
 
+<!-- CSS Styles
+.Band: Beige band on top
+.Logo: large pic clipped into circle at top left
+.appic: for all the homepage pics
+.tab1: provides tab between pictures and text
+.tab2: provides double tap between pictures and text
+.column and .row:after: create a table so pictures and para are laid out in correct formatting
+-->
 
-<section>
+<section id="homepage style">
     <style>
         .Band{
         background-color: Beige ;
-        padding: 0.1px ;
-        border: 0px LightGrey ;
+        padding: 4px ;
         }
 
         .Logo {
@@ -44,7 +51,14 @@ https://getbootstrap.com/docs/4.0/components/dropdowns/
         display: inline-block;
         margin-left: 10px;
         }
+<<<<<<< Updated upstream
 
+=======
+        .tab2{
+        display: inline-block;
+        margin-left: 60px;
+        }
+>>>>>>> Stashed changes
         .column {
         float: left;
         width: 30%;
@@ -59,8 +73,9 @@ https://getbootstrap.com/docs/4.0/components/dropdowns/
         clear: both;
         }
     </style>
+</section>
 
-
+<section id="NavBar_Homepqage">
 <!-- Our software brand is here, MAY OR MAY NOT BE KEPT -->
     <div class="Band">
         <h2> <font size="+1.5">  <center>  Fast Accounting Happens Here! </center>  </font></h2>
@@ -68,78 +83,66 @@ https://getbootstrap.com/docs/4.0/components/dropdowns/
 
 <!-- Adding our logo -->
      <img src="app_logo.png" class="Logo">
-
+</section>
 
 <!-- Adding Sign In, Contact Us and Self help -->
-    <div style="display:inline-block">
-        <p style="text-align:left; font-size:20px">
-            <div style="padding:20px; display:inline-block"> </div>
-        <b>Fast Accounts</b>
-        <span style="float:right;">
-            <b>
-                <div style="padding:20px; display:inline-block"> </div>
-                <button type="button" class="btn"> Self Help  </button>
+<section id="Homepage_Options">
+    <div>
+        <p style="padding:10px; text-align:left; font-size:20px">
+            <!--adding name next to logo -->
+        <b>Fast Books</b>
+        <span style="padding:10px; float:right;">
+            <!--  tabs between options-->
+            <span class="tab1"> </span>
+            <b> <button type="button" class="btn"> Self Help </button>
+                    <!--  tabs between options-->
                     <span class="tab1"> </span>
-
                 <button type="button" class="btn"> Contact Us </button>
+                    <!--  tabs between options-->
                     <span class="tab1"> </span>
-
+                <!--Sign In Options -->
                 <div class="dropdown" style="display:inline-block">
-                <button type="button" class="btn btn-default dropdown-toggle" id="signindropdown" data-bs-toggle="dropdown"> Sign-In <span class="caret"></span></button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a href="user.html"> User</a></li>
-                        <li><a href="manager.html">Manager</a></li>
-                        <li><a href="admin.html">Admin</a></li>
-                    </ul>
+                    <!--Sign In Dropdown -->
+                    <button type="button" class="btn btn-default dropdown-toggle" id="signindropdown" data-bs-toggle="dropdown"> Sign-In <span class="caret"></span></button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="user.html"> User</a></li>
+                            <li><a href="manager.html">Manager</a></li>
+                            <li><a href="admin.html">Admin</a></li>
+                        </ul>
                 </div>
-
             </b>
         </span>
         </p>
     </div>
-
+</section>
 
 <br> </br>
     <br> </br>
     <br> </br>
 
-
-
+<!--Adding pictures on Homepage -->
+<section id="Homepage_Pictures">
     <img src="homepage_pic1.jpeg" class="appic">
         <span class="tab1"> </span>
     <img src="homepage_pic2.jpeg" class="appic">
         <span class="tab1"> </span>
     <img src="homepage_pic3.jpeg" class="appic">
+</section>
 
 
-
+<!--Adding tezt underneath pictures on Homepage -->
+<section>
 <div class="row">
   <div class="column">
     <p>Some text..</p>
   </div>
-
   <div class="column">
     <p>Some text..</p>
   </div>
-
   <div class="column">
     <p>Some text..</p>
   </div>
 </div>
-
-
-
-<!--
-<div>
-    <style>
-    .dem {background-color: LightGrey; border: none; font-family: Tahoma, Arial, sans-serif; font-size: 16px;}
-    </style>
-    <br> <center> <button class="button dem" onclick="location.href='admin.html'"> Administrator</button> </center> </br>
-    <br> <center> <button class="button dem" onclick="location.href='manager.html'"> Manager</button> </center> </br>
-    <br> <center> <button class="button dem" onclick="location.href='user.html'"> User</button> </center> </br>
-</div>
--->
-
 </section>
 
 

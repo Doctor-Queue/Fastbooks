@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit User</title>
+
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="  crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"  crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+
+<style>
+     .Band{
+        background-color: Beige ;
+        padding: 4px ;
+        }
+     .Logo {
+       display: block;
+       width: 30%;
+       margin: 0 15px 0 0;
+       float:left;
+       clip-path: circle();
+        }
+</style>
+
+<!-- Following section takes acre of top nav bar-->
+<section>
+<!-- Following will add the beige band on top with "Welcome Admin User" text -->
+       <div class="Band">
+        <h2> <font size="+1.5">  <center>  Welcome Admin! </center>  </font></h2>
+        </div>
+
+        <b style="font-size:20px"> Fast Books</b>
+</section>
+
+
+<br> </br>
+
+<section>
+    <b> <font size="+2.0"> <center>Lena Tory </center> </font>  </b>
+    <br> </br>
+    <img src="person1.png" class="Logo">
+    <p> Name: <input type="text" placeholder="Lena Tory">
+        <br> Role: <input type="text" placeholder="Software Engineer"></br>
+        Start Date:
+        <br> Status: <input type="radio" id="status_active"> <label id="status_active"> Active </label>
+        <input type="radio" id="status_deactive"> <label id="status_deactive"> Deactive </label>
+        </br>
+        Instituition: Don's Dynamite
+    </p>
+</section>
+
+<button class="button dem" onclick="location.href='user_selected.html'"> Save </button>
+
+
+</body>
+</html>

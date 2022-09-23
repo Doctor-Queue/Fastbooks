@@ -1,0 +1,41 @@
+Band
+{
+background-color: Beige ;
+padding: 4px ;
+}
+
+Logo {
+        display: block;
+        width: 10%;
+        position:relative;
+        float:left;
+        clip-path: circle();
+        }
+
+appic{
+        width: 30%;
+        }
+
+tab1{
+        display: inline-block;
+        margin-left: 10px;
+        }
+
+        tab2{
+        display: inline-block;
+        margin-left: 60px;
+        }
+
+        column {
+        float: left;
+        width: 30%;
+        padding: 10px;
+        height: 300px;
+        column-gap: 20px;
+        }
+
+        row:after {
+        content: "";
+        display: table;
+        clear: both;
+        }
