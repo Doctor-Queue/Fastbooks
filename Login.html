@@ -14,12 +14,15 @@
 
 <section>
     <style>
+/* <!-- Adding for our Band style --> */
 
       .Band{
         background-color: Beige ;
         padding: 30px ;
         border: 0px LightGrey ;
         }
+
+/* <!-- Adding for our logo style --> */
 
       .Logo {
         display: block;
@@ -31,6 +34,8 @@
         clip-path: circle();
         }
 
+/* <!-- Adding for our login style --> */
+
       .Login{
         background-color: Beige ;
         margin: 10px;
@@ -39,6 +44,8 @@
         border: 0px LightGrey ;
         text-align: left;
         }
+
+/* <!-- Adding for our profile pics style --> */
 
      .profile {
        display: block;
@@ -49,6 +56,8 @@
        right: 10px;
        clip-path: circle();
         }
+
+/* <!-- Adding for our password requirement warning --> */
 
       #message {
         display:none;
@@ -61,6 +70,20 @@
         margin-top: 10px;
         text-align: left;
          }
+
+/* <!-- Added for something to hold the "create a new user" requirement (could not get it to work for some reason) --> */
+
+      #createnewuser{
+        display:none;
+        background-color: Beige ;
+        margin: 10px;
+        width: 300px;
+        height: 300px;
+        border: 0px LightGrey ;
+        text-align: left;
+        }
+
+/* <!-- Adding for password requirement design for the "✖" and "✔" --> */
 
       .invalid {
         color: red;
@@ -83,38 +106,57 @@
         content: "✔";
         }
 
-  </style>
+      .show-password {
+      display: block;
 
+      .hide-password {
+      display: none;
+
+  </style>
+<!-- Our software brand is here -->
       <div class="Band">
        <b> <h2> <font size="+5">  <center> Fast Books Login </center>  </font></h2>
+           <!-- Adding our logo -->
            <p> <img src="app_logo.png" class="Logo"> </p>
        </b>
 
     </div>
+    <!-- Adding an empty profile pic -->
 <img src="profile.jpeg" class="profile">
 
+    <!-- Adding Login in with username, password, remember me option, submit button, and a "create new user" and "forgot password" -->
   <center>
-    <form class="px-4 py-3">
+    <form class="px-4 py-3" name ="loginform">
   <div class="Login">
+
+      <!-- Adding Username -->
 <p><label for="exampleDropdownFormEmail1">Username</label>
-      <input type="username" class="form-control" id="exampleDropdownFormEmail1" placeholder="Example_Username">
+      <input type="username" class="form-control" id="exampleDropdownFormUsername" placeholder="Example_Username" required>
+
+    <!-- Adding Password with a bit of requirements to use it -->
     <label for="psw">Password</label>
       <input type="password" class="form-control" id="psw" name="psw"
-             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" maxlength="8"
+             pattern="(?=.*\d)(?=.*[A-Za-z])(?=.*[_.&#]).{8,}" maxlength="8"
              title="Must contain at least one uppercase or lowercase letter at the start,
-             one number, a special character, and at least 8 characters at minimum required" required>
+             one number, a special character, and at least 8 characters at minimum required" required />
+
+    <!-- Adding remember me checkbox -->
     <input type="checkbox" class="form-check-input" id="dropdownCheck">
       <label class="form-check-label" for="dropdownCheck"> Remember me </label> </p>
-    <span style="position: absolute; bottom: 620px; left: 915px">
-     <button type="submit" class="btn btn-primary" onclick="location.href='user_selected.html'" value="Submit">Sign in</button>
-      </span>
+
+      <!-- Adding Submit button -->
+    <span style="position: relative; top: -15px; right: -39%;">
+     <button type="submit" class="btn btn-primary" value="Submit" >Sign in</button></span>
   </div>
       </form>
-    <div class="dropdown-divider"></div>
-  <p><a class="dropdown-item" href="#">New around here? Sign up</a>
-  <a class="dropdown-item" href="#">Forgot password?</a> </p>
+
+      <!-- Adding button texts for a "create new user" and "forgot password" options -->
+      <p><a type="button" id="newuser" onclick="location.href='sign_up.html'">New around here? Create a new User</a></p>
+      <a class="show-password" type="button" id="showPassword" onclick="showPass()">Forgot password?</a>
+      <a class="hide-password" type="button" id="hidePassword" onclick="hidePass()">Forgot password?</a>
     </center>
 
+    <!-- Adding a popup requirement block that shows what is demanded for the password and what you've added so far -->
     <center>
     <div id="message">
   <h3>Password must contain the following:</h3>
@@ -124,8 +166,24 @@
   <p id="length" class="invalid">Minimum <b>8 characters</b></p>
 </div>
         </center>
+
+     <center>
+    <div id="createnewuser">
+  <h3>Forgot Password:</h3>
+<p><label for="exampleDropdownFormEmail1">Email</label>
+      <input type="username" class="form-control" id="exampleDropdownFormEmail1" placeholder="Example@Email.com" required>
+
+        <p><label for="exampleDropdownFormEmail1">User ID</label>
+      <input type="username" class="form-control" id="exampleDropdownFormUserId" placeholder="Dave07" required>
+        <span style="position: relative; top: 25px; right: -39%;">
+  <button type="button" onclick="showQuestions()" class="btn btn-primary">Next</button>
+            </span>
+    </div>
+     </center>
+
 </section>
 
+<!-- Adding Javascript for utilizing the password requirements -->
 <script>
 var myInput = document.getElementById("psw");
 var letter = document.getElementById("letter");
@@ -133,20 +191,20 @@ var number = document.getElementById("number");
 var special = document.getElementById("special");
 var length = document.getElementById("length");
 
-<!-- When the user clicks on the password field, show the message box -->
+/* <!-- When the user clicks on the password field, show the message box --> */
 myInput.onfocus = function() {
   document.getElementById("message").style.display = "block";
 }
 
-<!-- When the user clicks outside the password field, hide the message box -->
+/* <!-- When the user clicks outside the password field, hide the message box --> */
 myInput.onblur = function() {
   document.getElementById("message").style.display = "none";
 }
 
-<!-- When the user starts to type something inside the password field -->
+/* <!-- When the user starts to type something inside the password field --> */
 myInput.onkeyup = function() {
 
-  <!-- Validate starting letter -->
+  /* <!-- Validate starting letter (recognizes a letter being used but NOT if it's first. Must fix)--> */
   var startingLetter = /[a-z,A-Z]/g;
   if(myInput.value.match(startingLetter)) {
     letter.classList.remove("invalid");
@@ -156,7 +214,7 @@ myInput.onkeyup = function() {
     letter.classList.add("invalid");
   }
 
-  <!-- Validate numbers -->
+  /* <!-- Validate numbers --> */
   var numbers = /[0-9]/g;
   if(myInput.value.match(numbers)) {
     number.classList.remove("invalid");
@@ -166,7 +224,7 @@ myInput.onkeyup = function() {
     number.classList.add("invalid");
   }
 
-  <!-- Validate special character -->
+  /* <!-- Validate special character --> */
   var specials = /[_,.,&,#]/g;
   if(myInput.value.match(specials)) {
     special.classList.remove("invalid");
@@ -176,7 +234,7 @@ myInput.onkeyup = function() {
     special.classList.add("invalid");
   }
 
-  <!-- Validate length -->
+  /* <!-- Validate length --> */
   if(myInput.value.length >= 8) {
     length.classList.remove("invalid");
     length.classList.add("valid");
@@ -184,6 +242,32 @@ myInput.onkeyup = function() {
     length.classList.remove("valid");
     length.classList.add("invalid");
   }
+}
+</script>
+<script>
+function showPass() {
+
+    document.getElementById('showPassword')
+    .style.display = "none";
+
+    document.getElementById('hidePassword')
+    .style.display = "block";
+
+        document.getElementById('createnewuser')
+    .style.display = "block";
+
+}
+
+function hidePass() {
+
+    document.getElementById('showPassword')
+    .style.display = "block";
+
+    document.getElementById('hidePassword')
+    .style.display = "none";
+
+        document.getElementById('createnewuser')
+    .style.display = "none";
 }
 </script>
 </body>
