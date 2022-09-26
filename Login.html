@@ -112,6 +112,9 @@
       .hide-password {
       display: none;
 
+      .create-user {
+      display: block;
+
   </style>
 <!-- Our software brand is here -->
       <div class="Band">
@@ -151,7 +154,7 @@
       </form>
 
       <!-- Adding button texts for a "create new user" and "forgot password" options -->
-      <p><a type="button" id="newuser" onclick="location.href='sign_up.html'">New around here? Create a new User</a></p>
+      <p><a class="create-user" type="button" id="newuser" onclick="location.href='sign_up.html'">New around here? Create a new User</a></p>
       <a class="show-password" type="button" id="showPassword" onclick="showPass()">Forgot password?</a>
       <a class="hide-password" type="button" id="hidePassword" onclick="hidePass()">Forgot password?</a>
     </center>
