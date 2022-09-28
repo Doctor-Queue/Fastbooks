@@ -11,7 +11,7 @@
 
 </head>
 <body>
-
+<!--
 <section>
     <style>
         .Band{
@@ -46,14 +46,15 @@
     <br> <center> <button class="Button" type="button"> Create User</button> </center> </br>
     <br> <center> <button class="Button" type="button"> View a user </button> </center> </br>
     </span>
-<!-- ======= -->
+
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="  crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"  crossorigin="anonymous"></script>
 </head>
+
 <body>
 
-
+-->
 <!-- CSS Styles
 .Band: adds yellow beige band on top -->
 
@@ -64,10 +65,14 @@
         }
      .Logo {
        display: block;
-       width: 30%;
+       width: 10%;
        margin: 0 15px 0 0;
        float:left;
        clip-path: circle();
+        }
+         .tab1{
+        display: inline-block;
+        margin-left: 10px;
         }
 </style>
 
@@ -78,13 +83,32 @@
         <h2> <font size="+1.5">  <center>  Welcome Admin! </center>  </font></h2>
         </div>
 
+    <img src="app_logo.png" width="10%" class="Logo">
+
         <b style="font-size:20px"> Fast Books</b>
+
+            <span style="padding:10px; float:right;">
+            <!--  tabs between options-->
+            <span class="tab1"> </span>
+            <b> <button type="button" class="btn" > Settings </button>
+                    <!--  tabs between options-->
+                    <span class="tab1"> </span>
+                <button type="button" class="btn"> Notifications </button>
+                    <!--  tabs between options-->
+                    <span class="tab1"> </span>
+                <!--Sign In  -->
+                <button type="button" class="btn" onclick="location.href='Login.html'">  </button>
+                    <!--  tabs between options-->
+                    <span class="tab1"> </span>
+            </b>
+        </span>
 </section>
 <!-- Stashed changes -->
-
 <br> </br>
 
         <button class="button dem" onclick="location.href='index.html'"> Homepage </button>
+<br> </br>
+<br> </br>
         <br> <center> <button class="button dem" onclick="location.href='create_user.html'"> Create User</button> </center> </br>
         <br> <center> <button class="button dem" onclick="location.href='search_user.html'"> View a user </button> </center> </br>
 
