@@ -15,12 +15,14 @@
 <section>
     <style>
 
+/* Added for our Band style */
       .Band{
         background-color: Beige ;
         padding: 30px ;
         border: 0px LightGrey ;
         }
 
+/* Added for our logo style */
       .Logo {
         display: block;
         width: 20%;
@@ -31,15 +33,17 @@
         clip-path: circle();
         }
 
+/* Added for our login style */
       .Login{
         background-color: Beige ;
         margin: 25px;
         width: 300px;
-        height: 400px;
+        height: 770px;
         border: 0px LightGrey ;
         text-align: left;
         }
 
+/* Added for our profile pics style */
      .profile {
        display: block;
        width: 10%;
@@ -50,6 +54,8 @@
        clip-path: circle();
         }
 
+/* Added for a picture to be placed on top of the profile pics style
+(may get rid of once a proper image choosing method is set up) */
      .profilepic {
        display: none;
        width: 10%;
@@ -60,6 +66,7 @@
        clip-path: circle();
         }
 
+/* Added for alerting the user when the sign_up has been sent properly (not implemented yet, but is usable) */
       #created{
         display:none;
         background-color: Beige ;
@@ -72,6 +79,7 @@
 
 </style>
 
+    <!-- Added software brand -->
         <div class="Band">
        <b> <h2> <font size="+5">  <center> Fast Books Sign Up </center>  </font></h2>
            <p> <img src="app_logo.png" class="Logo"> </p>
@@ -79,38 +87,88 @@
 
     </div>
 
+    <!-- Added an empty profile pic with the option of switching to the pre-set pic (SHOULD be changed!) -->
 <img src="profile.jpeg" class="profile" type="button" id="profile" data-bs-toggle="dropdown"><span class="caret"></span>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
         <li><center><a type="button" onclick="showPic()"> Add Picture</a></center></li>
     </ul>
+
+    <!-- Added a pre-set pic to go over the empty profile pic (SHOULD be changed! This was only temporary.)-->
 <img src="admin_pic.png" class="profilepic" id="adminPic" data-bs-toggle="dropdown"><span class="caret"></span>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
         <li><center><a type="button" onclick="hidePic()"> Remove Picture</a></center></li>
     </ul>
 
-
+<!-- Added the sign-up body style to hold all the required textboxes, checkboxes and others -->
      <center>
+ <form>
   <div class="Login">
+
+      <!-- Added Email textbox -->
 <p><label for="exampleDropdownFormEmail1">Email</label>
       <input type="username" class="form-control" id="exampleDropdownFormEmail1" placeholder="Example@Email.com" required>
 
+    <!-- Added first name textbox -->
       <label for="exampleDropdownFormEmail1">First Name</label>
       <input type="username" class="form-control" id="exampleDropdownFormFirstName" placeholder="FName" required>
 
+    <!-- Added last name textbox -->
       <label for="exampleDropdownFormEmail1">Last Name</label>
       <input type="username" class="form-control" id="exampleDropdownFormLastName" placeholder="LName" required>
 
-                <label for="exampleDropdownFormEmail1">Address</label>
+    <!-- Added create password with requirements -->
+      <label for="createPsw">Create Password</label>
+      <input type="password" class="form-control" id="createPsw" name="createPsw"
+             pattern="(?=.*\d)(?=.*[A-Za-z])(?=.*[_.&#@]).{8,}" maxlength="8" placeholder="P@55w_rd"
+             title="Must contain at least one uppercase or lowercase letter at the start,
+             one number, a special character, and at least 8 characters at minimum required" required>
+
+    <!-- Added confirm password with requirements -->
+      <label for="confirmPsw">Confirm Password</label>
+      <input type="password" class="form-control" id="confirmPsw" name="confirmPsw"
+             pattern="(?=.*\d)(?=.*[A-Za-z])(?=.*[_.&#@]).{8,}" maxlength="8" placeholder="P@55w_rd"
+             title="Must contain at least one uppercase or lowercase letter at the start,
+             one number, a special character, and at least 8 characters at minimum required" required>
+
+    <!-- Added show passwords checkbox -->
+      <input type="checkbox" class="form-check-input" onclick="showingPasswords()">Show Passwords <br><br>
+
+    <!-- Added a "choose image" option -->
+    <label for="avatar">Choose a profile picture:</label>
+<input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg"><br><br>
+
+    <!-- Added a dropdown option for the security questions -->
+      <label for="exampleDropdownFormEmail1">Choose a Security Question</label>
+    <form>
+    <select id="securityQuestions" class="form-select" >
+        <option selected>Choose a Question:</option>
+        <option value="Question(1)">What is the name of your first pet?</option>
+        <option value="Question(2)">What is your mothers maiden name?</option>
+        <option value="Question(3)">What College did you go to?</option>
+    </select>
+    </form>
+
+      <!-- Added a type the answer textbox for the security question -->
+      <label for="exampleDropdownFormEmail1">Write Out Your Security Answer</label>
+      <input type="text" class="form-control" id="exampleDropdownFormSecurityAnswer" placeholder="Baby_Dont_HurtMe"
+             title="Please type an answer for said question" required>
+
+      <!-- Added an address textbox -->
+      <label for="exampleDropdownFormEmail1">Address</label>
       <input type="username" class="form-control" id="exampleDropdownFormAddress" placeholder="123 Example Street" required>
 
-            <label for="exampleDropdownFormEmail1">Date of Birth</label>
-      <input type="username" class="form-control" id="exampleDropdownFormDateOfBirth" placeholder="XX/XX/XXXX" required>
+      <!-- Added a date of birth select option -->
+      <label for="exampleDropdownFormEmail1">Date of Birth</label>
+      <input type="date" class="form-control" id="exampleDropdownFormDateOfBirth" min="1900-01-01" max="2022-12-31" placeholder="XX/XX/XXXX" required>
 
-          <span style="position: absolute; bottom: 440px; left: 915px">
-     <button type="submit" class="btn btn-primary" value="Submit" >Sign in</button></span>
+      <!-- Added a sign-up submit button -->
+      <span style="position: relative; top: 15px; left: 35%">
+      <button type="submit" class="btn btn-primary" value="Submit" >Sign up</button></span>
   </div>
+         </form>
      </center>
 
+    <!-- Added confirmation block style to alert user when account has been created and email has been sent -->
          <center>
     <div id="created">
   <h3>Email has been sent. Waiting for Administrator approval:</h3>
@@ -122,6 +180,7 @@
 </section>
 
 <script>
+// This function displays the pre-selected picture while also hiding the profile temporary picture:
 function showPic() {
 
    document.getElementById('adminPic')
@@ -131,6 +190,7 @@ function showPic() {
            .style.display = "none";
    }
 
+// This function displays the profile temporary picture while also hiding the pre-selected picture:
    function hidePic() {
 
    document.getElementById('profile')
@@ -140,14 +200,35 @@ function showPic() {
            .style.display = "none";
    }
 
-   function show() {
+// This function will allow the "Show Passwords" checkbox to reveal what is being typed out in the create/confirm password textboxes:
+function showingPasswords() {
+var showingCreate = document.getElementById("createPsw");
+var showingConfirm = document.getElementById("confirmPsw");
 
-   document.getElementById('adminPic')
-           .style.display = "block";
+if (showingCreate.type === "password") {    // if the textbox is registered as a type password, change it to text:
+showingCreate.type = "text";
+showingConfirm.type = "text";
+} else {    // else they switch back once unchecked:
+showingCreate.type = "password";
+showingConfirm.type = "password";
+    }
+}
 
-   document.getElementById('profile')
-           .style.display = "none";
-   }
+
+var create_password = document.getElementById("createPsw")
+  , confirm_password = document.getElementById("confirmPsw");
+
+// This function checks to see if both the created and confirmed passwords match:
+function validatePassword(){
+  if(create_password.value != confirm_password.value) {     // if the created password is not the same as the confirmed one:
+    confirm_password.setCustomValidity("Passwords Don't Match");    // Display a warning stating as such:
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+create_password.onchange = validatePassword;    //Constantly checks to see if they match once elements have been changed:
+confirm_password.onkeyup = validatePassword;    //Checks if they match as the user releases a key:
 </script>
 </body>
 </html>
