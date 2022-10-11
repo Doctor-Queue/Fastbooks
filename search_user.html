@@ -8,6 +8,15 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="  crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"  crossorigin="anonymous"></script>
 
+
+    <!--
+<p>
+    <button onclick="location.href='user_selected.html'"> Lena Tory </button> <br>
+    <button> hello </button> </br>
+    <button> hey</button> <br>
+   <button> heyyyyyyy </button> </br>
+</p>
+-->
 </head>
 <body>
 
@@ -31,26 +40,108 @@
        <div class="Band">
         <h2> <font size="+1.5">  <center>  Welcome Admin! </center>  </font></h2>
         </div>
-
         <b style="font-size:20px"> Fast Books</b>
 </section>
 
-<br> </br>
+<br>
 <center>
-<input type="text">
-<button> Search</button>
+  <h3>
+    Add User Here
+  </h3>
+  Name: <input id="addUserName" type ="text"> <br> <br>
+  Position: <input id="addUserPosition" type ="text"> <br> <br>
+  ID: <input id="addUserID" type ="text"> <br> <br>
+  <button id="addUserBtn" > Add User</button> <br> <br>
+
+<input id="searchUser" type="text"> <br><br>
+<button id="searchUserBtn"> Search User</button>
+
+<h3 id="findUserName" type="text"></h3>
+<h3 id="findUserID" type="text"></h3>
+<h3 id="findUserPosition" type="text"></h3>
 </center>
 
 
-<p>
-    <button onclick="location.href='user_selected.html'"> Lena Tory </button> <br>
-    <button> hello </button> </br>
-    <button> hey</button> <br>
-   <button> heyyyyyyy </button> </br>
-</p>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyCLeXpBcmY50646HWq9RkVjf2tNcPSfXCA",
+      authDomain: "appdomain-5bc76.firebaseapp.com",
+      databaseURL: "https://appdomain-5bc76-default-rtdb.firebaseio.com",
+      projectId: "appdomain-5bc76",
+      storageBucket: "appdomain-5bc76.appspot.com",
+      messagingSenderId: "854714021617",
+      appId: "1:854714021617:web:3631bc9729ca4d87d49b50",
+      measurementId: "G-721Y65S2FV"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
 
+    import {getDatabase, set, get, update, remove, ref, child}
+    from "https://www.gstatic.com/firebasejs/9.11.0/firebase-database.js"
 
+    const db = getDatabase();
+    //This is a text field
+    var enterUser = document.querySelector("#searchUser");
+    var addUserName = document.querySelector("#addUserName");
+    var addUserPosition = document.querySelector("#addUserPosition");
+    var addUserID = document.querySelector("#addUserID");
 
+    //these are not assigned. but are text fields
+    //var findUserID = document.querySelector("#findUserID");
+    
+    var findUserName = document.querySelector("#findUserName");
+    var findUserPosition = document.querySelector("#findUserPosition");
+    var findUserID = document.querySelector("#findUserID");
+    //This is a button 
+    var searchUserBtn = document.querySelector("#searchUserBtn");
+    var addUserBtn = document.querySelector("#addUserBtn");
+    function InsertData()
+    {
+      //set method will set the data in database
+      //but where in database? use "ref" for that
+      set(ref(db, "Users/" + addUserID.value), { 
+        Name:addUserName.value, 
+        ID: addUserID.value, 
+        Position: addUserPosition.value
+      })
+      .then(()=>{alert("Data Added Successfully!")})
+      .catch((error)=>{alert(error)});
+    }
+
+    function FindData()
+    {
+      //because you're referencing to a spcific reference in database
+      const dbref= ref(db);
+      get(child(dbref, "Users/"+ enterUser.value))
+      .then((snapshot)=>{
+        if(snapshot.exists())
+        {
+          findUserName.innerHTML = "Name: "+snapshot.val().Name;
+          findUserPosition.innerHTML = "Position: "+ snapshot.val().Position;
+          findUserID.innerHTML = "ID: " + snapshot.val().ID;
+        }
+        else
+        {
+          alert("No Data Found!");
+        }
+      })
+      .catch((error)=>{alert(error)})
+    }
+
+    addUserBtn.addEventListener('click',  InsertData);
+    searchUserBtn.addEventListener('click', FindData);
+
+  </script>
 
 </body>
 </html>
