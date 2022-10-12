@@ -9,17 +9,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"  crossorigin="anonymous"></script>
 
 
-    <!--
-<p>
-    <button onclick="location.href='user_selected.html'"> Lena Tory </button> <br>
-    <button> hello </button> </br>
-    <button> hey</button> <br>
-   <button> heyyyyyyy </button> </br>
-</p>
--->
 </head>
 <body>
 
+      <!--
+-->
 <style>
      .Band{
         background-color: Beige ;
@@ -46,19 +40,19 @@
 <br> 
 
 <center>
+  <img src="profile.jpeg" width="10%">
   <h3>
     Creat New User 
-  </h3>
-  
-  Name: <input id="addUserName" type ="text">    Position: <input id="addUserPosition" type ="text">
-   <br> <br>
+  </h3>  
+  <!-- This section only has the text box for inputs and a button to submit them -->
+  Name: <input id="addUserName" type ="text">    Position: <input id="addUserPosition" type ="text"> <br> <br>
   ID: <input id="addUserID" type ="text"> <br> <br>
   Dob: <input id="addUserDOB" type="text"> <br> <br>
   <button id="addUserBtn" > Add User</button> <br> <br>
-
 </center>
 
 
+<!-- Ebverything below is firebase configuration uptil line 79 (starting at 55)-->
 <script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js";
@@ -96,7 +90,6 @@
 
     //these are not assigned. but are text fields
     //var findUserID = document.querySelector("#findUserID");
-    
     var findUserName = document.querySelector("#findUserName");
     var findUserPosition = document.querySelector("#findUserPosition");
     var findUserID = document.querySelector("#findUserID");
