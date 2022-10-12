@@ -105,16 +105,16 @@
   <div class="Login">
 
       <!-- Added Email textbox -->
-<p><label for="exampleDropdownFormEmail1">Email</label>
-      <input type="username" class="form-control" id="exampleDropdownFormEmail1" placeholder="Example@Email.com" required>
+<p><label for="userEmail">Email</label>
+      <input type="username" class="form-control" id="userEmail" placeholder="Example@Email.com" required>
 
     <!-- Added first name textbox -->
-      <label for="exampleDropdownFormEmail1">First Name</label>
-      <input type="username" class="form-control" id="exampleDropdownFormFirstName" placeholder="FName" required>
+      <label for="userFirstName">First Name</label>
+      <input type="username" class="form-control" id="userFirstName" placeholder="FName" required>
 
     <!-- Added last name textbox -->
-      <label for="exampleDropdownFormEmail1">Last Name</label>
-      <input type="username" class="form-control" id="exampleDropdownFormLastName" placeholder="LName" required>
+      <label for="userLastName">Last Name</label>
+      <input type="username" class="form-control" id="userLastName" placeholder="LName" required>
 
     <!-- Added create password with requirements -->
       <label for="createPsw">Create Password</label>
@@ -134,11 +134,11 @@
       <input type="checkbox" class="form-check-input" onclick="showingPasswords()">Show Passwords <br><br>
 
     <!-- Added a "choose image" option -->
-    <label for="avatar">Choose a profile picture:</label>
-<input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg"><br><br>
+    <label for="userImage">Choose a profile picture:</label>
+<input type="file" id="userImage" name="userImage" accept="image/png, image/jpeg"><br><br>
 
     <!-- Added a dropdown option for the security questions -->
-      <label for="exampleDropdownFormEmail1">Choose a Security Question</label>
+      <label for="securityQuestions">Choose a Security Question</label>
     <form>
     <select id="securityQuestions" class="form-select" >
         <option selected>Choose a Question:</option>
@@ -149,17 +149,17 @@
     </form>
 
       <!-- Added a type the answer textbox for the security question -->
-      <label for="exampleDropdownFormEmail1">Write Out Your Security Answer</label>
-      <input type="text" class="form-control" id="exampleDropdownFormSecurityAnswer" placeholder="Baby_Dont_HurtMe"
+      <label for="securityAnswers">Write Out Your Security Answer</label>
+      <input type="text" class="form-control" id="securityAnswers" placeholder="Baby_Dont_HurtMe"
              title="Please type an answer for said question" required>
 
       <!-- Added an address textbox -->
-      <label for="exampleDropdownFormEmail1">Address</label>
-      <input type="username" class="form-control" id="exampleDropdownFormAddress" placeholder="123 Example Street" required>
+      <label for="userAddress">Address</label>
+      <input type="username" class="form-control" id="userAddress" placeholder="123 Example Street" required>
 
       <!-- Added a date of birth select option -->
-      <label for="exampleDropdownFormEmail1">Date of Birth</label>
-      <input type="date" class="form-control" id="exampleDropdownFormDateOfBirth" min="1900-01-01" max="2022-12-31" placeholder="XX/XX/XXXX" required>
+      <label for="userDateOfBirth">Date of Birth</label>
+      <input type="date" class="form-control" id="userDateOfBirth" min="1900-01-01" max="2022-12-31" placeholder="XX/XX/XXXX" required>
 
       <!-- Added a sign-up submit button -->
       <span style="position: relative; top: 15px; left: 35%">
@@ -178,6 +178,64 @@
      </center>
 
 </section>
+
+<script>
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyCLeXpBcmY50646HWq9RkVjf2tNcPSfXCA",
+      authDomain: "appdomain-5bc76.firebaseapp.com",
+      databaseURL: "https://appdomain-5bc76-default-rtdb.firebaseio.com",
+      projectId: "appdomain-5bc76",
+      storageBucket: "appdomain-5bc76.appspot.com",
+      messagingSenderId: "854714021617",
+      appId: "1:854714021617:web:3631bc9729ca4d87d49b50",
+      measurementId: "G-721Y65S2FV"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+    import {getDatabase, set, get, update, remove, ref, child}
+    from "https://www.gstatic.com/firebasejs/9.11.0/firebase-database.js"
+
+    const db = getDatabase();
+    //This is a text field
+    var enterUserEmail = document.querySelector("#userEmail");
+    var addUserFirstName = document.querySelector("#userFirstName");
+    var addUserLastName = document.querySelector("#userLastName");
+    var addUserPsw = document.querySelector("#createPsw");
+    var addUserImage = document.querySelector("#userImage");
+    var addUserSecurityQuestion = document.querySelector("#securityQuestions");
+    var addUserSecurityAnswer = document.querySelector("#securityAnswers");
+    var addUserAddress = document.querySelector("#userAddress");
+    var addUserDateOfBirth = document.querySelector("#userDateOfBirth");
+
+    var addUserBtn = document.querySelector("#addUserBtn");
+
+    function InsertData()
+    {
+      //set method will set the data in database
+      //but where in database? use "ref" for that
+      set(ref(db, "Users/" + addUserID.value), { 
+        Name:addUserName.value, 
+        ID: addUserID.value, 
+        Position: addUserPosition.value
+      })
+      .then(()=>{alert("Data Added Successfully!")})
+      .catch((error)=>{alert(error)});
+    }
+
+    addUserBtn.addEventListener('click',  InsertData);
+
+</script>
 
 <script>
 // This function displays the pre-selected picture while also hiding the profile temporary picture:
