@@ -237,6 +237,42 @@
 </section>
 
 <!-- Adding Javascript for utilizing the majority of the password requirements -->
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyCLeXpBcmY50646HWq9RkVjf2tNcPSfXCA",
+      authDomain: "appdomain-5bc76.firebaseapp.com",
+      databaseURL: "https://appdomain-5bc76-default-rtdb.firebaseio.com",
+      projectId: "appdomain-5bc76",
+      storageBucket: "appdomain-5bc76.appspot.com",
+      messagingSenderId: "854714021617",
+      appId: "1:854714021617:web:3631bc9729ca4d87d49b50",
+      measurementId: "G-721Y65S2FV"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+    import {getDatabase, set, get, update, remove, ref, child}
+    from "https://www.gstatic.com/firebasejs/9.11.0/firebase-database.js"
+
+    const db = getDatabase();
+    //This is a text field
+    var enterUser = document.querySelector("#searchUser");
+    var addUserName = document.querySelector("#addUserName");
+    var addUserPosition = document.querySelector("#addUserPosition");
+    var addUserID = document.querySelector("#addUserID");
+
+</script>
+
 <script>
 var myInput = document.getElementById("psw");
 var letter = document.getElementById("letter");
@@ -297,6 +333,7 @@ myInput.onkeyup = function() {
   }
 }
 </script>
+
 <script>
 
 /* this block of code is responsible for the "forgot password" button displaying and hiding the main body required to fill out said information. */
