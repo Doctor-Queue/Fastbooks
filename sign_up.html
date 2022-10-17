@@ -25,8 +25,8 @@
 /* Added for our logo style */
       .Logo {
         display: block;
-        width: 20%;
-        position: absolute;
+        width: 10%;
+        margin: 0 15px 0 0;
         top: 10px;
         left: 0;
         float:left;
@@ -82,7 +82,6 @@
     <!-- Added software brand -->
         <div class="Band">
        <b> <h2> <font size="+5">  <center> Fast Books Sign Up </center>  </font></h2>
-           <p> <img src="app_logo.png" class="Logo"> </p>
        </b>
 
     </div>
@@ -93,6 +92,8 @@
         <li><center><a type="button" onclick="showPic()"> Add Picture</a></center></li>
     </ul>
 
+    <p> <img src="app_logo.png" class="Logo"> </p>
+
     <!-- Added a pre-set pic to go over the empty profile pic (SHOULD be changed! This was only temporary.)-->
 <img src="admin_pic.png" class="profilepic" id="adminPic" data-bs-toggle="dropdown"><span class="caret"></span>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -101,8 +102,8 @@
 
 <!-- Added the sign-up body style to hold all the required textboxes, checkboxes and others -->
      <center>
- <form>
-  <div class="Login">
+ <form class="Login">
+  <div>
 
       <!-- Added Email textbox -->
 <p><label for="userEmail">Email</label>
@@ -163,7 +164,7 @@
 
       <!-- Added a sign-up submit button -->
       <span style="position: relative; top: 15px; left: 35%">
-      <button type="submit" class="btn btn-primary" value="Submit" >Sign up</button></span>
+      <button type="submit" id="submit" class="btn btn-primary" value="Submit" >Sign up</button></span>
   </div>
          </form>
      </center>
@@ -179,61 +180,103 @@
 
 </section>
 
-<script>
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-analytics.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-  
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-      apiKey: "AIzaSyCLeXpBcmY50646HWq9RkVjf2tNcPSfXCA",
-      authDomain: "appdomain-5bc76.firebaseapp.com",
-      databaseURL: "https://appdomain-5bc76-default-rtdb.firebaseio.com",
-      projectId: "appdomain-5bc76",
-      storageBucket: "appdomain-5bc76.appspot.com",
-      messagingSenderId: "854714021617",
-      appId: "1:854714021617:web:3631bc9729ca4d87d49b50",
-      measurementId: "G-721Y65S2FV"
-    };
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+  import { getFirestore, doc, addDoc, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
 
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
+  // Your web app's Firebase configuration
+  // ********** Alexander Day's Database **********
+  const firebaseConfig = {
+    apiKey: "AIzaSyAswcBVoFfQx746ZSArJw6jZRqfa3ZmBbI",
+    authDomain: "swe-4713-application-domain.firebaseapp.com",
+    projectId: "swe-4713-application-domain",
+    storageBucket: "swe-4713-application-domain.appspot.com",
+    messagingSenderId: "210297298562",
+    appId: "1:210297298562:web:815b3cc913460d968b5e9b"
+  };
 
-    import {getDatabase, set, get, update, remove, ref, child}
-    from "https://www.gstatic.com/firebasejs/9.11.0/firebase-database.js"
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
 
-    const db = getDatabase();
+  // Initialize Cloud Firestore and get a reference to the service
+  const db = getFirestore();
+
+  const colRef = collection(db, 'Users')
     //This is a text field
-    var enterUserEmail = document.querySelector("#userEmail");
-    var addUserFirstName = document.querySelector("#userFirstName");
-    var addUserLastName = document.querySelector("#userLastName");
-    var addUserPsw = document.querySelector("#createPsw");
-    var addUserImage = document.querySelector("#userImage");
-    var addUserSecurityQuestion = document.querySelector("#securityQuestions");
-    var addUserSecurityAnswer = document.querySelector("#securityAnswers");
-    var addUserAddress = document.querySelector("#userAddress");
-    var addUserDateOfBirth = document.querySelector("#userDateOfBirth");
+    // var enterUserEmail = document.querySelector("#userEmail");
+    // var addUserFirstName = document.querySelector("#userFirstName");
+    // var addUserLastName = document.querySelector("#userLastName");
+    // var addUserPsw = document.querySelector("#createPsw");
+    // var addUserImage = document.querySelector("#userImage");
+    // var addUserSecurityQuestion = document.querySelector("#securityQuestions");
+    // var addUserSecurityAnswer = document.querySelector("#securityAnswers");
+    // var addUserAddress = document.querySelector("#userAddress");
+    // var addUserDateOfBirth = document.querySelector("#userDateOfBirth");
 
-    var addUserBtn = document.querySelector("#addUserBtn");
+    // var addUserBtn = document.querySelector("#submit");
 
-    function InsertData()
-    {
-      //set method will set the data in database
-      //but where in database? use "ref" for that
-      set(ref(db, "Users/" + addUserID.value), { 
-        Name:addUserName.value, 
-        ID: addUserID.value, 
-        Position: addUserPosition.value
+    // function InsertData()
+    // {
+    //   //set method will set the data in database
+    //   //but where in database? use "ref" for that
+    //   addDoc(collection(db, "Users"), {  
+    //     Email: enterUserEmail.value,
+    //     FirstName: addUserFirstName.value,
+    //     LastName: addUserLastName.value,
+    //     Password: addUserPsw.value,
+    //     SecurityQuestion: addUserSecurityQuestion.value,
+    //     SecurityAnswer: addUserSecurityAnswer.value,
+    //     Address: addUserAddress.value,
+    //     DateOfBirth: addUserDateOfBirth.value
+    //   })
+    //   .then(() => {
+    //     alert("Data Added Successfully!")
+    //   })
+    //   .catch((error) => {
+    //     alert(error)
+    //   });
+    // }
+
+        //get collection data
+        getDocs(colRef).then((snapshot) => {
+        let users = []
+        snapshot.docs.forEach((doc) => {
+            users.push({ ...doc.data(), id: doc.id });
+        });
+        console.log(users);
+       })
+       .catch(err => {
+        console.log(err.message);
+    });
+
+    // addUserBtn.addEventListener('click',  InsertData);
+
+    //adding documents
+    const addNewUsers = document.querySelector('.Login')
+    addNewUsers.addEventListener('submit', (e) => {
+      e.preventDefault()
+
+      addDoc(colRef, {
+        Email: addNewUsers.userEmail.value,
+        FirstName: addNewUsers.userFirstName.value,
+        LastName: addNewUsers.userLastName.value,
+        Password: addNewUsers.createPsw.value,
+        SecurityQuestion: addNewUsers.securityQuestions.value,
+        SecurityAnswer: addNewUsers.securityAnswers.value,
+        Address: addNewUsers.userAddress.value,
+        DateOfBirth: addNewUsers.userDateOfBirth.value,
       })
-      .then(()=>{alert("Data Added Successfully!")})
-      .catch((error)=>{alert(error)});
-    }
-
-    addUserBtn.addEventListener('click',  InsertData);
+      .then(() => {
+        addNewUsers.reset()
+        alert("Data Added Successfully!")
+      })
+      .catch((error) => {
+        alert(error)
+      })
+    })
 
 </script>
 
