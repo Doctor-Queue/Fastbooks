@@ -32,6 +32,42 @@
           float:left;
           clip-path: circle();
            }
+          .modal-bg{
+            position: fixed;
+            top: 0%;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0,0, .5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: visibility 0s opacity 0.5s;
+            visibility: hidden;
+          }
+          .bg-active{
+            visibility: visible;
+            opacity: 1;
+          }
+          .modal{
+            position: relative;
+            background-color: white;
+            width: 40%;
+            height: 86%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: space-around;
+            margin: 30%;
+          }
+          .modal-close{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+
+          }
    </style>
    
    <!-- Following section takes acre of top nav bar-->
@@ -46,10 +82,69 @@
 <center>
     <input id="searchUser" type="text"> <br><br>
 <button id="searchUserBtn"> Search User</button>
+<button id="editUserBtn" class="modal-btn"> Edit User</button>
+ 
+<!-- Modal text -->
+<div class="modal-bg">
+  <div class="modal">
+      <h2>Edit User</h2>
+      <label for="acc_name">Account name:</label>
+      <input type="text" >
+
+      <label for="acc_num">Account Number:</label>
+      <input type="number" >
+      
+      <label for="acc_desc">Account Description:</label>
+      <input type="text" >
+
+      <label for="normal_side">Normal Side:</label>
+      <input type="text" >
+
+      <label for="acc_category">Account category</label>
+      <input type="text" >
+
+      <label for="acc_subcategory">Account subcategory</label>
+      <input type="text" >
+
+      <label for="initial_balance">Initial Balance:</label>
+      <input type="number" >
+
+      <label for="debit">Debit:</label>
+      <input type="number" >
+
+      <label for="credit">Credit:</label>
+      <input type="number" >
+
+      <label for="current_balance">Balance:</label>
+      <input type="number" >
+
+      <label for="acc_date_time">Date/time account added:</label>
+      <input type="datetime-local" >
+
+      <label for="user_id">User ID:</label>
+      <input type="text" >
+
+      <label for="acc_order">Order:</label>
+      <input type="text" >
+
+      <label for="acc_comment">Comment:</label>
+      <input type="text" >
+
+      <span class="modal-close">x</span>
+
+
+      <button>Enter</button>
+  </div>
+
+</div>
 
 <h3 id="findUserName" type="text"></h3>
 <h3 id="findUserID" type="text"></h3>
 <h3 id="findUserPosition" type="text"></h3>
+
+
+
+
 </center>
 
 
@@ -94,6 +189,18 @@
     var findUserID = document.querySelector("#findUserID");
     //This is a button 
     var searchUserBtn = document.querySelector("#searchUserBtn");
+
+    //Edit User Modal Button
+    var modalBtn = document.querySelector('.modal-btn');
+    var modalBg = document.querySelector('.modal-bg');
+    var modalClose = document.querySelector('.modal-close');
+
+    modalBtn.addEventListener('click', function(){
+        modalBg.classList.add('bg-active');
+    });
+    modalClose.addEventListener('click', function(){
+      modalBg.classList.remove('bg-active');
+  });
 
     
     function FindData()
