@@ -9,6 +9,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"  crossorigin="anonymous"></script>
 
     <link rel="stylesheet" type="text/css" href="WebNavBar.css" />
+
+    <script>
+      function passvalues()
+      {
+        var userFound=document.getElementById("serialnumber").value;
+        localStorage.setItem("textvalue", userFound);
+        return false;
+      }
+    </script>
 </head>
 <body>
 
@@ -18,29 +27,42 @@
         <h2> <img src="app_logo.png" id="Logo"> <font size="+1.50">  <center>  Welcome Admin! </center>  </font></h2>
     </div>
 <br> </br>
+
+
 <center>
-  
+  <!-- These were divided into differnet sections to hide one and still show another one-->
+  <br>
+  <p id="searchSection">
+      <input id="searchUser" type="text"> <br><br>
+      <button id="searchUserBtn" onclick="changeContent()"> Search User</button>
+      <br> <br> <br> <br> <br>
+  </p>
 
-<br>
-<input id="searchUser" type="text"> <br><br>
-<button id="searchUserBtn"> Search User</button>
-<br> <br> <br> <br> <br>
+  <p id="nameFoundSection">
+    Users Found:   <br>
+    <button id="userFoundBtn"> </button> 
+  </p>
 
-<style> #tab1{display: inline-block; margin-left: 10px;} </style>
-Name: <input type="text" id="findUserName" value=""> <span id="tab1"> </span>
-ID: <input type="text" id="findUserID" value=""> <span id="tab1"> </span>
-Position: <input type="text"  id="findUserPosition" value=""> <span id="tab1"> </span>
-DOB <input type="text"  id="findUserDOB" value=""> 
-<!-- <p id ="buttonPlace" type="button"></p> -->
-<br>
-
-<button id="updateUserBtn"> UPDATE</button> 
-
+  <p id="resultSection"> <style> #tab1{display: inline-block; margin-left: 10px;} </style>
+      update here <br>
+      Name: <input type="text" id="findUserName" value=""> <span id="tab1"> </span>
+      ID: <input type="text" id="findUserID" value=""> <span id="tab1"> </span>
+      Position: <input type="text"  id="findUserPosition" value=""> <span id="tab1"> </span>
+      DOB <input type="text"  id="findUserDOB" value=""> <span id="tab1"> </span>
+      <button id="updateUserBtn"> UPDATE</button>  <br>
+  </p>
 </center>
+
+
   <br>
   <!-- <p id="findUserName" type="text"></p> -->
-
 <script type="module">
+
+  document.getElementById("resultSection").style.display="none";
+  document.getElementById("nameFoundSection").style.display="none";
+  
+
+
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-analytics.js";
@@ -80,11 +102,42 @@ DOB <input type="text"  id="findUserDOB" value="">
     var findUserPosition = document.querySelector("#findUserPosition");
     var findUserID = document.querySelector("#findUserID");
     var findUserDOB = document.querySelector("#findUserDOB");
-
+    var searchSection = document.querySelector("#searchSection");
+    var resultSection = document.querySelector("#resultSection");
+    var nameFoundSection = document.querySelector("#nameFoundSection");
+    
     //This is a button 
     var searchUserBtn = document.querySelector("#searchUserBtn");
     var updateUserBtn = document.querySelector("#updateUserBtn");
+    var userFoundBtn = document.querySelector("#userFoundBtn");
    
+    function ShowData()
+    {
+      //because you're referencing to a spcific reference in database
+      const dbref= ref(db);
+      get(child(dbref, "Users/"+ enterUser.value))
+      .then((snapshot)=>{
+        if(snapshot.exists())
+        { 
+          document.getElementById("searchSection").style.display="none";
+          document.getElementById("nameFoundSection").style.display="none";
+          document.getElementById("resultSection").style.display="block";
+          userFoundBtn.style.display="none";
+          findUserName.value= snapshot.val().Name;
+          findUserPosition.value = snapshot.val().Position;
+          findUserID.value = snapshot.val().ID;
+          findUserDOB.value = snapshot.val().Date;
+        }
+        else
+        {
+          document.getElementById("nameFoundSection").style.display="none";
+          alert("No Data Found!");
+        }
+      })
+      .catch((error)=>{alert(error)})
+
+    }
+
     function FindData()
     {
       //because you're referencing to a spcific reference in database
@@ -92,11 +145,10 @@ DOB <input type="text"  id="findUserDOB" value="">
       get(child(dbref, "Users/"+ enterUser.value))
       .then((snapshot)=>{
         if(snapshot.exists())
-        {  
-          findUserName.value= snapshot.val().Name;
-          findUserPosition.value = snapshot.val().Position;
-          findUserID.value = snapshot.val().ID;
-          findUserDOB.value = snapshot.val().Date;
+        { 
+          document.getElementById("nameFoundSection").style.display="block";
+          userFoundBtn.innerHTML = snapshot.val().Name;
+
         }
         else
         {
@@ -106,12 +158,25 @@ DOB <input type="text"  id="findUserDOB" value="">
       .catch((error)=>{alert(error)})
     }
 
+    
     function UpdateData()
     {
-    
+      update(ref(db, "Users/" + enterUser.value), {
+        Name: findUserName.value, 
+        Position: findUserPosition.value,
+        ID: findUserID.value,
+        Date: findUserDOB.value
+      })
+      .then(()=>{
+        alert("data updated success!");
+      })
+      .catch((error)=>{
+        alert(error);
+      });
 
     }
     searchUserBtn.addEventListener('click', FindData);
+    userFoundBtn.addEventListener('click', ShowData);
     updateUserBtn.addEventListener('click', UpdateData);
   </script>
 
@@ -155,3 +220,5 @@ in firebase:
             buttonPlace.innerHTML = snapshot.val().Name;
 
 -->
+
+
