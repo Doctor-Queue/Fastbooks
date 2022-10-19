@@ -8,15 +8,8 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="  crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"  crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" type="text/css" href="WebNavBar.css" />
 
-    <!--
-<p>
-    <button onclick="location.href='user_selected.html'"> Lena Tory </button> <br>
-    <button> hello </button> </br>
-    <button> hey</button> <br>
-   <button> heyyyyyyy </button> </br>
-</p>
--->
 </head>
 <body>
 
@@ -32,23 +25,32 @@
           float:left;
           clip-path: circle();
            }
+           .tab1{
+    display: inline-block;
+    float: right;
+}
    </style>
+
+
+<!-- Our software brand and Logo is here-->
+<div id="Band">
+  <h2> <img src="app_logo.png" id="Logo"> <font size="+1.50">  <center>  Welcome Admin! </center>  </font></h2>
+</div>
+<span style="float:right">         
+  <button id="mainPage" onclick="location.href='admin.html'" float="right"> HomePage </button>      
+</span>
+      
+<br> </br>
+<br>
    
-   <!-- Following section takes acre of top nav bar-->
-   <section>
-   <!-- Following will add the beige band on top with "Welcome Admin User" text -->
-          <div class="Band">
-           <h2> <font size="+1.5">  <center>  Welcome Admin! </center>  </font></h2>
-           </div>
-           <b style="font-size:20px"> Fast Books</b>
-   </section>
-<br> <br>
+
 
 
 
 <center>
     <input id="searchUser" type="text"> <br><br>
 <button id="searchUserBtn"> Search User</button>
+
 
 <h3 id="findUserName" type="text"></h3>
 <h3 id="findUserID" type="text"></h3>

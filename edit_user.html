@@ -50,6 +50,8 @@
       Position: <input type="text"  id="findUserPosition" value=""> <span id="tab1"> </span>
       DOB <input type="text"  id="findUserDOB" value=""> <span id="tab1"> </span>
       <button id="updateUserBtn"> UPDATE</button>  <br>
+      <button id="backTOadmin" onclick="location.href='admin.html'"> Home</button>
+      <button id="backTOadmin" onclick="location.href='search_user.html'"> Search </button>
   </p>
 </center>
 
@@ -211,14 +213,11 @@
 </form>
 
 
-
 <button id="buttonPlace" onclick="location.href='user_selected.html'""> UPDATE</button> 
-
 in firebase: 
  var buttonPlace = document.querySelector("#buttonPlace");
  inside function FindData: 
             buttonPlace.innerHTML = snapshot.val().Name;
-
 -->
 
 
