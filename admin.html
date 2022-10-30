@@ -14,68 +14,99 @@
 
 </head>
 <body>
+
 <style>
-     .Band{
-    background-color: #f5f5dc;
-    padding: 4px ;
+
+ul{
+    list-style-type: none;
+    padding: 0;
 }
-     .Logo {
+
+li{
+    padding: 20px;
+    background: #ffffff;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    position: relative;
+    border-bottom: 1px solid #858585;
+    height: 46px;
+}
+
+li:nth-child(even){
+    padding: 20px;
+    background: #ffffff;
+}
+
+li span{
     display: block;
-    width: 10%;
-    margin: 0 15px 0 0;
-    float:left;
-    clip-path: circle();
 }
-     .tab1{
-    display: inline-block;
-    margin-left: 10px;
+
+li span:nth-child(2){
+    font-size: 16px;
+    margin-top: 6px;
+    color: rgb(255, 0, 0);
 }
-     .content{
-    background: #f5f5dc;
-    max-width: 960px;
-    margin: 30px auto;
-    padding:  20px 30px;
-    border-radius: 10px 120px 10px 10px;
-    box-shadow: 1px 3px 5px rgba(0,0,0,0.1)
+
+li div{
+    position: absolute;
+    top: 0;
+    right: 0px;
+    background: rgba(255, 255, 255, 0.6);
+    width: 40px;
+    text-align: center;
+    padding: 10px 0;
+    font-weight:  bold;
+    cursor:  pointer;
 }
+
+
+
 </style>
 
 <!-- Following section takes acre of top nav bar-->
-<section>
+
 <!-- Following will add the beige band on top with "Welcome Admin User" text -->
-       <div class="Band">
-        <h2> <font size="+1.5">  <center>  Welcome Admin! </center>  </font></h2>
-        </div>
+      
+<div id="Band">
+    <h2> <img src="app_logo.png" id="Logo"> <font size="+2.0">  <center>  Welcome Admin! </center>  </font></h2>
+</div>
 
-    <img src="app_logo.png" width="10%" class="Logo">
 
-    <center>
-    <form>
-            <span style="padding:10px; float:right;">
+<span style="padding:10px; float:right;">
+    <!--  tabs between options-->
+    <span class="tab1"> </span>
+        <b> <button type="button" class="btn" > Settings </button>
             <!--  tabs between options-->
             <span class="tab1"> </span>
-            <b> <button type="button" class="btn" > Settings </button>
-                    <!--  tabs between options-->
-                    <span class="tab1"> </span>
-                <button type="button" class="btn"> Notifications </button>
-                    <!--  tabs between options-->
-                    <span class="tab1"> </span>
-                <!--Sign In  -->
-                <button type="button" class="btn" onclick="location.href='Login.html'"> Login  </button>
-                    <!--  tabs between options-->
-                    <span class="tab1"> </span>
-            </b>
+            <button type="button" class="btn"> Notifications </button>
+            <!--  tabs between options-->
+            <span class="tab1"> </span>
+            <!--Sign In  -->
+            <button type="button" class="btn"> Logout  </button>
+            <!--  tabs between options-->
+            <span class="tab1"> </span>
+        </b>
+</span>
 
-        </span>
-        </form>
-    </center>
-            <div class="content">
-                <ul id="admin-list"></ul>
-            </div>
+<br>
+<br>
 
-</section>
-
-
+<div class="container mt-3">
+    <table class="table table-dark">
+        <thead>
+            <th>No.</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Date of Birth</th>
+            <th>Password</th>
+            <th>Security Question</th>
+            <th>Security Answer</th>
+        </thead>
+        <tbody id="admin-list"></tbody>
+    </table>
+</div>
 
 <!-- 
 REQUIREMENTS 
@@ -85,20 +116,30 @@ appropriate user interface where he can perform the functionality.
 When an account is added, you must store in the database at least the
 following required information using a user interface designed to allow
 entering or modifying the information:
-
-
 -->
 
-<button id="addUser" onclick="location.href='add_user.html'"> Add User</button>
-<button id="viewUser"> View User</button>
-<button id="editUser"> Edit User</button>
-<button id="changeStatus"> Change User Status</button>
+
+USERS:
+<button id="addUser" onclick="location.href='add_user.html'"> Add User</button> 
+<button id="viewUser" onclick="location.href='view_user.html'"> View User</button> 
+<button id="editUser" onclick="location.href='edit_user.html'"> Edit User</button> 
+<button id="changeUserStatus"> Change User Status</button> 
+
+<br> <br> <span id="tabLarge"></span>
+<!-- all account options-->
+ACCOUNTS:
+<button id="addAccount" onclick="location.href='add_account.html'"> Add Account</button> 
+<button id="viewAccount" onclick="location.href='view_account.html'"> View Account</button> 
+<button id="editAccount" > Edit Account</button> 
+<button id="changeAccountStatus"> Change Account Status</button>
+
 
 
 <script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
-    import { getFirestore, collection, getDocs, doc } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js";
+    import { getFirestore, collection, getDoc, getDocs, onSnapshot, deleteDoc, 
+        addDoc, doc, query, where } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js";
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
   
@@ -113,35 +154,89 @@ entering or modifying the information:
       appId: "1:210297298562:web:815b3cc913460d968b5e9b"
     };
   
+    // Initialize Cloud Firestore
     const app = initializeApp(firebaseConfig);
 
-    // Initialize Cloud Firestore and get a reference to the service
+    // get a reference to the service
     const db = getFirestore(app);
 
     //collection ref
     const colRef = collection(db, 'Users');
 
-    var enterUserEmail = document.querySelector("#userEmail");
-    var addUserFirstName = document.querySelector("#userFirstName");
-    var addUserLastName = document.querySelector("#userLastName");
-    var addUserPsw = document.querySelector("#createPsw");
-    var addUserImage = document.querySelector("#userImage");
-    var addUserSecurityQuestion = document.querySelector("#securityQuestions");
-    var addUserSecurityAnswer = document.querySelector("#securityAnswers");
-    var addUserAddress = document.querySelector("#userAddress");
-    var addUserDateOfBirth = document.querySelector("#userDateOfBirth");
+    //const adminList = document.querySelector('#admin-list')
+    
+    var userNo = 0;
+    var tbody = document.getElementById('admin-list');
 
-    //get collection data
-       getDocs(colRef).then((snapshot) => {
+    function AddItemToTable(FirstName,LastName,Email,Address,
+    DateOfBirth,Password,SecurityQuestion,SecurityAnswer) {
+        let trow = document.createElement("trow"); //represents the tables rows
+        let td1 = document.createElement('td'); //represents the tables columes
+        let td2 = document.createElement('td');
+        let td3 = document.createElement('td');
+        let td4 = document.createElement('td');
+        let td5 = document.createElement('td');
+        let td6 = document.createElement('td');
+        let td7 = document.createElement('td');
+        let td8 = document.createElement('td');
+        let td9 = document.createElement('td');
+
+        td1.innerHTML = ++userNo;  //if you want the row numbering gone then remove or slash this part of the code.
+        td2.innerHTML = FirstName;
+        td3.innerHTML = LastName;
+        td4.innerHTML = Email;
+        td5.innerHTML = Address;
+        td6.innerHTML = DateOfBirth;
+        td7.innerHTML = Password;
+        td8.innerHTML = SecurityQuestion;
+        td9.innerHTML = SecurityAnswer;
+
+        trow.appendChild(td1);
+        trow.appendChild(td2);
+        trow.appendChild(td3);
+        trow.appendChild(td4);
+        trow.appendChild(td5);
+        trow.appendChild(td6);
+        trow.appendChild(td7);
+        trow.appendChild(td8);
+        trow.appendChild(td9);
+
+        tbody.appendChild(trow);
+    }
+
+    function AddAllItemsToTable(Users) {
+        userNo = 0;
+        tbody.innerHTML = "";
+        Users.forEach(element => {
+            AddItemToTable(element.FirstName, element.LastName, element.Email, 
+            element.Address, element.DateOfBirth, element.Password, 
+            element.SecurityQuestion, element.SecurityAnswer);
+        });
+    }
+
+    //get all data
+    async function GetAllDataRealtime() {
+        const querySnapshot = await getDocs(collection(db, "Users"));
+
+        var users = [];
+
+        querySnapshot.forEach(doc => {
+            users.push(doc.data());
+        });
+        AddAllItemsToTable(users);
+    }
+
+    window.onload = GetAllDataRealtime;
+
+
+    //real time collection data. simply checks and reuploads any changes instantly.
+    onSnapshot(colRef, (snapshot) => {
         let users = []
         snapshot.docs.forEach((doc) => {
-            users.push({ ...doc.data(), id: doc.id });
-        });
+            users.push({ ...doc.data(), id: doc.id })
+        })
         console.log(users);
-       })
-       .catch(err => {
-        console.log(err.message);
-    });
+    })
 
   </script>  
 </body>
