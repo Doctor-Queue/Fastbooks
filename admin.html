@@ -163,15 +163,15 @@ ACCOUNTS:
     //collection ref
     const colRef = collection(db, 'Users');
 
-    //const adminList = document.querySelector('#admin-list')
-    
+
+    // Adds 'A' record to the table. This is paramount in setting it up.
     var userNo = 0;
     var tbody = document.getElementById('admin-list');
 
     function AddItemToTable(FirstName,LastName,Email,Address,
     DateOfBirth,Password,SecurityQuestion,SecurityAnswer) {
-        let trow = document.createElement("trow"); //represents the tables rows
-        let td1 = document.createElement('td'); //represents the tables columes
+        let trow = document.createElement('trow'); //represents the tables rows
+        let td1 = document.createElement('td'); //represents the tables columns (or cells as there called)
         let td2 = document.createElement('td');
         let td3 = document.createElement('td');
         let td4 = document.createElement('td');
@@ -191,6 +191,7 @@ ACCOUNTS:
         td8.innerHTML = SecurityQuestion;
         td9.innerHTML = SecurityAnswer;
 
+        //adds the table cells to the table row
         trow.appendChild(td1);
         trow.appendChild(td2);
         trow.appendChild(td3);
@@ -204,6 +205,7 @@ ACCOUNTS:
         tbody.appendChild(trow);
     }
 
+    //Adds the rest or the records to the table.
     function AddAllItemsToTable(Users) {
         userNo = 0;
         tbody.innerHTML = "";
@@ -214,22 +216,28 @@ ACCOUNTS:
         });
     }
 
-    //get all data
+    //gets all data from firestore. Now upgraded to update in realtime without refreshing the page.
     async function GetAllDataRealtime() {
-        const querySnapshot = await getDocs(collection(db, "Users"));
+        const dbRef = collection(db, "Users");
 
-        var users = [];
+        onSnapshot(dbRef,(querySnapshot) => {
+            var users = [];
 
-        querySnapshot.forEach(doc => {
-            users.push(doc.data());
-        });
-        AddAllItemsToTable(users);
+            querySnapshot.forEach(doc => {
+                users.push({...doc.data(), id: doc.id});
+            });
+            AddAllItemsToTable(users);
+        })
+        
+
+
     }
 
+    //shows table upon loading up the page.
     window.onload = GetAllDataRealtime;
 
 
-    //real time collection data. simply checks and reuploads any changes instantly.
+    //real time collection data. simply checks and reuploads any changes instantly. Shows on console only.
     onSnapshot(colRef, (snapshot) => {
         let users = []
         snapshot.docs.forEach((doc) => {
