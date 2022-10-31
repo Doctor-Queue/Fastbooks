@@ -15,6 +15,9 @@
 </head>
 <body>
 
+
+
+
 <style>
 
 ul{
@@ -59,8 +62,6 @@ li div{
     cursor:  pointer;
 }
 
-
-
 </style>
 
 <!-- Following section takes acre of top nav bar-->
@@ -90,6 +91,8 @@ li div{
 
 <br>
 <br>
+
+
 
 <div class="container mt-3">
     <table class="table table-dark">
@@ -134,6 +137,11 @@ ACCOUNTS:
 <button id="changeAccountStatus"> Change Account Status</button>
 
 
+<br> <br> <span id="tabLarge"></span>
+<!-- General Ledger Options-->
+GENERAL LEDGER:
+<button id="addEntry" onclick="location.href='add_account.html'"> Add Account Entry</button> 
+<button id="viewEntry" onclick="location.href='view_entries.html'"> View Entries</button> 
 
 <script type="module">
     // Import the functions you need from the SDKs you need
@@ -163,13 +171,14 @@ ACCOUNTS:
     //collection ref
     const colRef = collection(db, 'Users');
 
-    //const adminList = document.querySelector('#admin-list')
-    
+
+    // Adds 'A' record to the table. This is paramount in setting it up.
     var userNo = 0;
     var tbody = document.getElementById('admin-list');
 
     function AddItemToTable(FirstName,LastName,Email,Address,
     DateOfBirth,Password,SecurityQuestion,SecurityAnswer) {
+<<<<<<< HEAD
         let trow = document.createElement("trow"); //represents the tables rows
         let td1 = document.createElement('td'); //Number User
         let td2 = document.createElement('td'); //First Name
@@ -181,6 +190,9 @@ ACCOUNTS:
         let td8 = document.createElement('td'); //SecurityQuestion
         let td9 = document.createElement('td'); //
 
+       
+>>>>>>> f33a7674a16c67c2df0e9e08fee68c0291170c02
+
         td1.innerHTML = ++userNo;  //if you want the row numbering gone then remove or slash this part of the code.
         td2.innerHTML = FirstName;
         td3.innerHTML = LastName;
@@ -191,6 +203,7 @@ ACCOUNTS:
         td8.innerHTML = SecurityQuestion;
         td9.innerHTML = SecurityAnswer;
 
+        //adds the table cells to the table row
         trow.appendChild(td1);
         trow.appendChild(td2);
         trow.appendChild(td3);
@@ -204,6 +217,7 @@ ACCOUNTS:
         tbody.appendChild(trow);
     }
 
+    //Adds the rest or the records to the table.
     function AddAllItemsToTable(Users) {
         userNo = 0;
         tbody.innerHTML = "";
@@ -214,22 +228,28 @@ ACCOUNTS:
         });
     }
 
-    //get all data
+    //gets all data from firestore. Now upgraded to update in realtime without refreshing the page.
     async function GetAllDataRealtime() {
-        const querySnapshot = await getDocs(collection(db, "Users"));
+        const dbRef = collection(db, "Users");
 
-        var users = [];
+        onSnapshot(dbRef,(querySnapshot) => {
+            var users = [];
 
-        querySnapshot.forEach(doc => {
-            users.push(doc.data());
-        });
-        AddAllItemsToTable(users);
+            querySnapshot.forEach(doc => {
+                users.push({...doc.data(), id: doc.id});
+            });
+            AddAllItemsToTable(users);
+        })
+        
+
+
     }
 
+    //shows table upon loading up the page.
     window.onload = GetAllDataRealtime;
 
 
-    //real time collection data. simply checks and reuploads any changes instantly.
+    //real time collection data. simply checks and reuploads any changes instantly. Shows on console only.
     onSnapshot(colRef, (snapshot) => {
         let users = []
         snapshot.docs.forEach((doc) => {
