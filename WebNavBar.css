@@ -1,0 +1,30 @@
+#Band{
+    background-color: beige;
+    padding: 4px ;
+}
+
+#Logo {
+    display: block;
+    width: 10%;
+    position:relative;
+    float:left;
+    clip-path: circle();
+    }
+
+#ProfilePics {
+    display: block;
+    width: 30%;
+    margin: 0 15px 0 0;
+    float:left;
+    clip-path: circle();
+}
+
+#tabLarge{
+    display: inline-block;
+    margin-left: 140px;
+}
+
+#tabSmall{
+    display: inline-block;
+    margin-left: 40px;
+}
