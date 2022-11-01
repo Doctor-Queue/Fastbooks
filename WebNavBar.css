@@ -28,3 +28,13 @@
     display: inline-block;
     margin-left: 40px;
 }
+
+#vBand {
+    background-color: beige;
+    padding: 4px ;
+    height: 600px;
+    width: 100px;
+    float: left;
+  }
+  
+  
