@@ -2,29 +2,80 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>User</title>
-    <!-- /hello -->
-</head>
-<body>
+    <title>User Profile</title>
 
-<section>
-<!-- Following will add the beige band on top with "Welcome Admin User" text -->
-       <div class="Band">
-        <h2> <font size="+1.5">  <center>  Welcome Admin! </center>  </font></h2>
-        </div>
-        <b style="font-size:20px"> Fast Books</b>
+    <!-- Bootstrap and jquery packages-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="  crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"  crossorigin="anonymous"></script>
+
+    <!-- All ID's of sections, div and pictures are referenced here-->
+    <link rel="stylesheet" type="text/css" href="WebNavBar.css" />
+</head>
+
+<body>
+<!-- Our software brand and Logo is here, MAY OR MAY NOT BE KEPT -->
+    <!-- ON ALL PAGES, ON ALL PAGES, ON ALL PAGES-->
+    <!-- COPY THE CODE, Change the portion in center to whatever you want -->
+    <div id="Band">
+        <h2> <img src="app_logo.png" id="Logo"> <font size="+1.50">  <center>  Fast Accounting Happens Here! </center>  </font></h2>
+    </div>
+
+
+<!-- Adding Sign In, Contact Us and Self help -->
+<style> #tab1{display: inline-block; margin-left: 10px;} </style>
+<section id="Homepage_Options">
+    <div>
+        <p style="padding:10px; text-align:left; font-size:20px">
+            <!--adding name next to logo -->
+        <b> Fast Books</b>
+        <span style="padding:10px; float:right;">
+            <!--  tabs between options-->
+            <span id="tab1"> </span>
+            <b> 
+                <!--Sign In  -->
+                <button type="button" class="btn" onclick="location.href='index.html'"> Log Out </button>
+                    <!--  tabs between options-->
+                    <span id="tab1"> </span>
+            </b>
+        </span>
+        </p>
+    </div>
 </section>
 
+<br> <br> <br>
 
+<!--Adding tezt underneath pictures on Homepage -->
+<!-- Text style under each image is formatted using table option -->
+<style>  
+    #column {
+        float: left;
+        width: 30%;
+        padding: 10px;
+        height: 300px;
+        column-gap: 20px;}
+    #row:after {
+        content: "";
+        display: table;
+        clear: both;} 
+</style>
+
+
+
+
+<!-- ADDITIONAL INFO
+Helpful Website: https://getbootstrap.com/docs/4.0/components/dropdowns/
+   FOR DROPDOWN:
+        <div class="dropdown" style="display:inline-block">
+                    //Sign In Dropdown
+                    <button type="button" class="btn btn-default dropdown-toggle" id="signindropdown" data-bs-toggle="dropdown"> Sign-In <span class="caret"></span></button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="user.html"> User</a></li>
+                            <li><a href="manager.html">Manager</a></li>
+                            <li><a href="admin.html">Admin</a></li>
+                        </ul>
+                </div>
+-->
 
 </body>
 </html>
-
-
-
-<!--    Website Notes: //6 pages
-front page -> three diff log in: admin, user, manager (username and password)
-forget password
-create a user
-
--->

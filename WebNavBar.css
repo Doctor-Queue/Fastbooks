@@ -18,3 +18,13 @@
     float:left;
     clip-path: circle();
 }
+
+#tabLarge{
+    display: inline-block;
+    margin-left: 140px;
+}
+
+#tabSmall{
+    display: inline-block;
+    margin-left: 40px;
+}
