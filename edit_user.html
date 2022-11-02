@@ -21,6 +21,37 @@
 </head>
 <body>
 
+  <!-- Navbar with logo and buttons-->
+  <nav>
+    <div class="logo-container">
+      <a href="index.html" target="_blank">
+        <img src="app_logo.png" id="Logo"></a>
+    </div>
+    <div class="welcome-txt">
+        <h3>Welcome Admin!</h2>
+    </div>
+    <ul class="nav-links">
+        <li><a href="#">placeholder</a></li>
+        <li><a href="#">placeholder</a></li>
+        <li><a href="#">placeholder</a></li>
+        <li><a href="#">placeholder</a></li>
+    </ul>
+
+    <!-- Added an empty profile pic with the option of switching to the pre-set pic (SHOULD be changed!) -->
+    <img src="profile.jpeg" class="profile" type="button" id="profile" data-bs-toggle="dropdown"><span class="caret"></span>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li><center><a type="button" onclick="showPic()"> Add Picture</a></center></li>
+    </ul>
+
+
+
+    <!-- Added a pre-set pic to go over the empty profile pic (SHOULD be changed! This was only temporary.)-->
+    <img src="admin_pic.png" class="profilepic" id="adminPic" data-bs-toggle="dropdown"><span class="caret"></span>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li><center><a type="button" onclick="hidePic()"> Remove Picture</a></center></li>
+    </ul>
+</nav>
+
 
 <!-- Our software brand and Logo is here-->
     <div id="Band">

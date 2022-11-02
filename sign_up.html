@@ -9,6 +9,8 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="  crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"  crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" type="text/css" href="WebNavBar.css" />
+
 </head>
 <body>
 
@@ -22,17 +24,6 @@
         border: 0px LightGrey ;
         }
 
-/* Added for our logo style */
-      .Logo {
-        display: block;
-        width: 10%;
-        margin: 0 15px 0 0;
-        top: 10px;
-        left: 0;
-        float:left;
-        clip-path: circle();
-        }
-
 /* Added for our login style */
       .Login{
         background-color: Beige ;
@@ -43,28 +34,6 @@
         text-align: left;
         }
 
-/* Added for our profile pics style */
-     .profile {
-       display: block;
-       width: 10%;
-       float:right;
-       position: absolute;
-       top: 0px;
-       right: 10px;
-       clip-path: circle();
-        }
-
-/* Added for a picture to be placed on top of the profile pics style
-(may get rid of once a proper image choosing method is set up) */
-     .profilepic {
-       display: none;
-       width: 10%;
-       float:right;
-       position: absolute;
-       top: -40px;
-       right: 10px;
-       clip-path: circle();
-        }
 
 /* Added for alerting the user when the sign_up has been sent properly (not implemented yet, but is usable) */
       #created{
@@ -75,30 +44,41 @@
         height: 200px;
         border: 0px LightGrey ;
         text-align: left;
-        }
+        }       
 
 </style>
 
-    <!-- Added software brand -->
-        <div class="Band">
-       <b> <h2> <font size="+5">  <center> Fast Books Sign Up </center>  </font></h2>
-       </b>
+<!-- Navbar with logo and buttons-->
+<nav>
+  <div class="logo-container">
+    <a href="index.html" target="_blank">
+      <img src="app_logo.png" id="Logo"></a>
+  </div>
+  <div class="welcome-txt">
+      <h3>Welcome Admin!</h2>
+  </div>
+  <ul class="nav-links">
+      <li><a href="#">placeholder</a></li>
+      <li><a href="#">placeholder</a></li>
+      <li><a href="#">placeholder</a></li>
+      <li><a href="#">placeholder</a></li>
+  </ul>
 
-    </div>
+  <!-- Added an empty profile pic with the option of switching to the pre-set pic (SHOULD be changed!) -->
+  <img src="profile.jpeg" class="profile" type="button" id="profile" data-bs-toggle="dropdown"><span class="caret"></span>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <li><center><a type="button" onclick="showPic()"> Add Picture</a></center></li>
+  </ul>
 
-    <!-- Added an empty profile pic with the option of switching to the pre-set pic (SHOULD be changed!) -->
-<img src="profile.jpeg" class="profile" type="button" id="profile" data-bs-toggle="dropdown"><span class="caret"></span>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li><center><a type="button" onclick="showPic()"> Add Picture</a></center></li>
-    </ul>
 
-    <p> <img src="app_logo.png" class="Logo"> </p>
 
-    <!-- Added a pre-set pic to go over the empty profile pic (SHOULD be changed! This was only temporary.)-->
-<img src="admin_pic.png" class="profilepic" id="adminPic" data-bs-toggle="dropdown"><span class="caret"></span>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li><center><a type="button" onclick="hidePic()"> Remove Picture</a></center></li>
-    </ul>
+  <!-- Added a pre-set pic to go over the empty profile pic (SHOULD be changed! This was only temporary.)-->
+  <img src="admin_pic.png" class="profilepic" id="adminPic" data-bs-toggle="dropdown"><span class="caret"></span>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <li><center><a type="button" onclick="hidePic()"> Remove Picture</a></center></li>
+  </ul>
+</nav>
+
 
 <!-- Added the sign-up body style to hold all the required textboxes, checkboxes and others -->
      <center>
