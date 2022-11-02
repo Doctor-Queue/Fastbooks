@@ -13,17 +13,38 @@
 
 </head>
 <body>
+<!-- Navbar with logo and buttons-->
+<nav>
+  <div class="logo-container">
+    <a href="index.html" target="_blank">
+      <img src="app_logo.png" id="Logo"></a>
+  </div>
+  <div class="welcome-txt">
+      <h3> 
+        Create New User!
+      </h2>
+  </div>
+  <ul class="nav-links">
+      <li><a href="#">placeholder</a></li>
+      <li><a href="#">placeholder</a></li>
+      <li><a href="#">placeholder</a></li>
+      <li><a href="#">placeholder</a></li>
+  </ul>
+
+  <!-- Added an empty profile pic with the option of switching to the pre-set pic (SHOULD be changed!) -->
+  <img src="profile.jpeg" class="profile" type="button" id="profile" data-bs-toggle="dropdown"><span class="caret"></span>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <li><center><a type="button" onclick="showPic()"> Add Picture</a></center></li>
+  </ul>
 
 
-<!-- Following section takes care of top nav bar-->
-<section>
-<!-- Following will add the beige band on top with "Welcome Admin User" text -->
-       <div id="Band">
-        <h2> <size="+1.5">  <center>  Welcome Admin! </center>  </font></h2>
-        <img src="app_logo.png" id="Logo">
-        </div>
-        <b style="font-size:20px"> Fast Books</b>
-<br> 
+
+  <!-- Added a pre-set pic to go over the empty profile pic (SHOULD be changed! This was only temporary.)-->
+  <img src="admin_pic.png" class="profilepic" id="adminPic" data-bs-toggle="dropdown"><span class="caret"></span>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <li><center><a type="button" onclick="hidePic()"> Remove Picture</a></center></li>
+  </ul>
+</nav>
 
 </section>
 <center>

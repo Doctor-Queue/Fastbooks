@@ -1,6 +1,13 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
 #Band{
     background-color: beige;
-    padding: 4px ;
+    padding: 30px ;
+}
+.Band{
+    background-color: beige;
+    padding: 30px ;
 }
 
 #Logo {
@@ -28,3 +35,89 @@
     display: inline-block;
     margin-left: 40px;
 }
+/* New Navbar logo conatiner */
+nav{
+    display: flex;
+    background-color: beige;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+}
+
+/* New Navbar logo conatiner */
+.logo-container{
+    overflow: auto;
+    width: 40%;
+}
+
+/* New Navbar logo */
+.Logo {
+    display: block;
+    width: 15%;
+    position:relative;
+    float:left;
+    clip-path: circle();
+}
+/* New Navbar links */
+.nav-links{
+    display: flex;
+    justify-content: space-around;
+    width: 20%;
+    float: right;
+    text-decoration: none;
+    
+}
+/* New Navbar link text */
+.nav-links ul{
+
+}
+.nav-links a{
+    text-decoration: none;
+    color: black;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 8px;
+    
+    
+}
+.nav-links li{
+    list-style: none;
+    
+
+}
+.welcome-txt{
+    text-align:center;
+    position: relative;
+    right: 7%;
+}
+h3{
+   
+ 
+    left: 10%;
+
+}
+
+  /* Added for our profile pics style */
+  .profile {
+    display: block;
+    width: 3%;
+    float:right;
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    clip-path: circle();
+
+     }
+
+/* Added for a picture to be placed on top of the profile pics style
+(may get rid of once a proper image choosing method is set up) */
+  .profilepic {
+    display: none;
+    width: 10%;
+    float:right;
+    position: absolute;
+    top: -40px;
+    right: 10px;
+    clip-path: circle();
+   
+     }
