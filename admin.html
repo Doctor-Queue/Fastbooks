@@ -17,54 +17,66 @@
 
 
 
+<section>
+    <style>
+        #writeEmailBody{
+        display:none;
+        background-color: Beige ;
+        margin-left: auto;
+        margin-right: auto;
+        width: 500px;
+        height: 540px;
+        border: 0px LightGrey ;
+        text-align: left;
+        }
 
-<style>
+        .emailSent{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
 
-ul{
-    list-style-type: none;
-    padding: 0;
-}
+        }
 
-li{
-    padding: 20px;
-    background: #ffffff;
-    font-size: 20px;
-    color: rgb(0, 0, 0);
-    position: relative;
-    border-bottom: 1px solid #858585;
-    height: 46px;
-}
+        /* #status{
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            padding: 10px;
+            margin: 0 auto;
+            border-radius: 8px;
+        }
 
-li:nth-child(even){
-    padding: 20px;
-    background: #ffffff;
-}
+        #status.success{
+            background-color: rgb(211, 250, 153);
+            padding: 10px;
+            margin-top: 10px;
+            font-size: xx-large;
+            animation: status 4s ease forwards;
+        }
 
-li span{
-    display: block;
-    width: 10%;
-    margin: 0 15px 0 0;
-    float:left;
-    clip-path: circle();
-}
+        #status.error{
+            background-color: rgb(250, 129, 92);
+            padding: 10px;
+            margin-top: 10px;
+            font-size: xx-large;
+            animation: status 4s ease forwards;
+        }
 
-li span:nth-child(2){
-    font-size: 16px;
-    margin-top: 6px;
-    color: rgb(255, 0, 0);
-}
-
-li div{
-    position: absolute;
-    top: 0;
-    right: 0px;
-    background: rgba(255, 255, 255, 0.6);
-    width: 40px;
-    text-align: center;
-    padding: 10px 0;
-    font-weight:  bold;
-    cursor:  pointer;
-}
+        @keyframes status{
+            0%{
+                opacity: 1;
+                pointer-events: all;
+            }
+            90%{
+                opacity: 1;
+                pointer-events: all;
+            }
+            100%{
+                opacity: 0;
+                pointer-events: none;
+            }
+        } */
 
 </style>
 
@@ -99,6 +111,7 @@ li div{
 <div class="container mt-3">
     <table class="table table-dark">
         <thead>
+        <tr>
             <th>No.</th>
             <th>First Name</th>
             <th>Last Name</th>
@@ -108,6 +121,7 @@ li div{
             <th>Password</th>
             <th>Security Question</th>
             <th>Security Answer</th>
+        </tr>
         </thead>
         <tbody id="admin-list"></tbody>
     </table>
@@ -129,6 +143,7 @@ USERS:
 <button id="viewUser" onclick="location.href='view_user.html'"> View User</button> 
 <button id="editUser" onclick="location.href='edit_user.html'"> Edit User</button> 
 <button id="changeUserStatus"> Change User Status</button> 
+<button id="writeEmailBtn" onclick= "writeEmail()" style="float: right; margin:  0 300px;">Send Email</button>
 
 <br> <br> <span id="tabLarge"></span>
 <!-- all account options-->
@@ -144,6 +159,37 @@ ACCOUNTS:
 GENERAL LEDGER:
 <button id="addEntry" onclick="location.href='add_account.html'"> Add Account Entry</button> 
 <button id="viewEntry" onclick="location.href='view_entries.html'"> View Entries</button> 
+
+<div id="writeEmailBody">
+    <form class="px-4 py-3" action="https://formspree.io/f/xnqrobel" method="POST" id="my-form">
+
+        <div>
+            <label for="toEmail">To:</label>
+            <input type="text" name="To:" class="form-control" id="toEmail" placeholder="Other Email here" required>
+        </div>
+
+        <div>
+            <label for="fromEmail">From:</label>
+            <input type="email" name="From:" class="form-control" id="fromEmail" placeholder="Your Email here" required>
+        </div>
+
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" name="name:" class="form-control" id="name" placeholder="Full name" required>
+        </div>
+
+        <div>
+            <label for="message">Massage</label>
+            <textarea name="message:" id="message" class="form-control" cols="58" rows="10" placeholder="Your Message here" required></textarea>
+        </div>
+
+        <span style="position: relative; top: 15px; right: -39%;">
+        <button type="submit">Send</button></span>
+
+   </form>
+</div>
+
+</section>
 
 <script type="module">
     // Import the functions you need from the SDKs you need
@@ -213,6 +259,7 @@ GENERAL LEDGER:
         trow.appendChild(td9);
 
         tbody.appendChild(trow);
+
     }
 
     //Adds the rest or the records to the table.
@@ -255,10 +302,52 @@ GENERAL LEDGER:
         });
         console.log(users);
        })
-       .catch(err => {
-        console.log(err.message);
-    });
+
 
   </script>  
+
+  <script>
+    function writeEmail() {
+  var x = document.getElementById("writeEmailBody");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+  </script>
+
+  <script>
+        var form = document.getElementById("my-form");
+    
+    async function handleSubmit(event) {
+      event.preventDefault();
+      var status = document.getElementById("status");
+      var data = new FormData(event.target);
+      fetch(event.target.action, {
+        method: form.method,
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          status.innerHTML = "Thanks for your submission!";
+          form.reset()
+        } else {
+          response.json().then(data => {
+            if (Object.hasOwn(data, 'errors')) {
+              status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+            } else {
+              status.innerHTML = "Oops! There was a problem submitting your form"
+            }
+          })
+        }
+      }).catch(error => {
+        status.innerHTML = "Oops! There was a problem submitting your form"
+      });
+    }
+    form.addEventListener("submit", handleSubmit)
+  </script>
 </body>
 </html>
