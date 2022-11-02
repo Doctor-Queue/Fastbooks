@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VIEW Entries</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- link TO WebNavBar.css-->
+    <link rel="stylesheet" type="text/css" href="WebNavBar.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+   <!-- software brand and Logo-->
+   <div id="Band">
+      <h2> <img src="app_logo.png" id="Logo"> <font size="+1.50">  <center>  Welcome Admin! </center>  </font></h2>
+  </div>
+
+  <br> 
+  <center> 
+    <h2> <font size="+1.50"> GENERAL LEDGERS  <br> Don's Dynamite <br> <span id="tabLarge"></span> October 2022</h2>
+  </center>
+
+
+
+<center>
+  <span id="tabLarge"></span>
+  <button id="AddEntry"> <font size="+1.50">   Add Transaction</button>
+  <button id="AddEntry"> <font size="+1.50">   Remove Transaction</button>
+</center>
+
+
+  <!-- 
+  //SORT (DATE, AMOUNT), FILTER (BY ACCOUNT, DEBITS ONLY, CREDITS ONLY), SHOW (TIME PERIOD: PAST 6 MONTHS, PAST YEAR)
+  -->
+
+
+  <style id="#tableFormat">
+    table, th, td {
+      border:1px solid;
+      border-collapse: collapse;
+      column-span: 2;
+      padding:15px;
+    }
+    </style>
+
+<div id="vBand">
+    <center>  
+        <h2> <font size="+1.00">  Feature List! </h2>
+        <button style="font-size:16px; border: none; background-color: inherit; cursor: pointer;" onclick="sortOptions()"> Sort <i class="fa fa-sort"></i></button> 
+        <div id="sortView" style="display:none";> 
+          <button type="radio" onclick="sortTableAccount()"> Account Number</button>
+          <button onclick="sortTableBalance()"> Account Balance</button> 
+          <button onclick="sortTableAccountType()"> Account <br>Type</button> 
+        </div>
+        <button style="font-size:16px; border: none; background-color: inherit; cursor: pointer;"> Filter <i class="fa fa-filter"></i></button> <br> <br>   
+      </font>
+    </center>  
+
+    <script>
+        function sortOptions() {
+          var x = document.getElementById("sortView");
+          if (x.style.display === "none") {
+            x.style.display = "block";
+          } else {
+            x.style.display = "none";
+          }
+        }
+
+        //CODE FROM W3Schools 
+        // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_sort_table_number
+        function sortTableBalance() 
+        {
+          var table, rows, switching, i, x, y, shouldSwitch;
+          table = document.getElementById("myTable");
+          switching = true;
+          /*Make a loop that will continue until
+          no switching has been done:*/
+           while (switching) 
+           {
+              //start by saying: no switching is done:
+              switching = false;
+              rows = table.rows;
+              /*Loop through all table rows (except the
+              first, which contains table headers):*/
+              for (i = 1; i < (rows.length - 1); i++)
+              {
+                //start by saying there should be no switching:
+                shouldSwitch = false;
+
+                /*Get the two elements you want to compare,
+                one from current row and one from the next:*/
+                x = rows[i].getElementsByTagName("TD")[8];
+                y = rows[i + 1].getElementsByTagName("TD")[8];
+                //check if the two rows should switch place:
+                if (Number(x.innerHTML) > Number(y.innerHTML)) {
+                //if so, mark as a switch and break the loop:
+                shouldSwitch = true;
+                break;
+                }
+              }
+              if (shouldSwitch) {
+                /*If a switch has been marked, make the switch
+                and mark that a switch has been done:*/
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+              }
+            }
+          }
+
+        //CODE FROM W3Schools 
+        // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_sort_table_number
+        function sortTableAccount() 
+        {
+          var table, rows, switching, i, x, y, shouldSwitch;
+          table = document.getElementById("myTable");
+          switching = true;
+          /*Make a loop that will continue until
+          no switching has been done:*/
+           while (switching) 
+           {
+              //start by saying: no switching is done:
+              switching = false;
+              rows = table.rows;
+              /*Loop through all table rows (except the
+              first, which contains table headers):*/
+              for (i = 1; i < (rows.length - 1); i++)
+              {
+                //start by saying there should be no switching:
+                shouldSwitch = false;
+
+                /*Get the two elements you want to compare,
+                one from current row and one from the next:*/
+                x = rows[i].getElementsByTagName("TD")[1];
+                y = rows[i + 1].getElementsByTagName("TD")[1];
+                //check if the two rows should switch place:
+                if (Number(x.innerHTML) > Number(y.innerHTML)) {
+                //if so, mark as a switch and break the loop:
+                shouldSwitch = true;
+                break;
+                }
+              }
+              if (shouldSwitch) {
+                /*If a switch has been marked, make the switch
+                and mark that a switch has been done:*/
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+              }
+            }
+          }
+
+
+             //CODE FROM W3Schools 
+             //
+          function sortTableAccountType() {
+            var table, rows, switching, i, x, y, shouldSwitch;
+            table = document.getElementById("myTable");
+            switching = true;
+            /*Make a loop that will continue until
+            no switching has been done:*/
+            while (switching) {
+              //start by saying: no switching is done:
+              switching = false;
+              rows = table.rows;
+              /*Loop through all table rows (except the
+              first, which contains table headers):*/
+              for (i = 1; i < (rows.length - 1); i++) {
+                //start by saying there should be no switching:
+                shouldSwitch = false;
+                /*Get the two elements you want to compare,
+                one from current row and one from the next:*/
+                x = rows[i].getElementsByTagName("TD")[2];
+                y = rows[i + 1].getElementsByTagName("TD")[2];
+                //check if the two rows should switch place:
+                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                  //if so, mark as a switch and break the loop:
+                  shouldSwitch = true;
+                  break;
+                }
+              }
+              if (shouldSwitch) {
+                /*If a switch has been marked, make the switch
+                and mark that a switch has been done:*/
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+              }
+            }
+          }
+
+
+
+
+      </script>
+</div>
+
+
+
+<!--   <tr> 
+      <th colspan="5">DATE: OCTOBER 2022 </th>
+      <th colspan="4">Sheet No. 21 </th>
+    </tr> 
+  -->
+
+<center>
+  <table id="myTable" class="tableFormat">
+  
+    <tr>
+      <th> Date </th>
+      <th> Account Number</th>
+      <th> Account Type</th>
+      <th>Details</th>
+      <th>Ref Number</th>
+      <th>Vendor/ Client</th>
+      <th>Debit</th>
+      <th>Credit</th>
+      <th>Balance</th>
+  </tr>
+  <tr> 
+    <td> 10/01/2022 </td>
+    <td> 0010101</td>
+    <td> Checkings</td>
+    <td>Petty Cash</td>
+    <td>1001</td>
+    <td> Epic Services</td>
+    <td>5000.00</td>
+    <td></td>
+    <td>5000.00</td>  
+  </tr>
+  <tr> 
+    <td> 10/01/2022 </td>
+    <td> 0010102</td>
+    <td> Savings</td>
+    <td>Owner's Equity</td>
+    <td>1001</td>
+    <td> Epic Services</td>
+    <td></td>
+    <td>2000.00</td>
+    <td>3000.00</td>  
+  </tr>
+  <tr> 
+    <td> 10/01/2022 </td>
+    <td> 0010101</td>
+    <td> Checkings</td>
+    <td>Accounts Receivable</td>
+    <td>1001</td>
+    <td> Epic Services</td>
+    <td>5000.00</td>
+    <td></td>
+    <td>8000.00</td>  
+  </tr>
+</table>
+</center>
+
+<script>
+
+</script>
+
+</body>

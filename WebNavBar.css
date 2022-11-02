@@ -29,11 +29,13 @@
     margin-left: 40px;
 }
 
-.content{
-    background: #f5f5dc;
-    max-width: 1000px;
-    margin: 30px auto;
-    padding:  20px 30px;
-    border-radius: 70px 10px 10px 10px;
-    box-shadow: 1px 3px 5px rgba(0,0,0,0.1)
-}
+#vBand {
+    background-color: beige;
+    padding: 4px ;
+    height: 600px;
+    width: 100px;
+    float: left;
+  }
+
+  
+  
