@@ -22,7 +22,7 @@
 <body>
 
   <!-- Navbar with logo and buttons-->
-  <nav>
+  <!-- <nav>
     <div class="logo-container">
       <a href="index.html" target="_blank">
         <img src="app_logo.png" id="Logo"></a>
@@ -37,7 +37,7 @@
         <li><a href="#">placeholder</a></li>
     </ul>
 
-    <!-- Added an empty profile pic with the option of switching to the pre-set pic (SHOULD be changed!) -->
+    <!-- Added an empty profile pic with the option of switching to the pre-set pic (SHOULD be changed!) --
     <img src="profile.jpeg" class="profile" type="button" id="profile" data-bs-toggle="dropdown"><span class="caret"></span>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
         <li><center><a type="button" onclick="showPic()"> Add Picture</a></center></li>
@@ -45,7 +45,7 @@
 
 
 
-    <!-- Added a pre-set pic to go over the empty profile pic (SHOULD be changed! This was only temporary.)-->
+    <!-- Added a pre-set pic to go over the empty profile pic (SHOULD be changed! This was only temporary.)--
     <img src="admin_pic.png" class="profilepic" id="adminPic" data-bs-toggle="dropdown"><span class="caret"></span>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
         <li><center><a type="button" onclick="hidePic()"> Remove Picture</a></center></li>
@@ -53,11 +53,73 @@
 </nav>
 
 
-<!-- Our software brand and Logo is here-->
+<!-- Our software brand and Logo is here--
     <div id="Band">
         <h2> <img src="app_logo.png" id="Logo"> <font size="+1.50">  <center>  Welcome Admin! </center>  </font></h2>
-    </div>
-<br> </br>
+    </div> -->
+
+    <!-- New Navbar with logo and buttons-->
+<nav>
+  <div class="logo-container">
+    <a href="index.html">
+      <img src="app_logo.png" id="Logo"></a>
+  </div>
+  <div class="welcome-txt">
+      <h2>  Fast Accounting Happens Here! </h2>
+  </div>
+  
+
+ <!-- Added an empty profile pic with the option of switching to the pre-set pic (SHOULD be changed!)-->
+ <img src="profile.jpeg" class="profile" type="button" id="profile" data-bs-toggle="dropdown"><span class="caret"></span>
+
+<!-- Page Links under nav -->
+
+<div class="username">
+      <!-- To load username when page is loaded -->
+      <script>
+          var showingUserFirstName = document.getElementById('userFirstName');
+          document.write(showingUserFirstName);
+      </script>
+  
+</div>
+</nav>
+
+<div>
+      <div class="nav-links">
+          <li><a href="#">Placeholder</a></li>
+          <li><a href="#">Self Help</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="Login.html">Sign in</a></li>
+      </div>
+  </div>
+
+<!-- Sidenav Menu from W3 -->
+<!-- https://www.w3schools.com/howto/howto_js_sidenav.asp -->
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#">About</a>
+  <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
+</div>
+
+<!-- Use any element to open the sidenav -->
+<span onclick="openNav()"><button >≡</button></span>
+
+
+      <script>
+          /* Set the width of the side navigation to 250px */
+  function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+  }
+  
+  /* Set the width of the side navigation to 0 */
+  function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+  }
+</script>
+
+    <br> </br>
 
 
 <center>
@@ -88,6 +150,18 @@
 
 
   <br>
+  <!-- Footer -->
+<footer class="footer">
+  <h1>Contact Us!</h1>
+  <ul> 
+      <a href="#">PlaceHolder</a>
+      <a href="#">PlaceHolder</a>
+      <a href="#">PlaceHolder</a>
+      
+  </ul>
+ 
+  
+</footer>
   <!-- <p id="findUserName" type="text"></p> -->
 <script type="module">
 

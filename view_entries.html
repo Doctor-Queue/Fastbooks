@@ -1,93 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>VIEW Entries</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- link TO WebNavBar.css-->
-    <link rel="stylesheet" type="text/css" href="WebNavBar.css" />
+    <!-- 
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="  crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"  crossorigin="anonymous"></script>
+    -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="WebNavBar.css" />
+
+   
+    <style>
+       /*
+      .btn {
+        
+        border: none;
+        background-color: inherit;
+        font-size: 16px;
+        cursor: pointer;
+        display: inline-block;
+      }
+      
+      .btn:hover {background: #eee;}
+      
+      .success {color: green;}
+      .info {color: dodgerblue;}
+      .warning {color: orange;}
+      .danger {color: red;}
+      .default {color: black;}
+      */
+      </style>
+
 </head>
 <body>
+  <!-- software brand and Logo-->
+    <!-- <div id="Band">
+        <h2> <img src="app_logo.png" id="Logo"> <font size="+1.50">  <center>  Welcome Admin! </center>  </font></h2>
+    </div>
+  <br> </br> -->
+
 <!-- Navbar with logo and buttons-->
 <nav>
   <div class="logo-container">
-    <a href="index.html" target="_blank">
+    <a href="index.html">
       <img src="app_logo.png" id="Logo"></a>
   </div>
   <div class="welcome-txt">
-      <h3>Welcome Admin!</h2>
+      <h2>  View Entries! </h2>
   </div>
-  <ul class="nav-links">
-      <li><a href="#">placeholder</a></li>
-      <li><a href="#">placeholder</a></li>
-      <li><a href="#">placeholder</a></li>
-      <li><a href="#">placeholder</a></li>
-  </ul>
+  
 
-  <!-- Added an empty profile pic with the option of switching to the pre-set pic (SHOULD be changed!) -->
-  <img src="profile.jpeg" class="profile" type="button" id="profile" data-bs-toggle="dropdown"><span class="caret"></span>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-      
-  </ul>
+ <!-- Added an empty profile pic with the option of switching to the pre-set pic (SHOULD be changed!)-->
+ <img src="profile.jpeg" class="profile" type="button" id="profile" data-bs-toggle="dropdown"><span class="caret"></span>
 
+<!-- Page Links under nav -->
 
-
-  <!-- Added a pre-set pic to go over the empty profile pic (SHOULD be changed! This was only temporary.)-->
-  <img src="admin_pic.png" class="profilepic" id="adminPic" data-bs-toggle="dropdown"><span class="caret"></span>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    
-  </ul>
+<div class="username">
+      <!-- To load username when page is loaded -->
+      <script>
+          var showingUserFirstName = document.getElementById('userFirstName');
+          document.write(showingUserFirstName);
+      </script>
+  
+</div>
 </nav>
-  
 
-<script>
-    // This function displays the pre-selected picture while also hiding the profile temporary picture:
-function showPic() {
-
-  document.getElementById('adminPic')
-          .style.display = "block";
-
-  document.getElementById('profile')
-          .style.display = "none";
-  }
-
-// This function displays the profile temporary picture while also hiding the pre-selected picture:
-  function hidePic() {
-
-  document.getElementById('profile')
-          .style.display = "block";
-
-  document.getElementById('adminPic')
-          .style.display = "none";
-  }
-</script>
-  <br> </br>
-  
-
-<body>
+<div>
+      <div class="nav-links">
+          <li><a href="#">Placeholder</a></li>
+          <li><a href="#">Self Help</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="Login.html">Sign in</a></li>
+      </div>
+  </div>
 
 
-  <br> 
-  <center> 
-    <h2> <font size="+1.50"> GENERAL LEDGERS  <br> Don's Dynamite <br> <span id="tabLarge"></span> October 2022</h2>
-  </center>
+<!-- Sidenav Menu from W3 -->
+<!-- https://www.w3schools.com/howto/howto_js_sidenav.asp -->
+  <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Clients</a>
+      <a href="#">Contact</a>
+    </div>
+    
+    <!-- Use any element to open the sidenav -->
+    <span onclick="openNav()"><button >≡</button></span>
+    
 
+          <script>
+              /* Set the width of the side navigation to 250px */
+      function openNav() {
+          document.getElementById("mySidenav").style.width = "250px";
+      }
+      
+      /* Set the width of the side navigation to 0 */
+      function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+      }
+    </script>
 
-
-<center>
-  <span id="tabLarge"></span>
-  <button id="AddEntry"> <font size="+1.50">   Add Transaction</button>
-  <button id="AddEntry"> <font size="+1.50">   Remove Transaction</button>
-</center>
-
-
-  <!-- 
-  //SORT (DATE, AMOUNT), FILTER (BY ACCOUNT, DEBITS ONLY, CREDITS ONLY), SHOW (TIME PERIOD: PAST 6 MONTHS, PAST YEAR)
-  -->
-
+  <h3> <center> CHARTS OF ACCOUNTS </center></h3>
 
   <style id="#tableFormat">
     table, th, td {
@@ -96,218 +115,104 @@ function showPic() {
       column-span: 2;
       padding:15px;
     }
+    
     </style>
 
-<div id="vBand">
-    <center>  
-        <h2> <font size="+1.00">  Feature List! </h2>
-        <button style="font-size:16px; border: none; background-color: inherit; cursor: pointer;" onclick="sortOptions()"> Sort <i class="fa fa-sort"></i></button> 
-        <div id="sortView" style="display:none";> 
-          <button type="radio" onclick="sortTableAccount()"> Account Number</button>
-          <button onclick="sortTableBalance()"> Account Balance</button> 
-          <button onclick="sortTableAccountType()"> Account <br>Type</button> 
-        </div>
-        <button style="font-size:16px; border: none; background-color: inherit; cursor: pointer;"> Filter <i class="fa fa-filter"></i></button> <br> <br>   
-      </font>
-    </center>  
-
-    <script>
-        function sortOptions() {
-          var x = document.getElementById("sortView");
-          if (x.style.display === "none") {
-            x.style.display = "block";
-          } else {
-            x.style.display = "none";
-          }
-        }
-
-        //CODE FROM W3Schools 
-        // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_sort_table_number
-        function sortTableBalance() 
-        {
-          var table, rows, switching, i, x, y, shouldSwitch;
-          table = document.getElementById("myTable");
-          switching = true;
-          /*Make a loop that will continue until
-          no switching has been done:*/
-           while (switching) 
-           {
-              //start by saying: no switching is done:
-              switching = false;
-              rows = table.rows;
-              /*Loop through all table rows (except the
-              first, which contains table headers):*/
-              for (i = 1; i < (rows.length - 1); i++)
-              {
-                //start by saying there should be no switching:
-                shouldSwitch = false;
-
-                /*Get the two elements you want to compare,
-                one from current row and one from the next:*/
-                x = rows[i].getElementsByTagName("TD")[8];
-                y = rows[i + 1].getElementsByTagName("TD")[8];
-                //check if the two rows should switch place:
-                if (Number(x.innerHTML) > Number(y.innerHTML)) {
-                //if so, mark as a switch and break the loop:
-                shouldSwitch = true;
-                break;
-                }
-              }
-              if (shouldSwitch) {
-                /*If a switch has been marked, make the switch
-                and mark that a switch has been done:*/
-                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                switching = true;
-              }
-            }
-          }
-
-        //CODE FROM W3Schools 
-        // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_sort_table_number
-        function sortTableAccount() 
-        {
-          var table, rows, switching, i, x, y, shouldSwitch;
-          table = document.getElementById("myTable");
-          switching = true;
-          /*Make a loop that will continue until
-          no switching has been done:*/
-           while (switching) 
-           {
-              //start by saying: no switching is done:
-              switching = false;
-              rows = table.rows;
-              /*Loop through all table rows (except the
-              first, which contains table headers):*/
-              for (i = 1; i < (rows.length - 1); i++)
-              {
-                //start by saying there should be no switching:
-                shouldSwitch = false;
-
-                /*Get the two elements you want to compare,
-                one from current row and one from the next:*/
-                x = rows[i].getElementsByTagName("TD")[1];
-                y = rows[i + 1].getElementsByTagName("TD")[1];
-                //check if the two rows should switch place:
-                if (Number(x.innerHTML) > Number(y.innerHTML)) {
-                //if so, mark as a switch and break the loop:
-                shouldSwitch = true;
-                break;
-                }
-              }
-              if (shouldSwitch) {
-                /*If a switch has been marked, make the switch
-                and mark that a switch has been done:*/
-                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                switching = true;
-              }
-            }
-          }
-
-
-             //CODE FROM W3Schools 
-             //
-          function sortTableAccountType() {
-            var table, rows, switching, i, x, y, shouldSwitch;
-            table = document.getElementById("myTable");
-            switching = true;
-            /*Make a loop that will continue until
-            no switching has been done:*/
-            while (switching) {
-              //start by saying: no switching is done:
-              switching = false;
-              rows = table.rows;
-              /*Loop through all table rows (except the
-              first, which contains table headers):*/
-              for (i = 1; i < (rows.length - 1); i++) {
-                //start by saying there should be no switching:
-                shouldSwitch = false;
-                /*Get the two elements you want to compare,
-                one from current row and one from the next:*/
-                x = rows[i].getElementsByTagName("TD")[2];
-                y = rows[i + 1].getElementsByTagName("TD")[2];
-                //check if the two rows should switch place:
-                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                  //if so, mark as a switch and break the loop:
-                  shouldSwitch = true;
-                  break;
-                }
-              }
-              if (shouldSwitch) {
-                /*If a switch has been marked, make the switch
-                and mark that a switch has been done:*/
-                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                switching = true;
-              }
-            }
-          }
-
-
-
-
-      </script>
-</div>
-
-
-
-<!--   <tr> 
-      <th colspan="5">DATE: OCTOBER 2022 </th>
-      <th colspan="4">Sheet No. 21 </th>
-    </tr> 
-  -->
-
 <center>
-  <table id="myTable" class="tableFormat">
-  
+
+  <!-- SORT CODE FROM https://icons.getbootstrap.com/icons/sort-down-alt/ -->
+  <button>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-down-alt" viewBox="0 0 16 16">
+    <path d="M3.5 3.5a.5.5 0 0 0-1 0v8.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L3.5 12.293V3.5zm4 .5a.5.5 0 0 1 0-1h1a.5.5 0 0 1 0 1h-1zm0 3a.5.5 0 0 1 0-1h3a.5.5 0 0 1 0 1h-3zm0 3a.5.5 0 0 1 0-1h5a.5.5 0 0 1 0 1h-5zM7 12.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5z"/>
+  </svg> Sort
+</button>
+
+<button style="font-size:16px"> Filter <i class="fa fa-filter"></i></button>
+<button style="font-size:16px"> Sort <i class="fa fa-sort"></i></button>
+
+<br>  <br>  <br> 
+
+  <table id="tableFormat">
+    <tr >
+      <th> Account Number </th>
+      <th> Account Name </th>
+      <th> Account Category  </th>
+      <th> Account Balance </th>
+    </tr>
+
+    <tr style="width:70%">
+      <td>0010101 </td>
+      <td> <button style="border: none; background-color: inherit; cursor: pointer;"> Checkings</button> </td>
+      <td>Lorem ipsum</td>
+      <td>Lorem ipsum</td>
+    </tr>
+
     <tr>
-      <th> Date </th>
-      <th> Account Number</th>
-      <th> Account Type</th>
-      <th>Details</th>
-      <th>Ref Number</th>
-      <th>Vendor/ Client</th>
-      <th>Debit</th>
-      <th>Credit</th>
-      <th>Balance</th>
-  </tr>
-  <tr> 
-    <td> 10/01/2022 </td>
-    <td> 0010101</td>
-    <td> Checkings</td>
-    <td>Petty Cash</td>
-    <td>1001</td>
-    <td> Epic Services</td>
-    <td>5000.00</td>
-    <td></td>
-    <td>5000.00</td>  
-  </tr>
-  <tr> 
-    <td> 10/01/2022 </td>
-    <td> 0010102</td>
-    <td> Savings</td>
-    <td>Owner's Equity</td>
-    <td>1001</td>
-    <td> Epic Services</td>
-    <td></td>
-    <td>2000.00</td>
-    <td>3000.00</td>  
-  </tr>
-  <tr> 
-    <td> 10/01/2022 </td>
-    <td> 0010101</td>
-    <td> Checkings</td>
-    <td>Accounts Receivable</td>
-    <td>1001</td>
-    <td> Epic Services</td>
-    <td>5000.00</td>
-    <td></td>
-    <td>8000.00</td>  
-  </tr>
-</table>
+      <td>0010102 </td>
+      <td> <button style="border: none; background-color: inherit; cursor: pointer;"> Savings</button> </td>
+      <td>Lorem ipsum</td>
+      <td>Lorem ipsum</td>
+    </tr>
+
+    <tr>
+      <td>0010103</td>
+      <td> <button style="border: none; background-color: inherit; cursor: pointer;"> Undeposited Funds</button> </td>
+      <td>Lorem ipsum</td>
+      <td>Lorem ipsum</td>
+    </tr>
+
+    <tr>
+      <td>0010104</td>
+      <td> <button style="border: none; background-color: inherit; cursor: pointer;"> Assets</button> </td>
+      <td>Lorem ipsum</td>
+      <td>Lorem ipsum</td>
+    </tr>
+  </table>
 </center>
 
-<script>
 
-</script>
+  <!-- Footer -->
+<footer class="footer">
+  <h1>Contact Us!</h1>
+  <ul> 
+      <a href="#">PlaceHolder</a>
+      <a href="#">PlaceHolder</a>
+      <a href="#">PlaceHolder</a>
+      
+  </ul>
+ 
+  
+</footer>
 
-  <!-- -->
+<!-- To get info from firebase -->
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+  import { getFirestore, doc, addDoc, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // ********** Alexander Day's Database **********
+  const firebaseConfig = {
+    apiKey: "AIzaSyAswcBVoFfQx746ZSArJw6jZRqfa3ZmBbI",
+    authDomain: "swe-4713-application-domain.firebaseapp.com",
+    projectId: "swe-4713-application-domain",
+    storageBucket: "swe-4713-application-domain.appspot.com",
+    messagingSenderId: "210297298562",
+    appId: "1:210297298562:web:815b3cc913460d968b5e9b"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+
+  // Initialize Cloud Firestore and get a reference to the service
+  const db = getFirestore();
+
+  const colRef = collection(db, 'Users')
+  
+
+
+
+  </script>
 </body>
