@@ -1,15 +1,27 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+
 }
 #Band{
     background-color: beige;
     padding: 30px ;
     width: 100%;
+    text-decoration: none; 
+    list-style-type: none;
+    
 }
+
 .Band{
     background-color: beige;
     padding: 30px ;
     width: 100%;
+    text-decoration: none;
 }
 
 #Logo {
@@ -37,6 +49,7 @@ body{
     display: inline-block;
     margin-left: 40px;
 }
+
 /* New Navbar logo conatiner */
 nav{
     display: flex;
@@ -44,12 +57,18 @@ nav{
     justify-content: space-around;
     align-items: center;
     min-height: 8vh;
+    position: relative;
+}
+
+.username{
+    margin: 5vh 15vh 0px 0px;
 }
 
 /* New Navbar logo conatiner */
 .logo-container{
     overflow: auto;
     width: 40%;
+   
 }
 
 /* New Navbar logo */
@@ -67,11 +86,34 @@ nav{
     width: 20%;
     float: right;
     text-decoration: none;
-    
+    min-width: 350px;
 }
-/* New Navbar link text */
-.nav-links ul{
 
+/* Footer */
+footer{
+    background-color: beige;
+    text-align: center;
+    margin: 0 ;
+    
+    width: 100%;
+    padding: 40px 40px;
+    display: block;
+    margin-top: auto;
+    
+
+}
+footer h1{
+      font-size: 30px;
+      font-weight: bold;
+      
+}
+
+
+/* New Navbar link text */
+.nav-links {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 20px;
 }
 .nav-links a{
     text-decoration: none;
@@ -90,13 +132,16 @@ nav{
 .welcome-txt{
     text-align:center;
     position: relative;
-    right: 7%;
+    right: 9.5%;
+    
+}
+.welcome-txt h2{
+    font-weight: bold;
+    text-align: center;
+    left: 30px;
 }
 h3{
-   
- 
     left: 10%;
-
 }
 
   /* Added for our profile pics style */
@@ -123,3 +168,68 @@ h3{
     clip-path: circle();
    
      }
+
+     .profile-pic {
+        display: block;
+        width: 3%;
+        float:right;
+        position: absolute;
+        top: 0px;
+        right: 10px;
+        clip-path: circle();
+    
+         }
+/*
+    Sidenav Menu from W3 
+    https://www.w3schools.com/howto/howto_js_sidenav.asp *\
+         
+                 /* The side navigation menu */
+                 .sidenav {
+                     height: 80%; /* 100% Full-height */
+                     width: 0; /* 0 width - change this with JavaScript */
+                     position: fixed; /* Stay in place */
+                     z-index: 1; /* Stay on top */
+                     top: 0; /* Stay at the top */
+                     left: 0;
+                     background-color: #111; /* Black*/
+                     overflow-x: hidden; /* Disable horizontal scroll */
+                     padding-top: 60px; /* Place content 60px from the top */
+                     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+                     margin-top: 5%;
+                 }
+                 
+                 /* The navigation menu links */
+                 .sidenav a {
+                     padding: 8px 8px 8px 32px;
+                     text-decoration: none;
+                     font-size: 25px;
+                     color: #818181;
+                     display: block;
+                     transition: 0.3s;
+                 }
+                 
+                 /* When you mouse over the navigation links, change their color */
+                 .sidenav a:hover {
+                     color: #f1f1f1;
+                 }
+                 
+                 /* Position and style the close button (top right corner) */
+                 .sidenav .closebtn {
+                     position: absolute;
+                     top: 0;
+                     right: 25px;
+                     font-size: 36px;
+                     margin-left: 50px;
+                 }
+                 
+                 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+                 #main {
+                     transition: margin-left .5s;
+                     padding: 20px;
+                 }
+                 
+                 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+                 @media screen and (max-height: 450px) {
+                     .sidenav {padding-top: 15px;}
+                     .sidenav a {font-size: 18px;}
+                 }

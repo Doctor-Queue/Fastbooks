@@ -16,25 +16,90 @@
 
 <body>
     <!--WELCOME  -->
-    <div id="Band">
+    <!-- <div id="Band">
         <h2> <img src="app_logo.png" id="Logo"> <font size="+2.0">  <center>  Welcome Admin! </center>  </font></h2>
     </div>
 
     <span style="padding:10px; float:right;">
-        <!--  tabs between options-->
+        <!--  tabs between options--
         <span class="tab1"> </span>
             <b> <button type="button" class="btn" > Settings </button>
-                <!--  tabs between options-->
+                <!--  tabs between options--
                 <span class="tab1"> </span>
                 <button type="button" class="btn"> Notifications </button>
-                <!--  tabs between options-->
+                <!--  tabs between options--
                 <span class="tab1"> </span>
-                <!--Sign In  -->
+                <!--Sign In  --
                 <button type="button" class="btn"> Logout  </button>
-                <!--  tabs between options-->
+                <!--  tabs between options--
                 <span class="tab1"> </span>
             </b>
-    </span>
+    </span> -->
+
+<!-- Navbar with logo and buttons-->
+<nav>
+    <div class="logo-container">
+      <a href="index.html">
+        <img src="app_logo.png" id="Logo"></a>
+    </div>
+    <div class="welcome-txt">
+        <h2>  Add Account </h2>
+    </div>
+    
+
+   <!-- Added an empty profile pic with the option of switching to the pre-set pic (SHOULD be changed!)-->
+   <img src="profile.jpeg" class="profile" type="button" id="profile" data-bs-toggle="dropdown"><span class="caret"></span>
+
+
+<!-- Page Links under nav -->
+ 
+<div class="username">
+        <!-- To load username when page is loaded -->
+        <script>
+            var showingUserFirstName = document.getElementById('userFirstName');
+            document.write(showingUserFirstName);
+        </script>
+    
+</div>
+</nav>
+
+
+
+  <div>
+        <div class="nav-links">
+            <li><a href="#">Placeholder</a></li>
+            <li><a href="#">Self Help</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="Login.html">Sign in</a></li>
+        </div>
+    </div>
+ 
+<!-- Sidenav Menu from W3 -->
+<!-- https://www.w3schools.com/howto/howto_js_sidenav.asp -->
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Clients</a>
+    <a href="#">Contact</a>
+  </div>
+  
+  <!-- Use any element to open the sidenav -->
+  <span onclick="openNav()"><button >≡</button></span>
+  
+
+        <script>
+            /* Set the width of the side navigation to 250px */
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+    
+    /* Set the width of the side navigation to 0 */
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+  </script>   
+
 
     <br>
 
@@ -91,4 +156,53 @@
         <button onclick="location.href='admin.html'"> Admin Dashboard </button> 
         <br><br>
     </center>
+
+<!-- Footer -->
+<footer class="footer">
+    <h1>Contact Us!</h1>
+    <ul> 
+        <a href="#">PlaceHolder</a>
+        <a href="#">PlaceHolder</a>
+        <a href="#">PlaceHolder</a>
+        
+    </ul>
+   
+    
+</footer>
+
+
+<!-- To get info from firebase -->
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+    import { getFirestore, doc, addDoc, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // ********** Alexander Day's Database **********
+    const firebaseConfig = {
+      apiKey: "AIzaSyAswcBVoFfQx746ZSArJw6jZRqfa3ZmBbI",
+      authDomain: "swe-4713-application-domain.firebaseapp.com",
+      projectId: "swe-4713-application-domain",
+      storageBucket: "swe-4713-application-domain.appspot.com",
+      messagingSenderId: "210297298562",
+      appId: "1:210297298562:web:815b3cc913460d968b5e9b"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+  
+    // Initialize Cloud Firestore and get a reference to the service
+    const db = getFirestore();
+  
+    const colRef = collection(db, 'Users')
+    
+    var userFirstName = document.querySelector("#userFirstName");
+    var userLastName = document.querySelector("#userLastName");
+    var userFullName = userFirstName + userLastName;
+
+
+</script>
 </body>
+

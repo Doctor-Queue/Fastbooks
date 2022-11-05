@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Manager</title>
+    <title>Edit Ledger</title>
 
     <!-- Bootstrap and jquery packages-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
@@ -12,49 +12,15 @@
     <!-- All ID's of sections, div and pictures are referenced here-->
     <link rel="stylesheet" type="text/css" href="WebNavBar.css" />
 </head>
-
 <body>
-
-<!-- Navbar with logo and buttons-->
-<!-- <nav>
-    <div class="logo-container">
-      <a href="index.html" target="_blank">
-        <img src="app_logo.png" id="Logo"></a>
-    </div>
-    <div class="welcome-txt">
-        <h3>  Fast Accounting Happens Here! </h2>
-    </div>
-    <ul class="nav-links">
-        <li><a href="#">Placeholder</a></li>
-        <li><a href="#">Self Help</a></li>
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="Login.html">Sign in</a></li>
-    </ul>
-
-    <!-- Added an empty profile pic with the option of switching to the pre-set pic (SHOULD be changed!) --
-    <img src="profile.jpeg" class="profile" type="button" id="profile" data-bs-toggle="dropdown"><span class="caret"></span>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li><center><a type="button" onclick="showPic()"> Add Picture</a></center></li>
-    </ul>
-
-
-
-    <!-- Added a pre-set pic to go over the empty profile pic (SHOULD be changed! This was only temporary.)--
-    <img src="admin_pic.png" class="profilepic" id="adminPic" data-bs-toggle="dropdown"><span class="caret"></span>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li><center><a type="button" onclick="hidePic()"> Remove Picture</a></center></li>
-    </ul>
-</nav> -->
-
-
-<!-- Navbar with logo and buttons-->
+    <!-- Navbar with logo and buttons-->
 <nav>
     <div class="logo-container">
       <a href="index.html">
         <img src="app_logo.png" id="Logo"></a>
     </div>
     <div class="welcome-txt">
-        <h2>  Manager! </h2>
+        <h2>  Edit Ledger! </h2>
     </div>
     
 
@@ -82,14 +48,6 @@
         </div>
     </div>
 
-
-<div class="profileTab">
-     <!-- Added an empty profile pic with the option of switching to the pre-set pic (SHOULD be changed!)-->
-   <img src="profile.jpeg" class="profile" type="button" id="profileEditPic" data-bs-toggle="dropdown"><span class="caret"></span>
-
-
-</div>
-
 <!-- Sidenav Menu from W3 -->
 <!-- https://www.w3schools.com/howto/howto_js_sidenav.asp -->
 <div id="mySidenav" class="sidenav">
@@ -102,9 +60,98 @@
   
   <!-- Use any element to open the sidenav -->
   <span onclick="openNav()"><button >≡</button></span>
- 
+    
+    <h3> <center> CHARTS OF ACCOUNTS </center></h3>
 
-
+    <style id="#tableFormat">
+      table, th, td {
+        border:1px solid;
+        border-collapse: collapse;
+        column-span: 2;
+        padding:15px;
+      }
+      
+      </style>
+  
+  <center>
+  
+    <!-- SORT CODE FROM https://icons.getbootstrap.com/icons/sort-down-alt/ -->
+    <button>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-down-alt" viewBox="0 0 16 16">
+      <path d="M3.5 3.5a.5.5 0 0 0-1 0v8.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L3.5 12.293V3.5zm4 .5a.5.5 0 0 1 0-1h1a.5.5 0 0 1 0 1h-1zm0 3a.5.5 0 0 1 0-1h3a.5.5 0 0 1 0 1h-3zm0 3a.5.5 0 0 1 0-1h5a.5.5 0 0 1 0 1h-5zM7 12.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5z"/>
+    </svg> Sort
+  </button>
+  
+  <button style="font-size:16px"> Filter <i class="fa fa-filter"></i></button>
+  <button style="font-size:16px"> Sort <i class="fa fa-sort"></i></button>
+  
+  <br>  <br>  <br> 
+  
+    <table id="tableFormat">
+      <tr >
+        <th> Account Number </th>
+        <th> Account Name </th>
+        <th> Account Category  </th>
+        <th> Account Balance </th>
+      </tr>
+  
+      <tr style="width:70%">
+        <td>0010101 </td>
+        <td> <button style="border: none; background-color: inherit; cursor: pointer;"> Checkings</button> </td>
+        <td>Lorem ipsum</td>
+        <td>Lorem ipsum</td>
+      </tr>
+  
+      <tr>
+        <td>0010102 </td>
+        <td> <button style="border: none; background-color: inherit; cursor: pointer;"> Savings</button> </td>
+        <td>Lorem ipsum</td>
+        <td>Lorem ipsum</td>
+      </tr>
+  
+      <tr>
+        <td>0010103</td>
+        <td> <button style="border: none; background-color: inherit; cursor: pointer;"> Undeposited Funds</button> </td>
+        <td>Lorem ipsum</td>
+        <td>Lorem ipsum</td>
+      </tr>
+  
+      <tr>
+        <td>0010104</td>
+        <td> <button style="border: none; background-color: inherit; cursor: pointer;"> Assets</button> </td>
+        <td>Lorem ipsum</td>
+        <td>Lorem ipsum</td>
+      </tr>
+    </table>
+  </center>
+  
+  <style>
+      .adminPagebtns{
+          display: block;
+          width: 100vh;
+          margin: 0 auto;
+          text-align: center;
+          margin-top: 30px;
+  
+      }
+      #writeEmailBtn{
+          margin-top: 30px;
+      }
+  
+  </style>
+  
+  <div class="adminPagebtns">
+  <div class="adminUserbtns">
+  USERS:
+  <button id="addUser" onclick="location.href='add_user.html'"> Add User</button> 
+  <button id="viewUser" onclick="location.href='view_user.html'"> View User</button> 
+  <button id="editUser" onclick="location.href='edit_user.html'"> Edit User</button> 
+  <button id="changeUserStatus"> Change User Status</button> 
+  
+  </div>
+  
+  </div>
+  </div>
 
   <!-- Footer -->
 <footer class="footer">
@@ -184,28 +231,6 @@
   
   
     </script>
-
-
-       
-
-
-
-
-
-
-<!-- ADDITIONAL INFO
-Helpful Website: https://getbootstrap.com/docs/4.0/components/dropdowns/
-   FOR DROPDOWN:
-        <div class="dropdown" style="display:inline-block">
-                    //Sign In Dropdown
-                    <button type="button" class="btn btn-default dropdown-toggle" id="signindropdown" data-bs-toggle="dropdown"> Sign-In <span class="caret"></span></button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li><a href="user.html"> User</a></li>
-                            <li><a href="manager.html">Manager</a></li>
-                            <li><a href="admin.html">Admin</a></li>
-                        </ul>
-                </div>
--->
 
 </body>
 </html>
