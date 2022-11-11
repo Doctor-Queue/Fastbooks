@@ -35,17 +35,16 @@
         border: 0px LightGrey ;
         text-align: left;
         }
-        */
 
-/* Added for alerting the user when the sign_up has been sent properly (not implemented yet, but is usable) */
       #created{
-        display:none;
+        display: none;
         background-color: Beige ;
         margin: 10px;
-        width: 300px;
-        height: 200px;
+        width: 650px;
+        height: 100px;
         border: 0px LightGrey ;
-        text-align: left;
+        border-radius: 5px 50px 5px 5px;
+        text-align: center;
         }      
       nav{
           display: flex;
@@ -61,39 +60,6 @@
       } 
 
 </style>
-
-<!-- Navbar with logo and buttons-->
-<!-- <nav>
-  <div class="logo-container">
-    <a href="index.html" target="_blank">
-      <img src="app_logo.png" id="Logo"></a>
-  </div>
-  <div class="welcome-txt">
-      <h3>Welcome Admin!</h2>
-  </div>
-  <ul class="nav-links">
-      <li><a href="#">placeholder</a></li>
-      <li><a href="#">placeholder</a></li>
-      <li><a href="#">placeholder</a></li>
-      <li><a href="#">placeholder</a></li>
-  </ul>
-
-  <!-- Added an empty profile pic with the option of switching to the pre-set pic (SHOULD be changed!) --
-  <img src="profile.jpeg" class="profile" type="button" id="profile" data-bs-toggle="dropdown"><span class="caret"></span>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-      <li><center><a type="button" onclick="showPic()"> Add Picture</a></center></li>
-  </ul>
-
-
-
-  <!-- Added a pre-set pic to go over the empty profile pic (SHOULD be changed! This was only temporary.)--
-  <img src="admin_pic.png" class="profilepic" id="adminPic" data-bs-toggle="dropdown"><span class="caret"></span>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-      <li><center><a type="button" onclick="hidePic()"> Remove Picture</a></center></li>
-  </ul>
-</nav> -->
-
-
 <!-- Navbar with logo and buttons-->
 <nav>
   <div class="logo-container">
@@ -229,14 +195,13 @@
      </center>
 
     <!-- Added confirmation block style to alert user when account has been created and email has been sent -->
-         <center>
-    <div id="created">
-  <h3>Email has been sent. Waiting for Administrator approval:</h3>
-        <p><b>Check Email in 1-2 business days for validation</b></p>
-
-</div>
-     </center>
-
+    <center>
+      <div id="created">
+        <br>
+        <h3>Email has been sent. Waiting for Administrator approval:</h3>
+            <p><b>Check Email in 1-2 business days for validation</b></p>
+      </div>
+         </center>
 </section>
 
 
@@ -279,40 +244,6 @@
   const db = getFirestore();
 
   const colRef = collection(db, 'Users')
-    //This is a text field
-    // var enterUserEmail = document.querySelector("#userEmail");
-    // var addUserFirstName = document.querySelector("#userFirstName");
-    // var addUserLastName = document.querySelector("#userLastName");
-    // var addUserPsw = document.querySelector("#createPsw");
-    // var addUserImage = document.querySelector("#userImage");
-    // var addUserSecurityQuestion = document.querySelector("#securityQuestions");
-    // var addUserSecurityAnswer = document.querySelector("#securityAnswers");
-    // var addUserAddress = document.querySelector("#userAddress");
-    // var addUserDateOfBirth = document.querySelector("#userDateOfBirth");
-
-    // var addUserBtn = document.querySelector("#submit");
-
-    // function InsertData()
-    // {
-    //   //set method will set the data in database
-    //   //but where in database? use "ref" for that
-    //   addDoc(collection(db, "Users"), {  
-    //     Email: enterUserEmail.value,
-    //     FirstName: addUserFirstName.value,
-    //     LastName: addUserLastName.value,
-    //     Password: addUserPsw.value,
-    //     SecurityQuestion: addUserSecurityQuestion.value,
-    //     SecurityAnswer: addUserSecurityAnswer.value,
-    //     Address: addUserAddress.value,
-    //     DateOfBirth: addUserDateOfBirth.value
-    //   })
-    //   .then(() => {
-    //     alert("Data Added Successfully!")
-    //   })
-    //   .catch((error) => {
-    //     alert(error)
-    //   });
-    // }
 
         //get collection data
         getDocs(colRef).then((snapshot) => {
@@ -355,26 +286,6 @@
 </script>
 
 <script>
-// This function displays the pre-selected picture while also hiding the profile temporary picture:
-function showPic() {
-
-   document.getElementById('adminPic')
-           .style.display = "block";
-
-   document.getElementById('profile')
-           .style.display = "none";
-   }
-
-// This function displays the profile temporary picture while also hiding the pre-selected picture:
-   function hidePic() {
-
-   document.getElementById('profile')
-           .style.display = "block";
-
-   document.getElementById('adminPic')
-           .style.display = "none";
-   }
-
 // This function will allow the "Show Passwords" checkbox to reveal what is being typed out in the create/confirm password textboxes:
 function showingPasswords() {
 var showingCreate = document.getElementById("createPsw");

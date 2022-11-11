@@ -140,9 +140,6 @@ footer h1{
     text-align: center;
     left: 30px;
 }
-h3{
-    left: 10%;
-}
 
   /* Added for our profile pics style */
   .profile {
@@ -178,6 +175,17 @@ h3{
         right: 10px;
         clip-path: circle();
     
+         }
+
+         /* DO NOT TOUCH! This allows dollar signs to show in the journal entries table WITHOUT having to type it in. I WILL break hands if you DARE edit it!  */
+         #approved-journal-list tr td:nth-child(7)::before, #approved-journal-list tr td:nth-child(8)::before{
+            content: "$";
+
+         }
+
+         #pending-journal-list tr td:nth-child(7)::before, #pending-journal-list tr td:nth-child(8)::before{
+            content: "$";
+
          }
 /*
     Sidenav Menu from W3 
@@ -220,6 +228,12 @@ h3{
                      right: 25px;
                      font-size: 36px;
                      margin-left: 50px;
+                 }
+
+                 #sideBarBtn {
+                    position: relative;
+                    float: left;
+                    margin-top: 50px;
                  }
                  
                  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
