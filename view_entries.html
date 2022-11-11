@@ -24,9 +24,10 @@
 
 <center>
   <span id="tabLarge"></span>
-  <button id="AddEntry"> <font size="+1.50" onclick="location.href='add_transactions.html'" >  Add Transaction</button> 
+  
     <!-- onclick="location.href='add_transaction.html'"--> 
   <button id="RemoveEntry"> <font size="+1.50" onclick="removeTransaction()">  Remove Transaction</button>
+    <button id="AddEntry"> <font size="+1.50" onclick="location.href='add_transactions.html'">  Add Transaction</button> 
 </center>
 
   <!-- 
@@ -76,7 +77,6 @@
   </div>
 </center>
 
-
 <script>
   function removeTransaction()
   {
@@ -124,16 +124,16 @@
     const docSnap = await getDoc(ref); 
     if (docSnap.exists())
     {
-      transactiondetails.innerHTML= "Transaction Details Account Number" +  docSnap.data().AccountNumber+"yep this exists"+
+      transactiondetails.innerHTML= "Transaction Details Account Number" +  docSnap.data().AccountNumber+
       "Date: " + docSnap.data().Date+
       "Account Type: " + docSnap.data().AccountType+
-      "Account Number: " + docSnap.data().AccountNumber;
-      /*"Account Details: " + docSnap.data().AccountDetails;
-      "Reference Number: " + docSnap.data().ReferenceNumber;
-      "Client: " + docSnap.data().Client;
-      "Debit: " + docSnap.data().Debit;
-      "Credit: " + docSnap.data().Credit;
-      "Balance: " + docSnap.data().Balance;*/
+      "Account Number: " + docSnap.data().AccountNumber+
+      "Account Details: " + docSnap.data().AccountDetails+
+      "Reference Number: " + docSnap.data().ReferenceNumber+
+      "Client: " + docSnap.data().Client+
+      "Debit: " + docSnap.data().Debit+
+      "Credit: " + docSnap.data().Credit+
+      "Balance: " + docSnap.data().Balance;
 
       //make remove button visible only when the transaction to be removed is found 
       document.getElementById('removeTransaction').style.display="block";
