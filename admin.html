@@ -124,8 +124,10 @@
 <div class="username">
         <!-- To load username when page is loaded -->
         <script>
-            var showingUserFirstName = document.getElementById('userFirstName');
-            document.write(showingUserFirstName);
+            function lookupUser(userId) {
+                return $firebaseObject(getRoot().child("users").child(userId))
+                  .$loaded();
+              }
         </script>
     
 </div>
@@ -133,10 +135,9 @@
 
   <div>
         <div class="nav-links">
-            <li><a href="#">Placeholder</a></li>
-            <li><a href="#">Self Help</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="Login.html">Sign in</a></li>
+            <li><a href="edit_ledgers.html">Edit Ledgers</a></li>
+            <li><a href="manager.html">Manager</a></li>
+            <li><a href="view_accounts.html">View Accounts</a></li>
         </div>
     </div>
 <!-- Sidenav Menu from W3 -->
