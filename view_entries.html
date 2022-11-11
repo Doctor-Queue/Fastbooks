@@ -22,20 +22,18 @@
     <h2> <font size="+1.50"> GENERAL LEDGERS  <br> Don's Dynamite <br> <span id="tabLarge"></span> October 2022</h2>
   </center>
 
-
-
 <center>
   <span id="tabLarge"></span>
-  <button id="AddEntry"> <font size="+1.50">   Add Transaction</button>
-  <button id="AddEntry"> <font size="+1.50">   Remove Transaction</button>
+  <button id="AddEntry"> <font size="+1.50" onclick="location.href='add_transaction.html'" >  Add Transaction</button> 
+    <!-- onclick="location.href='add_transaction.html'"--> 
+  <button id="RemoveEntry"> <font size="+1.50" onclick="removeTransaction()">  Remove Transaction</button>
 </center>
-
 
   <!-- 
   //SORT (DATE, AMOUNT), FILTER (BY ACCOUNT, DEBITS ONLY, CREDITS ONLY), SHOW (TIME PERIOD: PAST 6 MONTHS, PAST YEAR)
   -->
 
-
+<!-- 
   <style id="#tableFormat">
     table, th, td {
       border:1px solid;
@@ -44,216 +42,138 @@
       padding:15px;
     }
     </style>
+  -->
 
+
+
+<!-- 
 <div id="vBand">
     <center>  
         <h2> <font size="+1.00">  Feature List! </h2>
         <button style="font-size:16px; border: none; background-color: inherit; cursor: pointer;" onclick="sortOptions()"> Sort <i class="fa fa-sort"></i></button> 
+        
         <div id="sortView" style="display:none";> 
           <button type="radio" onclick="sortTableAccount()"> Account Number</button>
           <button onclick="sortTableBalance()"> Account Balance</button> 
           <button onclick="sortTableAccountType()"> Account <br>Type</button> 
         </div>
+        
         <button style="font-size:16px; border: none; background-color: inherit; cursor: pointer;"> Filter <i class="fa fa-filter"></i></button> <br> <br>   
       </font>
     </center>  
+  </div>
+-->
 
-    <script>
-        function sortOptions() {
-          var x = document.getElementById("sortView");
-          if (x.style.display === "none") {
-            x.style.display = "block";
-          } else {
-            x.style.display = "none";
-          }
-        }
-
-        //CODE FROM W3Schools 
-        // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_sort_table_number
-        function sortTableBalance() 
-        {
-          var table, rows, switching, i, x, y, shouldSwitch;
-          table = document.getElementById("myTable");
-          switching = true;
-          /*Make a loop that will continue until
-          no switching has been done:*/
-           while (switching) 
-           {
-              //start by saying: no switching is done:
-              switching = false;
-              rows = table.rows;
-              /*Loop through all table rows (except the
-              first, which contains table headers):*/
-              for (i = 1; i < (rows.length - 1); i++)
-              {
-                //start by saying there should be no switching:
-                shouldSwitch = false;
-
-                /*Get the two elements you want to compare,
-                one from current row and one from the next:*/
-                x = rows[i].getElementsByTagName("TD")[8];
-                y = rows[i + 1].getElementsByTagName("TD")[8];
-                //check if the two rows should switch place:
-                if (Number(x.innerHTML) > Number(y.innerHTML)) {
-                //if so, mark as a switch and break the loop:
-                shouldSwitch = true;
-                break;
-                }
-              }
-              if (shouldSwitch) {
-                /*If a switch has been marked, make the switch
-                and mark that a switch has been done:*/
-                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                switching = true;
-              }
-            }
-          }
-
-        //CODE FROM W3Schools 
-        // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_sort_table_number
-        function sortTableAccount() 
-        {
-          var table, rows, switching, i, x, y, shouldSwitch;
-          table = document.getElementById("myTable");
-          switching = true;
-          /*Make a loop that will continue until
-          no switching has been done:*/
-           while (switching) 
-           {
-              //start by saying: no switching is done:
-              switching = false;
-              rows = table.rows;
-              /*Loop through all table rows (except the
-              first, which contains table headers):*/
-              for (i = 1; i < (rows.length - 1); i++)
-              {
-                //start by saying there should be no switching:
-                shouldSwitch = false;
-
-                /*Get the two elements you want to compare,
-                one from current row and one from the next:*/
-                x = rows[i].getElementsByTagName("TD")[1];
-                y = rows[i + 1].getElementsByTagName("TD")[1];
-                //check if the two rows should switch place:
-                if (Number(x.innerHTML) > Number(y.innerHTML)) {
-                //if so, mark as a switch and break the loop:
-                shouldSwitch = true;
-                break;
-                }
-              }
-              if (shouldSwitch) {
-                /*If a switch has been marked, make the switch
-                and mark that a switch has been done:*/
-                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                switching = true;
-              }
-            }
-          }
-
-
-             //CODE FROM W3Schools 
-             //
-          function sortTableAccountType() {
-            var table, rows, switching, i, x, y, shouldSwitch;
-            table = document.getElementById("myTable");
-            switching = true;
-            /*Make a loop that will continue until
-            no switching has been done:*/
-            while (switching) {
-              //start by saying: no switching is done:
-              switching = false;
-              rows = table.rows;
-              /*Loop through all table rows (except the
-              first, which contains table headers):*/
-              for (i = 1; i < (rows.length - 1); i++) {
-                //start by saying there should be no switching:
-                shouldSwitch = false;
-                /*Get the two elements you want to compare,
-                one from current row and one from the next:*/
-                x = rows[i].getElementsByTagName("TD")[2];
-                y = rows[i + 1].getElementsByTagName("TD")[2];
-                //check if the two rows should switch place:
-                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                  //if so, mark as a switch and break the loop:
-                  shouldSwitch = true;
-                  break;
-                }
-              }
-              if (shouldSwitch) {
-                /*If a switch has been marked, make the switch
-                and mark that a switch has been done:*/
-                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                switching = true;
-              }
-            }
-          }
-
-
-
-
-      </script>
-</div>
-
-
-
-<!--   <tr> 
-      <th colspan="5">DATE: OCTOBER 2022 </th>
-      <th colspan="4">Sheet No. 21 </th>
-    </tr> 
-  -->
-
+<br> <br>
 <center>
-  <table id="myTable" class="tableFormat">
-  
-    <tr>
-      <th> Date </th>
-      <th> Account Number</th>
-      <th> Account Type</th>
-      <th>Details</th>
-      <th>Ref Number</th>
-      <th>Vendor/ Client</th>
-      <th>Debit</th>
-      <th>Credit</th>
-      <th>Balance</th>
-  </tr>
-  <tr> 
-    <td> 10/01/2022 </td>
-    <td> 0010101</td>
-    <td> Checkings</td>
-    <td>Petty Cash</td>
-    <td>1001</td>
-    <td> Epic Services</td>
-    <td>5000.00</td>
-    <td></td>
-    <td>5000.00</td>  
-  </tr>
-  <tr> 
-    <td> 10/01/2022 </td>
-    <td> 0010102</td>
-    <td> Savings</td>
-    <td>Owner's Equity</td>
-    <td>1001</td>
-    <td> Epic Services</td>
-    <td></td>
-    <td>2000.00</td>
-    <td>3000.00</td>  
-  </tr>
-  <tr> 
-    <td> 10/01/2022 </td>
-    <td> 0010101</td>
-    <td> Checkings</td>
-    <td>Accounts Receivable</td>
-    <td>1001</td>
-    <td> Epic Services</td>
-    <td>5000.00</td>
-    <td></td>
-    <td>8000.00</td>  
-  </tr>
-</table>
+  <div style="display:none;" id="searchTransactionDivision">
+    reference number
+    <input type="number" id="searchTransaction">
+    <p id="transactiondetails"></p>
+    <button id="removeTransaction" style="display:none;">remove</button>
+    <button id="searchRefNum"> Search</button>
+    
+  </div>
 </center>
 
-<script>
 
+<script>
+  function removeTransaction()
+  {
+    document.getElementById('searchTransactionDivision').style.display="block";
+    
+  }
 </script>
 
+ <!-- FIREBASE CONFIGURATION-->
+ <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+  import{ getFirestore, doc, getDoc, setDoc, collection, addDoc, updateDoc, deleteDoc, deleteField }
+  from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAswcBVoFfQx746ZSArJw6jZRqfa3ZmBbI",
+    authDomain: "swe-4713-application-domain.firebaseapp.com",
+    databaseURL: "https://swe-4713-application-domain-default-rtdb.firebaseio.com",
+    projectId: "swe-4713-application-domain",
+    storageBucket: "swe-4713-application-domain.appspot.com",
+    messagingSenderId: "210297298562",
+    appId: "1:210297298562:web:815b3cc913460d968b5e9b"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+
+  const db = getFirestore(app);
+
+  let transactiondetails = document.getElementById("transactiondetails");
+  let searchRefNum = document.getElementById("searchRefNum");
+  let searchTransaction = document.getElementById("searchTransaction");
+  
+  let removeTransaction = document.getElementById("removeTransaction");
+
+  //GETTING INFO from the firebase
+  //////// BASICALLLY RETREIVING THE DATA 
+  async function getaDoc()
+  {
+    var ref = doc(db, "Transactions", searchTransaction.value);
+    const docSnap = await getDoc(ref); 
+    if (docSnap.exists())
+    {
+      transactiondetails.innerHTML= "Transaction Details Account Number" +  docSnap.data().AccountNumber+"yep this exists"+
+      "Date: " + docSnap.data().Date+
+      "Account Type: " + docSnap.data().AccountType+
+      "Account Number: " + docSnap.data().AccountNumber;
+      /*"Account Details: " + docSnap.data().AccountDetails;
+      "Reference Number: " + docSnap.data().ReferenceNumber;
+      "Client: " + docSnap.data().Client;
+      "Debit: " + docSnap.data().Debit;
+      "Credit: " + docSnap.data().Credit;
+      "Balance: " + docSnap.data().Balance;*/
+
+      //make remove button visible only when the transaction to be removed is found 
+      document.getElementById('removeTransaction').style.display="block";
+      
+      
+    }
+    else{
+        transactiondetails.innerHTML="<span style='color:red;'</span>"+"Incorrect Reference Number";
+        alert("Incorrect Reference Number");
+    }
+  }
+
+
+
+  //DELETING THE DATA
+  async function deleteaDoc()
+  {
+    var ref = doc(db, "Transactions", searchTransaction.value);
+    const docSnap = await getDoc(ref); 
+
+    //IF DOCUMENT DOES NOT EXIST
+    //THIS IS NOT NEEDED THOUGH BECASUE THE REMOVE BUTTON ISN'T VISIBLE IF DATA DOESNT EXIST
+    if (!docSnap.exists())
+    {
+      alert("Data does not exist!");
+      return;
+    }
+
+    await deleteDoc(ref)
+    .then(()=>{
+      alert("data deleted successfully");
+    })
+  
+  }
+
+
+  searchRefNum.addEventListener("click", getaDoc);
+  removeTransaction.addEventListener("click", deleteaDoc);
+
+  </script>
+
 </body>
+</html>
