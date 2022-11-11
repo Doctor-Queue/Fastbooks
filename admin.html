@@ -332,11 +332,13 @@ GENERAL LEDGER:
 
     //collection ref
     const colRef = collection(db, 'Users');
-
+  
 
     // Adds 'A' record to the table. This is paramount in setting it up.
     var userNo = 0;
     var tbody = document.getElementById('admin-list');
+
+ 
 
     function AddItemToTable(FirstName,LastName,Email,Address,
     DateOfBirth,Password,SecurityQuestion,SecurityAnswer) {
@@ -373,7 +375,6 @@ GENERAL LEDGER:
         trow.appendChild(td9);
 
         tbody.appendChild(trow);
-
     }
 
     //Adds the rest or the records to the table.
@@ -416,8 +417,6 @@ GENERAL LEDGER:
         });
         console.log(users);
        })
-
-
   </script>  
 
   <script>
