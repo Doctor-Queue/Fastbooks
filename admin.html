@@ -120,29 +120,91 @@ entering or modifying the information:
 
     //collection ref
     const colRef = collection(db, 'Users');
+  
 
-    var enterUserEmail = document.querySelector("#userEmail");
-    var addUserFirstName = document.querySelector("#userFirstName");
-    var addUserLastName = document.querySelector("#userLastName");
-    var addUserPsw = document.querySelector("#createPsw");
-    var addUserImage = document.querySelector("#userImage");
-    var addUserSecurityQuestion = document.querySelector("#securityQuestions");
-    var addUserSecurityAnswer = document.querySelector("#securityAnswers");
-    var addUserAddress = document.querySelector("#userAddress");
-    var addUserDateOfBirth = document.querySelector("#userDateOfBirth");
+    // Adds 'A' record to the table. This is paramount in setting it up.
+    var userNo = 0;
+    var tbody = document.getElementById('admin-list');
 
-    //get collection data
-       getDocs(colRef).then((snapshot) => {
+ 
+
+    function AddItemToTable(FirstName,LastName,Email,Address,
+    DateOfBirth,Password,SecurityQuestion,SecurityAnswer) {
+        let trow = document.createElement('tr'); //represents the tables rows
+        let td1 = document.createElement('td'); //represents the tables columns (or cells as there called)
+        let td2 = document.createElement('td');
+        let td3 = document.createElement('td');
+        let td4 = document.createElement('td');
+        let td5 = document.createElement('td');
+        let td6 = document.createElement('td');
+        let td7 = document.createElement('td');
+        let td8 = document.createElement('td');
+        let td9 = document.createElement('td');
+
+        td1.innerHTML = ++userNo;  //if you want the row numbering gone then remove or slash this part of the code.
+        td2.innerHTML = FirstName;
+        td3.innerHTML = LastName;
+        td4.innerHTML = Email;
+        td5.innerHTML = Address;
+        td6.innerHTML = DateOfBirth;
+        td7.innerHTML = Password;
+        td8.innerHTML = SecurityQuestion;
+        td9.innerHTML = SecurityAnswer;
+
+        //adds the table cells to the table row
+        trow.appendChild(td1);
+        trow.appendChild(td2);
+        trow.appendChild(td3);
+        trow.appendChild(td4);
+        trow.appendChild(td5);
+        trow.appendChild(td6);
+        trow.appendChild(td7);
+        trow.appendChild(td8);
+        trow.appendChild(td9);
+
+        tbody.appendChild(trow);
+    }
+
+    //Adds the rest or the records to the table.
+    function AddAllItemsToTable(Users) {
+        userNo = 0;
+        tbody.innerHTML = "";
+        Users.forEach(element => {
+            AddItemToTable(element.FirstName, element.LastName, element.Email, 
+            element.Address, element.DateOfBirth, element.Password, 
+            element.SecurityQuestion, element.SecurityAnswer);
+        });
+    }
+
+    //gets all data from firestore. Now upgraded to update in realtime without refreshing the page.
+    async function GetAllDataRealtime() {
+        const dbRef = collection(db, "Users");
+
+        onSnapshot(dbRef,(querySnapshot) => {
+            var users = [];
+
+            querySnapshot.forEach(doc => {
+                users.push({...doc.data(), id: doc.id});
+            });
+            AddAllItemsToTable(users);
+        })
+        
+
+
+    }
+
+    //shows table upon loading up the page.
+    window.onload = GetAllDataRealtime;
+
+
+    //real time collection data. simply checks and reuploads any changes instantly. Shows on console only.
+    onSnapshot(colRef, (snapshot) => {
         let users = []
         snapshot.docs.forEach((doc) => {
             users.push({ ...doc.data(), id: doc.id });
         });
         console.log(users);
        })
-       .catch(err => {
-        console.log(err.message);
-    });
-
   </script>  
 </body>
 </html>
