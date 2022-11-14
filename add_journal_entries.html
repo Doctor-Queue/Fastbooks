@@ -131,7 +131,7 @@ function closeNav() {
 
     <hr>
     <button id="resetBtn" type="reset" value="Reset">Reset</button>
-    <button id="createBtn" type="submit">Submit New Journal Entry</button>
+    <button id="createBtn" type="submit" value="Submit">Submit New Journal Entry</button>
     </form>
 </div>
 
@@ -171,7 +171,9 @@ function closeNav() {
     const app = initializeApp(firebaseConfig);
 
     // Initialize Cloud Firestore and get a reference to the service
-    const db = getFirestore(app);
+    const db = getFirestore();
+
+    const colRef = collection(db, 'PendingJournalEntries')
 
     //getting all of our references
     let EntryID = document.getElementById("EntryID");
@@ -188,32 +190,30 @@ function closeNav() {
     let createBtn = document.getElementById("createBtn");
 
     //Adding the Document
-    async function CreateJournalEntry() {
-        var ref = collection(db, "PendingJournalEntries");
+    const addNewEntry = document.querySelector('#addJournalEntryBody')
+    addNewEntry.addEventListener('createBtn', (e) => {
+      e.preventDefault()
 
-        const docRef = await addDoc(
-            ref, {
-                EntryID: EntryID.value,
-                DateSubmitted: DateSubmitted.value,
-                SubmittedBy: SubmittedBy.value,
-                ApprovedBy: ApprovedBy.value,
-                AccountName: AccountName.value,
-                Description: Description.value,
-                AccountsDebited: AccountsDebited.value,
-                AccountsCredited: AccountsCredited.value,
-                Attachment: Attachment.value
+        addDoc(colRef, {
+                EntryID: addNewEntry.EntryID.value,
+                DateSubmitted: addNewEntry.DateSubmitted.value,
+                SubmittedBy: addNewEntry.SubmittedBy.value,
+                ApprovedBy: addNewEntry.ApprovedBy.value,
+                AccountName: addNewEntry.AccountName.value,
+                Description: addNewEntry.Description.value,
+                AccountsDebited: addNewEntry.AccountsDebited.value,
+                AccountsCredited: addNewEntry.AccountsCredited.value,
+                Attachment: addNewEntry.Attachment.value
             }
         )
         .then(() => {
+            addNewEntry.reset()
             alert("data has been uploaded successfully!");
         })
         .catch((error) =>{
-            alert("Whoops! Something is wrong" + error);
+            alert(error);
         })
-    }
-
-    //Assigning event to buttons
-    createBtn.addEventListener("click", CreateJournalEntry);
+    })
 
 </script>
 </body>

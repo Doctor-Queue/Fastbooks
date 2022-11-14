@@ -273,75 +273,75 @@ function closeNav() {
 
     
 
-    function AddItemToPendingTable(EntryID,DateSubmitted,SubmittedBy,ApprovedBy,
-    AccountName,Description,AccountsDebited,AccountsCredited,Attachment) {
+    // function AddItemToPendingTable(EntryID,DateSubmitted,SubmittedBy,ApprovedBy,
+    // AccountName,Description,AccountsDebited,AccountsCredited,Attachment) {
 
-        let tPendingrow = document.createElement('tr'); //represents the tables rows
-        let tdPending1 = document.createElement('td'); //represents the tables columns (or cells as there called)
-        let tdPending2 = document.createElement('td');
-        let tdPending3 = document.createElement('td');
-        let tdPending4 = document.createElement('td');
-        let tdPending5 = document.createElement('td');
-        let tdPending6 = document.createElement('td');
-        let tdPending7 = document.createElement('td');
-        let tdPending8 = document.createElement('td');
-        let tdPending9 = document.createElement('td');
+    //     let tPendingrow = document.createElement('tr'); //represents the tables rows
+    //     let tdPending1 = document.createElement('td'); //represents the tables columns (or cells as there called)
+    //     let tdPending2 = document.createElement('td');
+    //     let tdPending3 = document.createElement('td');
+    //     let tdPending4 = document.createElement('td');
+    //     let tdPending5 = document.createElement('td');
+    //     let tdPending6 = document.createElement('td');
+    //     let tdPending7 = document.createElement('td');
+    //     let tdPending8 = document.createElement('td');
+    //     let tdPending9 = document.createElement('td');
 
-        tdPending1.innerHTML = EntryID;
-        tdPending2.innerHTML = DateSubmitted;
-        tdPending3.innerHTML = SubmittedBy;
-        tdPending4.innerHTML = ApprovedBy;
-        tdPending5.innerHTML = AccountName;
-        tdPending6.innerHTML = Description;
-        tdPending7.innerHTML = AccountsDebited;
-        tdPending8.innerHTML = AccountsCredited;
-        tdPending9.innerHTML = Attachment;
+    //     tdPending1.innerHTML = EntryID;
+    //     tdPending2.innerHTML = DateSubmitted;
+    //     tdPending3.innerHTML = SubmittedBy;
+    //     tdPending4.innerHTML = ApprovedBy;
+    //     tdPending5.innerHTML = AccountName;
+    //     tdPending6.innerHTML = Description;
+    //     tdPending7.innerHTML = AccountsDebited;
+    //     tdPending8.innerHTML = AccountsCredited;
+    //     tdPending9.innerHTML = Attachment;
     
 
-        //adds the table cells to the table row
-        tPendingrow.appendChild(tdPending1);
-        tPendingrow.appendChild(tdPending2);
-        tPendingrow.appendChild(tdPending3);
-        tPendingrow.appendChild(tdPending4);
-        tPendingrow.appendChild(tdPending5);
-        tPendingrow.appendChild(tdPending6);
-        tPendingrow.appendChild(tdPending7);
-        tPendingrow.appendChild(tdPending8);
-        tPendingrow.appendChild(tdPending9);
+    //     //adds the table cells to the table row
+    //     tPendingrow.appendChild(tdPending1);
+    //     tPendingrow.appendChild(tdPending2);
+    //     tPendingrow.appendChild(tdPending3);
+    //     tPendingrow.appendChild(tdPending4);
+    //     tPendingrow.appendChild(tdPending5);
+    //     tPendingrow.appendChild(tdPending6);
+    //     tPendingrow.appendChild(tdPending7);
+    //     tPendingrow.appendChild(tdPending8);
+    //     tPendingrow.appendChild(tdPending9);
 
-        tbody2.appendChild(tPendingrow);
+    //     tbody2.appendChild(tPendingrow);
 
-     }
+    //  }
 
-    //Adds the rest or the records to the table.
-    function AddAllItemsToPendingTable(PendingJournalEntries) {
-        tbody2.innerHTML = "";
-        PendingJournalEntries.forEach(element => {
-            AddItemToPendingTable(element.EntryID, element.DateSubmitted, element.SubmittedBy, 
-            element.ApprovedBy, element.AccountName, element.Description, element.AccountsDebited, 
-            element.AccountsCredited, element.Attachment);
-        });
-    }
+    // //Adds the rest or the records to the table.
+    // function AddAllItemsToPendingTable(PendingJournalEntries) {
+    //     tbody2.innerHTML = "";
+    //     PendingJournalEntries.forEach(element => {
+    //         AddItemToPendingTable(element.EntryID, element.DateSubmitted, element.SubmittedBy, 
+    //         element.ApprovedBy, element.AccountName, element.Description, element.AccountsDebited, 
+    //         element.AccountsCredited, element.Attachment);
+    //     });
+    // }
 
-    //gets all data from firestore. Now upgraded to update in realtime without refreshing the page.
-    async function GetAllPendingJournalDataRealtime() {
-        const dbRefPending = collection(db, "PendingJournalEntries");
+    // //gets all data from firestore. Now upgraded to update in realtime without refreshing the page.
+    // async function GetAllPendingJournalDataRealtime() {
+    //     const dbRefPending = collection(db, "PendingJournalEntries");
 
-        onSnapshot(dbRefPending,(querySnapshot) => {
-            var pendingJournalEntries = [];
+    //     onSnapshot(dbRefPending,(querySnapshot) => {
+    //         var pendingJournalEntries = [];
 
-            querySnapshot.forEach(doc => {
-                pendingJournalEntries.push({...doc.data(), id: doc.id});
-            });
-            AddAllItemsToPendingTable(pendingJournalEntries);
-        })
+    //         querySnapshot.forEach(doc => {
+    //             pendingJournalEntries.push({...doc.data(), id: doc.id});
+    //         });
+    //         AddAllItemsToPendingTable(pendingJournalEntries);
+    //     })
         
 
 
-    }
+    // }
 
-    //shows table upon loading up the page.
-    window.onload = GetAllPendingJournalDataRealtime;
+    // //shows table upon loading up the page.
+    // window.onload = GetAllPendingJournalDataRealtime;
 
 
 
