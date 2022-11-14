@@ -77,7 +77,7 @@ function closeNav() {
 </script>  
 
 <style>
-        #addJournalEntryBody{
+        .addJournalEntryBody{
         display:block;
         background-color: rgb(236, 236, 236) ;
         margin-left: auto;
@@ -116,9 +116,9 @@ function closeNav() {
 
 </style>
 
-<div id="addJournalEntryBody">
+<form class="addJournalEntryBody">
+<div>
 
-    <form>
     <p><label>EntryID:</label> <input id="EntryID" type="number" placeholder="Ex: 15" required></p>
     <p><label>Date Submitted:</label> <input id="DateSubmitted" type="date" required></p>
     <p><label>Submitted By:</label> <input id="SubmittedBy" type="text" placeholder="Ex: Tuser2022" required></p>
@@ -131,9 +131,9 @@ function closeNav() {
 
     <hr>
     <button id="resetBtn" type="reset" value="Reset">Reset</button>
-    <button id="createBtn" type="submit" value="Submit">Submit New Journal Entry</button>
-    </form>
+    <button id="createBtn" type="submit" value="Submit" >Submit New Journal Entry</button>
 </div>
+</form>
 
 </section>
 
@@ -173,8 +173,6 @@ function closeNav() {
     // Initialize Cloud Firestore and get a reference to the service
     const db = getFirestore();
 
-    const colRef = collection(db, 'PendingJournalEntries')
-
     //getting all of our references
     let EntryID = document.getElementById("EntryID");
     let DateSubmitted = document.getElementById("DateSubmitted");
@@ -190,11 +188,40 @@ function closeNav() {
     let createBtn = document.getElementById("createBtn");
 
     //Adding the Document
-    const addNewEntry = document.querySelector('#addJournalEntryBody')
-    addNewEntry.addEventListener('createBtn', (e) => {
+    // async function AddPendingJournalEntry() {
+    //     var ref = collection(db, "PendingJournalEntries");
+
+    //     const docRef = await addDoc(
+    //         ref, {
+    //             EntryID: EntryID.value,
+    //             DateSubmitted: DateSubmitted.value,
+    //             SubmittedBy: SubmittedBy.value,
+    //             ApprovedBy: ApprovedBy.value,
+    //             AccountName: AccountName.value,
+    //             Description: Description.value,
+    //             AccountsDebited: AccountsDebited.value,
+    //             AccountsCredited: AccountsCredited.value,
+    //             Attachment: Attachment.value
+
+    //         }
+    //     )
+    //     .then(() =>{
+    //         alert("data added successfully:");
+    //     })
+    //     .catch(() =>{
+    //         alert("Whoops! Something is wrong:" + error);
+    //     });
+    // }
+
+    // createBtn.addEventListener("click", AddPendingJournalEntry);
+
+    const colRef = collection(db, 'PendingJournalEntries')
+
+    const addNewEntry = document.querySelector('.addJournalEntryBody')
+    addNewEntry.addEventListener('submit', (e) => {
       e.preventDefault()
 
-        addDoc(colRef, {
+      addDoc(colRef, {
                 EntryID: addNewEntry.EntryID.value,
                 DateSubmitted: addNewEntry.DateSubmitted.value,
                 SubmittedBy: addNewEntry.SubmittedBy.value,
@@ -204,16 +231,16 @@ function closeNav() {
                 AccountsDebited: addNewEntry.AccountsDebited.value,
                 AccountsCredited: addNewEntry.AccountsCredited.value,
                 Attachment: addNewEntry.Attachment.value
-            }
-        )
-        .then(() => {
-            addNewEntry.reset()
-            alert("data has been uploaded successfully!");
-        })
-        .catch((error) =>{
-            alert(error);
-        })
+      })
+      .then(() => {
+        addNewEntry.reset()
+        alert("Data Added Successfully!")
+      })
+      .catch((error) => {
+        alert(error)
+      })
     })
+
 
 </script>
 </body>
