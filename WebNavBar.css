@@ -187,6 +187,16 @@ footer h1{
             content: "$";
 
          }
+
+    .tableBody{
+        display:block;
+        background-color: rgb(255, 255, 255) ;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1%;
+        width: 1700px;
+        height: auto;
+        }
 /*
     Sidenav Menu from W3 
     https://www.w3schools.com/howto/howto_js_sidenav.asp *\
