@@ -24,7 +24,7 @@
       .Login{
         background-color: Beige ;
         margin: 10px;
-        width: 300px;
+        width: 320px;
         height: 200px;
         border: 0px LightGrey ;
         text-align: left;
@@ -48,7 +48,7 @@
         display:none;
         background-color: Beige ;
         margin: 10px;
-        width: 300px;
+        width: 320px;
         height: 300px;
         border: 0px LightGrey ;
         text-align: left;
@@ -105,6 +105,21 @@
       background-color: #04AA6D;
       }
 
+      label {
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+      input {
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+      select {
+            display: inline-block;
+            margin-left: 10px;
+        }
+
     
 
   </style>
@@ -148,7 +163,8 @@
     <!-- Added Login in with username, password, remember me option, submit button, and a "create new user" and "forgot password" -->
   <center>
     <form class="px-4 py-3" name ="loginform">
-  <div class="Login">
+      <div class="Login">
+  <div class="form-group col-md-11">
 
       <!-- Added Username textbox-->
 <p><label for="exampleDropdownFormEmail1">Username</label>
@@ -163,17 +179,18 @@
 
     <!-- Added remember me checkbox -->
     <input type="checkbox" class="form-check-input" id="dropdownCheck">
-      <label class="form-check-label" for="dropdownCheck"> Remember me </label>
+      <label class="form-check-label" for="dropdownCheck" style="display:inline-block; margin-left: 0;"> Remember me </label>
 
     <!-- Added show password checkbox -->
-    <span style="position: relative; left: 40px;">
-      <input type="checkbox" class="form-check-input" onclick="showingPassword()">Show Password</span></p>
+    <input type="checkbox" class="form-check-input" id="showPasswordCheck" onclick="showingPassword()">
+    <label class="form-check-label" for="showPasswordCheck" style="display:inline-block; margin-left: 0;"> Show Password </label></p>
 
 
       <!-- Added Submit button -->
     <span style="position: relative; top: -15px; right: -39%;">
      <button type="submit" class="btn btn-primary" value="Submit" >Sign in</button></span>
   </div>
+</div>
       </form>
 
       <!-- Added button texts for a "create new user" and "forgot password" options -->
@@ -196,6 +213,7 @@
      <center>
          <form id="forgetPasswordBody" action="">
     <div class="tab">
+      <div class="form-group col-md-11">
         <h3>Forgot Password</h3>
 
         <!-- Added Email textbox -->
@@ -206,9 +224,11 @@
         <p><label for="exampleDropdownFormUserId">User ID</label>
         <input type="username" class="form-control" id="exampleDropdownFormUserId" placeholder="Dbowler07" required>
     </div>
+  </div>
 
              <!-- Added the next forgetPasswordBody body tab -->
     <div class="tab">
+      <div class="form-group col-md-11">
         <h3>Forgot Password</h3>
 
         <!-- Added a dropdown option for the security questions -->
@@ -224,6 +244,7 @@
         <p><label for="exampleDropdownFormUserId">Type The Answer</label>
         <input type="text" class="form-control" id="exampleDropdownFormSecurityAnswer" placeholder="Answer(noSpaces)..." required>
     </div>
+  </div>
 
              <!-- Added the "next" and "previous" buttons for the forget password option -->
              <span style="position: relative; top: 25px; right: -20%;"><button type="button" onclick="nextPrev(-1)" id="prevBtn" class="btn btn-primary">&laquo; Previous</button></span>
@@ -321,20 +342,20 @@ var number = document.getElementById("number");
 var special = document.getElementById("special");
 var length = document.getElementById("length");
 
-/* <!-- When the user clicks on the password field, show the message box --> */
+/* <!-- When the user clicks on the password field, show the message box */
 myInput.onfocus = function() {
   document.getElementById("message").style.display = "block";
 }
 
-/* <!-- When the user clicks outside the password field, hide the message box --> */
+/* <!-- When the user clicks outside the password field, hide the message box */
 myInput.onblur = function() {
   document.getElementById("message").style.display = "none";
 }
 
-/* <!-- When the user starts to type something inside the password field --> */
+/* <!-- When the user starts to type something inside the password field */
 myInput.onkeyup = function() {
 
-  /* <!-- Validate starting letter (recognizes a letter being used but NOT if it's first. Must fix)--> */
+  /* <!-- Validate starting letter (recognizes a letter being used but NOT if it's first. Must fix) */
   var startingLetter = /[a-z,A-Z]/g;
   if(myInput.value.match(startingLetter)) {
     letter.classList.remove("invalid");
@@ -344,7 +365,7 @@ myInput.onkeyup = function() {
     letter.classList.add("invalid");
   }
 
-  /* <!-- Validate numbers --> */
+  /* <!-- Validate numbers */
   var numbers = /[0-9]/g;
   if(myInput.value.match(numbers)) {
     number.classList.remove("invalid");
@@ -354,7 +375,7 @@ myInput.onkeyup = function() {
     number.classList.add("invalid");
   }
 
-  /* <!-- Validate special character --> */
+  /* <!-- Validate special character */
   var specials = /[_,.,&,#,@]/g;
   if(myInput.value.match(specials)) {
     special.classList.remove("invalid");
@@ -364,7 +385,7 @@ myInput.onkeyup = function() {
     special.classList.add("invalid");
   }
 
-  /* <!-- Validate length --> */
+  /* <!-- Validate length */
   if(myInput.value.length >= 8) {
     length.classList.remove("invalid");
     length.classList.add("valid");
