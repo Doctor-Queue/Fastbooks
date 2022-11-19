@@ -56,41 +56,39 @@
 </div>
 </nav>
 
-  <div>
-        <div class="nav-links">
-            <li><a href="#">Placeholder</a></li>
-            <li><a href="#">Self Help</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="Login.html">Sign in</a></li>
-        </div>
+<div>
+    <div class="nav-links">
+        <li><a href="#">Placeholder</a></li>
+        <li><a href="#">Self Help</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="Login.html">Sign in</a></li>
     </div>
-
-
+</div>
 <!-- Sidenav Menu from W3 -->
 <!-- https://www.w3schools.com/howto/howto_js_sidenav.asp -->
-    <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
-      </div>
-      
-      <!-- Use any element to open the sidenav -->
-      <span onclick="openNav()"><button >≡</button></span>
-      
+<div id="mySidenav" class="sidenav" style="white-space: nowrap;">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="#" onclick="location.href='index.html'">Home</a>
+    <a href="#">Email</a>
+    <a href="#" onclick="location.href='view_accounts.html'">Chart of Accounts</a>
+    <a href="#" onclick="location.href='journal_entries.html'">Journal</a>
+    </div>
 
-            <script>
-                /* Set the width of the side navigation to 250px */
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-        }
-        
-        /* Set the width of the side navigation to 0 */
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-        }
-      </script>
+<!-- Use any element to open the sidenav -->
+<span onclick="openNav()"><button id="sideBarBtn">≡</button></span>
+
+
+    <script>
+        /* Set the width of the side navigation to 250px */
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+</script>  
 
 
 <!-- Navbar profile scripts -->
