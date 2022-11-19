@@ -197,6 +197,32 @@ footer h1{
         width: 1700px;
         height: auto;
         }
+
+    .openGetEntryDisplay{
+        display:none;
+        background-color: rgb(236, 236, 236);
+        width: 1000px;
+        height: 515px;
+        position: absolute;
+        top: 20%;
+        left: 25%;
+        right: 15%;
+        opacity: 100%;
+        z-index: 2;
+        border: 10px beige;
+        border-style: solid;
+        text-align: left;
+        }
+
+    .closeXbtn {
+        color: rgb(240, 187, 187);
+        position: relative;
+        float: right;
+        margin-right: 10px;
+        font-size: 30px;
+        border: none;
+        background: none;
+        }
 /*
     Sidenav Menu from W3 
     https://www.w3schools.com/howto/howto_js_sidenav.asp *\
