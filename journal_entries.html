@@ -506,6 +506,8 @@ document.getElementById("mySidenav").style.width = "0";
         }
 
         else{
+            document.getElementById('rejectJournalEntryBtn').disabled = true;
+            document.getElementById('approveJournalEntryBtn').disabled = true;
             alert("No such Document Exist!")
         }
     }
@@ -551,8 +553,9 @@ document.getElementById("mySidenav").style.width = "0";
         )
         .then(() =>{
             addNewUsers.reset()
-            document.getElementById('approveJournalEntryBtn').disabled = true; 
-            alert("data approved successfully!");
+            document.getElementById('approveJournalEntryBtn').disabled = true;
+            document.getElementById('rejectJournalEntryBtn').disabled = true;
+            alert("Journal Entry Has Been Approved Successfully!");
         })
         .catch(() =>{
             alert("Whoops! Something is wrong:" + error);
@@ -582,8 +585,9 @@ document.getElementById("mySidenav").style.width = "0";
         )
         .then(() =>{
             addNewUsers.reset()
-            document.getElementById('rejectJournalEntryBtn').disabled = true; 
-            alert("data removed successfully!");
+            document.getElementById('rejectJournalEntryBtn').disabled = true;
+            document.getElementById('approveJournalEntryBtn').disabled = true;
+            alert("Journal Entry Has Been Rejected Successfully!");
         })
         .catch(() =>{
             alert("Whoops! Something is wrong:" + error);
