@@ -9,29 +9,22 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="  crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"  crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" type="text/css" href="WebNavBar.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
 </head>
 <body>
 
 <section>
     <style>
 
-/* Added for our Band style */
+/* Added for our Band style 
       .Band{
         background-color: Beige ;
         padding: 30px ;
         border: 0px LightGrey ;
-        }
-
-/* Added for our logo style */
-      .Logo {
-        display: block;
-        width: 10%;
-        margin: 0 15px 0 0;
-        top: 10px;
-        left: 0;
-        float:left;
-        clip-path: circle();
-        }
+        }*/
 
 /* Added for our login style */
       .Login{
@@ -43,67 +36,84 @@
         text-align: left;
         }
 
-/* Added for our profile pics style */
-     .profile {
-       display: block;
-       width: 10%;
-       float:right;
-       position: absolute;
-       top: 0px;
-       right: 10px;
-       clip-path: circle();
-        }
-
-/* Added for a picture to be placed on top of the profile pics style
-(may get rid of once a proper image choosing method is set up) */
-     .profilepic {
-       display: none;
-       width: 10%;
-       float:right;
-       position: absolute;
-       top: -40px;
-       right: 10px;
-       clip-path: circle();
-        }
-
-/* Added for alerting the user when the sign_up has been sent properly (not implemented yet, but is usable) */
       #created{
-        display:none;
+        display: none;
         background-color: Beige ;
         margin: 10px;
-        width: 300px;
-        height: 200px;
+        width: 650px;
+        height: 100px;
         border: 0px LightGrey ;
-        text-align: left;
+        border-radius: 5px 50px 5px 5px;
+        text-align: center;
+        }      
+      nav{
+          display: flex;
+          background-color: beige;
+          justify-content: space-around;
+          align-items: center;
+          min-height: 8vh;
+          position: relative;
+      }
+      
+      .username{
+          margin: 5vh 15vh 0px 0px;
+      } 
+
+      label {
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+      input {
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+      select {
+            display: inline-block;
+            margin-left: 10px;
         }
 
 </style>
+<!-- Navbar with logo and buttons-->
+<nav>
+  <div class="logo-container">
+    <a href="index.html">
+      <img src="app_logo.png" id="Logo"></a>
+  </div>
+  <div class="welcome-txt">
+      <h2>  Fast Accounting Happens Here! </h2>
+  </div>
+  
 
-    <!-- Added software brand -->
-        <div class="Band">
-       <b> <h2> <font size="+5">  <center> Fast Books Sign Up </center>  </font></h2>
-       </b>
+ <!-- Added an empty profile pic with the option of switching to the pre-set pic (SHOULD be changed!)-->
+ <img src="profile.jpeg" class="profile" type="button" id="profile" data-bs-toggle="dropdown"><span class="caret"></span>
 
-    </div>
+<!-- Page Links under nav -->
 
-    <!-- Added an empty profile pic with the option of switching to the pre-set pic (SHOULD be changed!) -->
-<img src="profile.jpeg" class="profile" type="button" id="profile" data-bs-toggle="dropdown"><span class="caret"></span>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li><center><a type="button" onclick="showPic()"> Add Picture</a></center></li>
-    </ul>
+<div class="username">
+      <!-- To load username when page is loaded -->
+      <script>
+          var showingUserFirstName = document.getElementById('userFirstName');
+          document.write(showingUserFirstName);
+      </script>
+  
+</div>
+</nav>
 
-    <p> <img src="app_logo.png" class="Logo"> </p>
-
-    <!-- Added a pre-set pic to go over the empty profile pic (SHOULD be changed! This was only temporary.)-->
-<img src="admin_pic.png" class="profilepic" id="adminPic" data-bs-toggle="dropdown"><span class="caret"></span>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li><center><a type="button" onclick="hidePic()"> Remove Picture</a></center></li>
-    </ul>
+<div>
+      <div class="nav-links">
+          <li><a href="#">Placeholder</a></li>
+          <li><a href="#">Self Help</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="Login.html">Sign in</a></li>
+      </div>
+  </div>
 
 <!-- Added the sign-up body style to hold all the required textboxes, checkboxes and others -->
      <center>
  <form class="Login">
-  <div>
+  <div class="form-group col-md-11">
 
       <!-- Added Email textbox -->
 <p><label for="userEmail">Email</label>
@@ -163,22 +173,39 @@
       <input type="date" class="form-control" id="userDateOfBirth" min="1900-01-01" max="2022-12-31" placeholder="XX/XX/XXXX" required>
 
       <!-- Added a sign-up submit button -->
+      <!-- Add onclick link to homepage -->
       <span style="position: relative; top: 15px; left: 35%">
-      <button type="submit" id="submit" class="btn btn-primary" value="Submit" >Sign up</button></span>
+        <!-- Add onclick link to show username -->
+      <button type="submit" id="submit" class="btn btn-primary" value="Submit" onclick="showUserName()">Sign up</button></span>
+
   </div>
          </form>
      </center>
 
     <!-- Added confirmation block style to alert user when account has been created and email has been sent -->
-         <center>
-    <div id="created">
-  <h3>Email has been sent. Waiting for Administrator approval:</h3>
-        <p><b>Check Email in 1-2 business days for validation</b></p>
-
-</div>
-     </center>
-
+    <center>
+      <div id="created">
+        <br>
+        <h3>Email has been sent. Waiting for Administrator approval:</h3>
+            <p><b>Check Email in 1-2 business days for validation</b></p>
+      </div>
+         </center>
 </section>
+
+
+<!-- Footer -->
+<footer class="footer">
+  <h1>Contact Us!</h1>
+  <ul> 
+      <a href="#">PlaceHolder</a>
+      <a href="#">PlaceHolder</a>
+      <a href="#">PlaceHolder</a>
+      
+  </ul>
+ 
+  
+</footer>
+
 
 <script type="module">
   // Import the functions you need from the SDKs you need
@@ -205,40 +232,6 @@
   const db = getFirestore();
 
   const colRef = collection(db, 'Users')
-    //This is a text field
-    // var enterUserEmail = document.querySelector("#userEmail");
-    // var addUserFirstName = document.querySelector("#userFirstName");
-    // var addUserLastName = document.querySelector("#userLastName");
-    // var addUserPsw = document.querySelector("#createPsw");
-    // var addUserImage = document.querySelector("#userImage");
-    // var addUserSecurityQuestion = document.querySelector("#securityQuestions");
-    // var addUserSecurityAnswer = document.querySelector("#securityAnswers");
-    // var addUserAddress = document.querySelector("#userAddress");
-    // var addUserDateOfBirth = document.querySelector("#userDateOfBirth");
-
-    // var addUserBtn = document.querySelector("#submit");
-
-    // function InsertData()
-    // {
-    //   //set method will set the data in database
-    //   //but where in database? use "ref" for that
-    //   addDoc(collection(db, "Users"), {  
-    //     Email: enterUserEmail.value,
-    //     FirstName: addUserFirstName.value,
-    //     LastName: addUserLastName.value,
-    //     Password: addUserPsw.value,
-    //     SecurityQuestion: addUserSecurityQuestion.value,
-    //     SecurityAnswer: addUserSecurityAnswer.value,
-    //     Address: addUserAddress.value,
-    //     DateOfBirth: addUserDateOfBirth.value
-    //   })
-    //   .then(() => {
-    //     alert("Data Added Successfully!")
-    //   })
-    //   .catch((error) => {
-    //     alert(error)
-    //   });
-    // }
 
         //get collection data
         getDocs(colRef).then((snapshot) => {
@@ -281,26 +274,6 @@
 </script>
 
 <script>
-// This function displays the pre-selected picture while also hiding the profile temporary picture:
-function showPic() {
-
-   document.getElementById('adminPic')
-           .style.display = "block";
-
-   document.getElementById('profile')
-           .style.display = "none";
-   }
-
-// This function displays the profile temporary picture while also hiding the pre-selected picture:
-   function hidePic() {
-
-   document.getElementById('profile')
-           .style.display = "block";
-
-   document.getElementById('adminPic')
-           .style.display = "none";
-   }
-
 // This function will allow the "Show Passwords" checkbox to reveal what is being typed out in the create/confirm password textboxes:
 function showingPasswords() {
 var showingCreate = document.getElementById("createPsw");
@@ -330,6 +303,16 @@ function validatePassword(){
 
 create_password.onchange = validatePassword;    //Constantly checks to see if they match once elements have been changed:
 confirm_password.onkeyup = validatePassword;    //Checks if they match as the user releases a key:
+
+// Shows user's first name and lastname
+function showUserName() {
+
+  document.getElementById('userFirstName')
+          .style.display = "block";
+
+  document.getElementById('userLastName')
+          .style.display = "block";
+  }
 </script>
 </body>
 </html>

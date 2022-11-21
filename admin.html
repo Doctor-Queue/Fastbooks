@@ -14,68 +14,195 @@
 
 </head>
 <body>
-<style>
-     .Band{
-    background-color: #f5f5dc;
-    padding: 4px ;
-}
-     .Logo {
-    display: block;
-    width: 10%;
-    margin: 0 15px 0 0;
-    float:left;
-    clip-path: circle();
-}
-     .tab1{
-    display: inline-block;
-    margin-left: 10px;
-}
-     .content{
-    background: #f5f5dc;
-    max-width: 960px;
-    margin: 30px auto;
-    padding:  20px 30px;
-    border-radius: 10px 120px 10px 10px;
-    box-shadow: 1px 3px 5px rgba(0,0,0,0.1)
-}
-</style>
-
-<!-- Following section takes acre of top nav bar-->
 <section>
-<!-- Following will add the beige band on top with "Welcome Admin User" text -->
-       <div class="Band">
-        <h2> <font size="+1.5">  <center>  Welcome Admin! </center>  </font></h2>
+    <style>
+        #writeEmailBody{
+        display:none;
+        background-color: Beige ;
+        margin-left: auto;
+        margin-right: auto;
+        width: 500px;
+        height: 540px;
+        border: 0px LightGrey ;
+        text-align: left;
+        }
+
+        .emailSent{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+        }
+
+        /* #status{
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            padding: 10px;
+            margin: 0 auto;
+            border-radius: 8px;
+        }
+
+        #status.success{
+            background-color: rgb(211, 250, 153);
+            padding: 10px;
+            margin-top: 10px;
+            font-size: xx-large;
+            animation: status 4s ease forwards;
+        }
+
+        #status.error{
+            background-color: rgb(250, 129, 92);
+            padding: 10px;
+            margin-top: 10px;
+            font-size: xx-large;
+            animation: status 4s ease forwards;
+        }
+
+        @keyframes status{
+            0%{
+                opacity: 1;
+                pointer-events: all;
+            }
+            90%{
+                opacity: 1;
+                pointer-events: all;
+            }
+            100%{
+                opacity: 0;
+                pointer-events: none;
+            }
+        } */
+
+</style>
+<!-- Navbar with logo and buttons-->
+<!-- <nav>
+
+
+
+
+
+
+
+    
+    <div class="logo-container">
+        <a href="index.html" target="_blank">
+          <img src="app_logo.png" id="Logo"></a>
+      </div>
+
+      <div class="welcome-txt" id="Band">
+        <h3>Welcome Admin!</h2>
         </div>
+        
+        <ul class="nav-links">
+            <lii class="adminpage-nav-buttons"><a href="#">placeholder</a></lii>
+            <li class="adminpage-nav-buttons"><a href="#">Settings</a></li>
+            <li class="adminpage-nav-buttons"><a href="#">Notifications</a></li>
+            <li class="adminpage-nav-buttons"><a href="#">Logout</a></li>
+        </ul>
+</nav> -->
 
-    <img src="app_logo.png" width="10%" class="Logo">
 
-    <center>
-    <form>
-            <span style="padding:10px; float:right;">
+<!-- Following will add the beige band on top with "Welcome Admin User" text -->
+<!-- Navbar with logo and buttons-->
+<nav>
+    <div class="logo-container">
+      <a href="index.html">
+        <img src="app_logo.png" id="Logo"></a>
+    </div>
+    <div class="welcome-txt">
+        <h2>  Fast Accounting Happens Here! </h2>
+    </div>
+    
+
+   <!-- Added an empty profile pic with the option of switching to the pre-set pic (SHOULD be changed!)-->
+   <img src="profile.jpeg" class="profile" type="button" id="profile" data-bs-toggle="dropdown"><span class="caret"></span>
+
+<!-- Page Links under nav -->
+ 
+<div class="username">
+        <!-- To load username when page is loaded -->
+        <script>
+            var showingUserFirstName = document.getElementById('userFirstName');
+            document.write(showingUserFirstName);
+        </script>
+    
+</div>
+</nav>
+
+  <div>
+        <div class="nav-links">
+            <li><a href="#">Placeholder</a></li>
+            <li><a href="#">Self Help</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="Login.html">Sign in</a></li>
+        </div>
+    </div>
+<!-- Sidenav Menu from W3 -->
+<!-- https://www.w3schools.com/howto/howto_js_sidenav.asp -->
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Clients</a>
+    <a href="#">Contact</a>
+  </div>
+  
+  <!-- Use any element to open the sidenav -->
+  <span onclick="openNav()"><button >≡</button></span>
+  
+
+        <script>
+            /* Set the width of the side navigation to 250px */
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+    
+    /* Set the width of the side navigation to 0 */
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+  </script>      
+
+
+<!-- <span style="padding:10px; float:right;"> -->
+    <!--  tabs between options-->
+    <!-- <span class="tab1"> </span>
+        <b> <button type="button" class="btn" > Settings </button> -->
             <!--  tabs between options-->
-            <span class="tab1"> </span>
-            <b> <button type="button" class="btn" > Settings </button>
-                    <!--  tabs between options-->
-                    <span class="tab1"> </span>
-                <button type="button" class="btn"> Notifications </button>
-                    <!--  tabs between options-->
-                    <span class="tab1"> </span>
-                <!--Sign In  -->
-                <button type="button" class="btn" onclick="location.href='Login.html'"> Login  </button>
-                    <!--  tabs between options-->
-                    <span class="tab1"> </span>
-            </b>
+            <!-- <span class="tab1"> </span>
+            <button type="button" class="btn"> Notifications </button> -->
+            <!--  tabs between options-->
+            <!-- <span class="tab1"> </span> -->
+            <!--Sign In  -->
+            <!-- <button type="button" class="btn"> Logout  </button> -->
+            <!--  tabs between options-->
+            <!-- <span class="tab1"> </span>
+        </b>
+</span> -->
 
-        </span>
-        </form>
-    </center>
-            <div class="content">
-                <ul id="admin-list"></ul>
-            </div>
+<br>
+<br>
 
-</section>
-
-
+<div class="container mt-3">
+    <table class="table table-dark">
+        <thead>
+        <tr>
+            <th>No.</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Date of Birth</th>
+            <th>Password</th>
+            <th>Security Question</th>
+            <th>Security Answer</th>
+        </tr>
+        </thead>
+        <tbody id="admin-list"></tbody>
+    </table>
+</div>
 
 <!-- 
 REQUIREMENTS 
@@ -85,20 +212,104 @@ appropriate user interface where he can perform the functionality.
 When an account is added, you must store in the database at least the
 following required information using a user interface designed to allow
 entering or modifying the information:
-
-
 -->
+<style>
+    .adminPagebtns{
+        display: block;
+        width: 100vh;
+        margin: 0 auto;
+        text-align: center;
 
-<button id="addUser" onclick="location.href='add_user.html'"> Add User</button>
-<button id="viewUser"> View User</button>
-<button id="editUser"> Edit User</button>
-<button id="changeStatus"> Change User Status</button>
+    }
+    #writeEmailBtn{
+        margin-top: 30px;
+    }
 
+</style>
+<div class="adminPagebtns">
+<div class="adminUserbtns">
+USERS:
+<button id="addUser" onclick="location.href='add_user.html'"> Add User</button> 
+<button id="viewUser" onclick="location.href='view_user.html'"> View User</button> 
+<button id="editUser" onclick="location.href='edit_user.html'"> Edit User</button> 
+<button id="changeUserStatus"> Change User Status</button> 
+
+</div>
+<!-- Removed style="float: right; margin:  0 300px; -->
+<div id="writeEmailBtndiv" ><button id="writeEmailBtn" onclick= "writeEmail()">Send Email</button>
+
+</div>
+
+
+<br> <br> <span id="tabLarge"></span>
+<!-- all account options-->
+
+<div class="adminAccountsbtns">
+ACCOUNTS:
+<button id="addAccount" onclick="location.href='add_account.html'"> Add Account</button> 
+<button id="viewAccount" onclick="location.href='view_account.html'"> View Account</button> 
+<button id="editAccount" > Edit Account</button> 
+<button id="changeAccountStatus"> Change Account Status</button>
+</div>
+
+<br> <br> <span id="tabLarge"></span>
+<!-- General Ledger Options-->
+<div class="adminLedgerbtns">
+GENERAL LEDGER:
+<button id="addEntry" onclick="location.href='add_account.html'"> Add Account Entry</button> 
+<button id="viewEntry" onclick="location.href='view_entries.html'"> View Entries</button> 
+</div>
+
+</div>
+<div id="writeEmailBody">
+    <form class="px-4 py-3" method="POST" id="my-form">
+
+        <div>
+            <label for="toEmail">To:</label>
+            <input type="text" name="To:" class="form-control" id="toEmail" placeholder="Other Email here" required>
+        </div>
+
+        <div>
+            <label for="fromEmail">From:</label>
+            <input type="email" name="From:" class="form-control" id="fromEmail" placeholder="Your Email here" required>
+        </div>
+
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" name="name:" class="form-control" id="name" placeholder="Full name" required>
+        </div>
+
+        <div>
+            <label for="message">Massage</label>
+            <textarea name="message:" id="message" class="form-control" cols="58" rows="10" placeholder="Your Message here" required></textarea>
+        </div>
+
+        <span style="position: relative; top: 15px; right: -39%;">
+        <button type="submit">Send</button></span>
+
+   </form>
+</div>
+
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <h1>Contact Us!</h1>
+    <ul> 
+        <a href="#">PlaceHolder</a>
+        <a href="#">PlaceHolder</a>
+        <a href="#">PlaceHolder</a>
+        
+    </ul>
+   
+    
+</footer>
 
 <script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
-    import { getFirestore, collection, getDocs, doc } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js";
+    import { getFirestore, collection, getDoc, getDocs, onSnapshot, deleteDoc, 
+        addDoc, doc, query, where } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js";
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
   
@@ -113,6 +324,7 @@ entering or modifying the information:
       appId: "1:210297298562:web:815b3cc913460d968b5e9b"
     };
   
+    // Initialize Cloud Firestore
     const app = initializeApp(firebaseConfig);
 
     // Initialize Cloud Firestore and get a reference to the service
@@ -206,5 +418,16 @@ entering or modifying the information:
         console.log(users);
        })
   </script>  
+
+  <script>
+    function writeEmail() {
+  var x = document.getElementById("writeEmailBody");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+  </script>
 </body>
 </html>

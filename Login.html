@@ -8,48 +8,26 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="  crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"  crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" type="text/css" href="WebNavBar.css" />
 </head>
 <body>
 
 <section>
     <style>
-/* Adding for our Band style */
+/* Adding for our Band style 
       .Band{
         background-color: Beige ;
         padding: 4px ;
-        }
-
-/* Adding for our logo style */
-      .Logo {
-        display: block;
-        width: 10%;
-        margin: 0 15px 0 0;
-        top: 10px;
-        left: 0;
-        float:left;
-        clip-path: circle();
         }
 
 /* Adding for our login style */
       .Login{
         background-color: Beige ;
         margin: 10px;
-        width: 300px;
+        width: 320px;
         height: 200px;
         border: 0px LightGrey ;
         text-align: left;
-        }
-
-/* Adding for our profile pics style */
-     .profile {
-       display: block;
-       width: 10%;
-       float:right;
-       position: absolute;
-       top: 0px;
-       right: 10px;
-       clip-path: circle();
         }
 
 /* Adding our password requirement warning */
@@ -70,7 +48,7 @@
         display:none;
         background-color: Beige ;
         margin: 10px;
-        width: 300px;
+        width: 320px;
         height: 300px;
         border: 0px LightGrey ;
         text-align: left;
@@ -127,24 +105,66 @@
       background-color: #04AA6D;
       }
 
+      label {
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+      input {
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+      select {
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+    
+
   </style>
 
-<!-- Added software brand -->
-      <div class="Band">
-       <b> <h2> <font size="+3">  <center> Fast Books Login </center>  </font></h2>
-           <!-- Added our logo -->
-        
-       </b>
+<!-- Navbar with logo and buttons-->
+<nav>
+  <div class="logo-container">
+    <a href="index.html">
+      <img src="app_logo.png" id="Logo"></a>
+  </div>
+  <div class="welcome-txt">
+      <h2>  Login Here! </h2>
+  </div>
+  
 
-    </div>
-    <!-- Added an empty profile pic -->
-<img src="profile.jpeg" class="profile">
-<img src="app_logo.png" width="10%" class="Logo"> 
+ <!-- Added an empty profile pic with the option of switching to the pre-set pic (SHOULD be changed!)-->
+ <img src="profile.jpeg" class="profile" type="button" id="profile" data-bs-toggle="dropdown"><span class="caret"></span>
+
+<!-- Page Links under nav -->
+
+<div class="username">
+      <!-- To load username when page is loaded -->
+      <script>
+          var showingUserFirstName = document.getElementById('userFirstName');
+          document.write(showingUserFirstName);
+      </script>
+  
+</div>
+</nav>
+
+<div>
+      <div class="nav-links">
+          <li><a href="#">Placeholder</a></li>
+          <li><a href="#">Self Help</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="Login.html">Sign in</a></li>
+      </div>
+  </div>
+
 
     <!-- Added Login in with username, password, remember me option, submit button, and a "create new user" and "forgot password" -->
   <center>
     <form class="px-4 py-3" name ="loginform">
-  <div class="Login">
+      <div class="Login">
+  <div class="form-group col-md-11">
 
       <!-- Added Username textbox-->
 <p><label for="exampleDropdownFormEmail1">Username</label>
@@ -159,17 +179,18 @@
 
     <!-- Added remember me checkbox -->
     <input type="checkbox" class="form-check-input" id="dropdownCheck">
-      <label class="form-check-label" for="dropdownCheck"> Remember me </label>
+      <label class="form-check-label" for="dropdownCheck" style="display:inline-block; margin-left: 0;"> Remember me </label>
 
     <!-- Added show password checkbox -->
-    <span style="position: relative; left: 40px;">
-      <input type="checkbox" class="form-check-input" onclick="showingPassword()">Show Password</span></p>
+    <input type="checkbox" class="form-check-input" id="showPasswordCheck" onclick="showingPassword()">
+    <label class="form-check-label" for="showPasswordCheck" style="display:inline-block; margin-left: 0;"> Show Password </label></p>
 
 
       <!-- Added Submit button -->
     <span style="position: relative; top: -15px; right: -39%;">
      <button type="submit" class="btn btn-primary" value="Submit" >Sign in</button></span>
   </div>
+</div>
       </form>
 
       <!-- Added button texts for a "create new user" and "forgot password" options -->
@@ -192,6 +213,7 @@
      <center>
          <form id="forgetPasswordBody" action="">
     <div class="tab">
+      <div class="form-group col-md-11">
         <h3>Forgot Password</h3>
 
         <!-- Added Email textbox -->
@@ -202,9 +224,11 @@
         <p><label for="exampleDropdownFormUserId">User ID</label>
         <input type="username" class="form-control" id="exampleDropdownFormUserId" placeholder="Dbowler07" required>
     </div>
+  </div>
 
              <!-- Added the next forgetPasswordBody body tab -->
     <div class="tab">
+      <div class="form-group col-md-11">
         <h3>Forgot Password</h3>
 
         <!-- Added a dropdown option for the security questions -->
@@ -220,6 +244,7 @@
         <p><label for="exampleDropdownFormUserId">Type The Answer</label>
         <input type="text" class="form-control" id="exampleDropdownFormSecurityAnswer" placeholder="Answer(noSpaces)..." required>
     </div>
+  </div>
 
              <!-- Added the "next" and "previous" buttons for the forget password option -->
              <span style="position: relative; top: 25px; right: -20%;"><button type="button" onclick="nextPrev(-1)" id="prevBtn" class="btn btn-primary">&laquo; Previous</button></span>
@@ -235,6 +260,19 @@
      </center>
 
 </section>
+
+<!-- Footer -->
+<footer class="footer">
+  <h1>Contact Us!</h1>
+  <ul> 
+      <a href="#">PlaceHolder</a>
+      <a href="#">PlaceHolder</a>
+      <a href="#">PlaceHolder</a>
+      
+  </ul>
+ 
+  
+</footer>
 
 <!-- Adding Javascript for utilizing the majority of the password requirements -->
 <script type="module">
@@ -274,6 +312,29 @@
 
 </script>
 
+<!-- Functions to add and remove profile pic -->
+<script>
+      // This function displays the pre-selected picture while also hiding the profile temporary picture:
+      function showPic() {
+
+        document.getElementById('adminPic')
+                .style.display = "block";
+  
+        document.getElementById('profile')
+                .style.display = "none";
+        }
+  
+      // This function displays the profile temporary picture while also hiding the pre-selected picture:
+      function hidePic() {
+  
+        document.getElementById('profile')
+                .style.display = "block";
+  
+        document.getElementById('adminPic')
+                .style.display = "none";
+        }
+</script>
+
 <script>
 var myInput = document.getElementById("psw");
 var letter = document.getElementById("letter");
@@ -281,20 +342,20 @@ var number = document.getElementById("number");
 var special = document.getElementById("special");
 var length = document.getElementById("length");
 
-/* <!-- When the user clicks on the password field, show the message box --> */
+/* <!-- When the user clicks on the password field, show the message box */
 myInput.onfocus = function() {
   document.getElementById("message").style.display = "block";
 }
 
-/* <!-- When the user clicks outside the password field, hide the message box --> */
+/* <!-- When the user clicks outside the password field, hide the message box */
 myInput.onblur = function() {
   document.getElementById("message").style.display = "none";
 }
 
-/* <!-- When the user starts to type something inside the password field --> */
+/* <!-- When the user starts to type something inside the password field */
 myInput.onkeyup = function() {
 
-  /* <!-- Validate starting letter (recognizes a letter being used but NOT if it's first. Must fix)--> */
+  /* <!-- Validate starting letter (recognizes a letter being used but NOT if it's first. Must fix) */
   var startingLetter = /[a-z,A-Z]/g;
   if(myInput.value.match(startingLetter)) {
     letter.classList.remove("invalid");
@@ -304,7 +365,7 @@ myInput.onkeyup = function() {
     letter.classList.add("invalid");
   }
 
-  /* <!-- Validate numbers --> */
+  /* <!-- Validate numbers */
   var numbers = /[0-9]/g;
   if(myInput.value.match(numbers)) {
     number.classList.remove("invalid");
@@ -314,7 +375,7 @@ myInput.onkeyup = function() {
     number.classList.add("invalid");
   }
 
-  /* <!-- Validate special character --> */
+  /* <!-- Validate special character */
   var specials = /[_,.,&,#,@]/g;
   if(myInput.value.match(specials)) {
     special.classList.remove("invalid");
@@ -324,7 +385,7 @@ myInput.onkeyup = function() {
     special.classList.add("invalid");
   }
 
-  /* <!-- Validate length --> */
+  /* <!-- Validate length */
   if(myInput.value.length >= 8) {
     length.classList.remove("invalid");
     length.classList.add("valid");

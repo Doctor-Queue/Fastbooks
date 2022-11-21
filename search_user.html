@@ -8,47 +8,153 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="  crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"  crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" type="text/css" href="WebNavBar.css" />
 
-    <!--
-<p>
-    <button onclick="location.href='user_selected.html'"> Lena Tory </button> <br>
-    <button> hello </button> </br>
-    <button> hey</button> <br>
-   <button> heyyyyyyy </button> </br>
-</p>
--->
 </head>
-<body>
 
-    <style>
-        .Band{
-           background-color: Beige ;
-           padding: 4px ;
-           }
-        .Logo {
-          display: block;
-          width: 30%;
-          margin: 0 15px 0 0;
-          float:left;
-          clip-path: circle();
-           }
-   </style>
-   
-   <!-- Following section takes acre of top nav bar-->
-   <section>
-   <!-- Following will add the beige band on top with "Welcome Admin User" text -->
-          <div class="Band">
-           <h2> <font size="+1.5">  <center>  Welcome Admin! </center>  </font></h2>
-           </div>
-           <b style="font-size:20px"> Fast Books</b>
-   </section>
+<style>
+  /* Search bar, Search User, button , Edti user button */
+  .container{
+    text-align: center;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .button{
+    text-align: center;
+  
+  }
+  .button:hover { 
+    background-color: #e7e7e7;
+  }
+  /* Modal after edit button is clicked */
+  .bg-modal{
+    /* display: none; /* Hidden by default */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.719);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .tab1{
+    display: inline-block;
+    float: right;
+  }
+
+
+</style>
+<body>
+  <!-- Navbar with logo and buttons-->
+    <!-- <nav>
+        <div class="logo-container">
+          <a href="index.html" target="_blank">
+            <img src="app_logo.png" id="Logo"></a>
+        </div>
+        <div class="welcome-txt">
+            <h3>Welcome Admin!</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">placeholder</a></li>
+            <li><a href="#">placeholder</a></li>
+            <li><a href="#">placeholder</a></li>
+            <li><a href="#">placeholder</a></li>
+        </ul>
+
+        <!-- Added an empty profile pic with the option of switching to the pre-set pic (SHOULD be changed!) --
+        <img src="profile.jpeg" class="profile" type="button" id="profile" data-bs-toggle="dropdown"><span class="caret"></span>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><center><a type="button" onclick="showPic()"> Add Picture</a></center></li>
+        </ul>
+
+
+
+        <!-- Added a pre-set pic to go over the empty profile pic (SHOULD be changed! This was only temporary.)--
+        <img src="admin_pic.png" class="profilepic" id="adminPic" data-bs-toggle="dropdown"><span class="caret"></span>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><center><a type="button" onclick="hidePic()"> Remove Picture</a></center></li>
+        </ul>
+    </nav> -->
+<!-- Navbar with logo and buttons-->
+<nav>
+  <div class="logo-container">
+    <a href="index.html">
+      <img src="app_logo.png" id="Logo"></a>
+  </div>
+  <div class="welcome-txt">
+      <h2>  Search User </h2>
+  </div>
+  
+
+ <!-- Added an empty profile pic with the option of switching to the pre-set pic (SHOULD be changed!)-->
+ <img src="profile.jpeg" class="profile" type="button" id="profile" data-bs-toggle="dropdown"><span class="caret"></span>
+
+<!-- Page Links under nav -->
+
+<div class="username">
+      <!-- To load username when page is loaded -->
+      <script>
+          var showingUserFirstName = document.getElementById('userFirstName');
+          document.write(showingUserFirstName);
+      </script>
+  
+</div>
+</nav>
+
+<div>
+      <div class="nav-links">
+          <li><a href="#">Placeholder</a></li>
+          <li><a href="#">Self Help</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="Login.html">Sign in</a></li>
+      </div>
+  </div>
+
+<!-- Sidenav Menu from W3 -->
+<!-- https://www.w3schools.com/howto/howto_js_sidenav.asp -->
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#">About</a>
+  <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
+</div>
+
+<!-- Use any element to open the sidenav -->
+<span onclick="openNav()"><button >≡</button></span>
+
+
+      <script>
+          /* Set the width of the side navigation to 250px */
+  function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+  }
+  
+  /* Set the width of the side navigation to 0 */
+  function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+  }
+</script>
+
+
 <br> <br>
 
-
-
-<center>
+  <div class = "container">
     <input id="searchUser" type="text"> <br><br>
-<button id="searchUserBtn"> Search User</button>
+    <button class ="button" id="searchUserBtn"> Search User</button>
+    <button class ="button" id="editUserBtn"> Edit User</button>
+    <h3 id="findUserName" type="text"></h3>
+    <h3 id="findUserID" type="text"></h3>
+    <h3 id="findUserPosition" type="text"></h3>
+</div>
+
+  </div>
+
+</div>
 
 <h3 id="findUserName" type="text"></h3>
 <h3 id="findUserID" type="text"></h3>
@@ -56,6 +162,18 @@
 </center>
 
 
+<!-- Footer -->
+<footer class="footer">
+    <h1>Contact Us!</h1>
+    <ul> 
+        <a href="#">PlaceHolder</a>
+        <a href="#">PlaceHolder</a>
+        <a href="#">PlaceHolder</a>
+        
+    </ul>
+   
+    
+</footer>
 <script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js";
@@ -121,4 +239,27 @@
     searchUserBtn.addEventListener('click', FindData);
 
   </script>
+
+ <!-- Functions to add and remove profile pic -->
+<script>
+  // This function displays the pre-selected picture while also hiding the profile temporary picture:
+  function showPic() {
+
+    document.getElementById('adminPic')
+            .style.display = "block";
+
+    document.getElementById('profile')
+            .style.display = "none";
+    }
+
+  // This function displays the profile temporary picture while also hiding the pre-selected picture:
+  function hidePic() {
+
+    document.getElementById('profile')
+            .style.display = "block";
+
+    document.getElementById('adminPic')
+            .style.display = "none";
+    }
+</script>
 </body>
