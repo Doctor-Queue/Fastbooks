@@ -1,0 +1,11 @@
+# After you've made all teh changes 
+
+
+# do this:
+
+git commit -m "your message title" -m "your message descriptipn"
+
+then git push
+
+# because origin/neha was set as git upstream 
+
