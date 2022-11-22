@@ -144,34 +144,6 @@ document.getElementById("mySidenav").style.width = "0";
 
 <br>
 
-<!-- This section is for the Pending Journal Entries -->
-<div class="tableBody" id="pendingTable">
-    <h3 id="approvedEntriesTitle" style="text-align: center; position:relative; top:44px;">Pending Entries</h3>
-    <p><style> #pendingSearchText{width: 200px; position: relative; border: 1px solid #ccc; display:inline;}</style>
-        <style> #approveJournalBtn{ position: relative; border: 2px solid #ccc; background-color: rgb(248, 237, 201); float: right; display:inline;}</style>
-        <style>  #pendingSearch{text-align: left;}</style>
-        <label for="pendingSearchText" id="pendingSearch">Search:</label>
-        <input name="searchText" id="pendingSearchText" type="text" placeholder="Search" onkeyup="pendingTableSearchBar()">
-    <button id="approveJournalBtn" onclick="openGetEntry()">+ Pending Journal Entries</button></p>
-
-    <table id="dtBasicExample" class="table table-hover table-striped table-bordered table-sm" cellspacing="0" width="100%">
-        <thead>
-        <tr class="table-warning">
-            <th class="th-sm">Entry ID</th>
-            <th class="th-sm">Date Submitted</th>
-            <th class="th-sm">Submitted By</th>
-            <th class="th-sm">Approved By</th>
-            <th class="th-sm">Account Name</th>
-            <th class="th-sm">Description</th>
-            <th class="th-sm">Accounts Debited</th>
-            <th class="th-sm">Accounts Credited</th>
-            <th class="th-sm">Attachment</th>
-        </tr>
-        </thead>
-        <tbody id="pending-journal-list"></tbody>
-    </table>
-
-</div>
 
 <br>
 
