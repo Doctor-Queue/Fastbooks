@@ -3,6 +3,10 @@
 
 # do this:
 
+git status 
+
+git add .
+
 git commit -m "your message title" -m "your message descriptipn"
 
 then git push
