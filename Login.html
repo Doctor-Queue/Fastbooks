@@ -140,8 +140,8 @@
 
 <!-- Page Links under nav -->
 
-<div class="username">
-      <!-- To load username when page is loaded -->
+<div class="email">
+      <!-- To load email when page is loaded -->
       <script>
           var showingUserFirstName = document.getElementById('userFirstName');
           document.write(showingUserFirstName);
@@ -160,15 +160,15 @@
   </div>
 
 
-    <!-- Added Login in with username, password, remember me option, submit button, and a "create new user" and "forgot password" -->
+    <!-- Added Login in with email, password, remember me option, submit button, and a "create new user" and "forgot password" -->
   <center>
     <form class="px-4 py-3" name ="loginform">
       <div class="Login">
   <div class="form-group col-md-11">
 
-      <!-- Added Username textbox-->
-<p><label for="exampleDropdownFormEmail1">Username</label>
-      <input type="username" class="form-control" id="exampleDropdownFormUsername" placeholder="Dbowler07" required>
+      <!-- Added Email textbox-->
+<p><label for="exampleDropdownFormEmail1">Email</label>
+      <input type="email" class="form-control" id="exampleDropdownFormEmail" placeholder="Dbowler07" required>
 
     <!-- Added Password textbox with a bit of requirements to use it -->
     <label for="psw">Password</label>
@@ -218,11 +218,11 @@
 
         <!-- Added Email textbox -->
         <p><label for="exampleDropdownFormEmail1">Email</label>
-            <input type="username" class="form-control" id="exampleDropdownFormEmail1" placeholder="Example@Email.com" required>
+            <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="Example@Email.com" required>
 
-        <!-- Added Username textbox -->
+        <!-- Added email textbox -->
         <p><label for="exampleDropdownFormUserId">User ID</label>
-        <input type="username" class="form-control" id="exampleDropdownFormUserId" placeholder="Dbowler07" required>
+        <input type="email" class="form-control" id="exampleDropdownFormUserId" placeholder="Dbowler07" required>
     </div>
   </div>
 
@@ -307,6 +307,7 @@
     //This is a text field
     var enterUser = document.querySelector("#searchUser");
     var addUserName = document.querySelector("#addUserName");
+    var addEmail = document.querySelector("#addEmail");
     var addUserPosition = document.querySelector("#addUserPosition");
     var addUserID = document.querySelector("#addUserID");
 
@@ -333,6 +334,10 @@
         document.getElementById('adminPic')
                 .style.display = "none";
         }
+      function getEmail(){
+        document.getElementById('addEmail')
+                .style.display ="none";
+      }
 </script>
 
 <script>

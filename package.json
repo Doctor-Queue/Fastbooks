@@ -3,6 +3,11 @@
     "@aws-amplify/cli": "^10.4.0",
     "@aws-sdk/client-ses": "^3.208.0",
     "aws-sdk": "^2.1252.0",
-    "firebase": "^9.13.0"
+    "firebase": "^9.14.0"
+  },
+  "devDependencies": {
+    "cli": "^1.0.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.0"
   }
 }
