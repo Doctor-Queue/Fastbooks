@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Financial Ratios</title>
+
+    <link rel="stylesheet" type="text/css" href="WebNavBar.css" />
+
+</head>
+
+<body>
+
+    <!--START OF HEADER-->
+        <!--ends on line -->
+    <section>
+        <style>
+            #writeEmailBody{
+            display:none;
+            background-color: Beige ;
+            margin-left: auto;
+            margin-right: auto;
+            width: 500px;
+            height: 540px;
+            border: 0px LightGrey ;
+            text-align: left;
+            }
+    
+            .emailSent{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+    
+            }
+
+    </style>
+    
+    <!-- Following will add the beige band on top with "Welcome Admin User" text -->
+    <!-- Navbar with logo and buttons-->
+    <nav>
+        <div class="logo-container">
+          <a href="index.html">
+            <img src="app_logo.png" id="Logo"></a>
+        </div>
+        <div class="welcome-txt">
+            <h2>  Fast Accounting Happens Here! </h2>
+        </div>
+        
+       <!-- Added an empty profile pic with the option of switching to the pre-set pic (SHOULD be changed!)-->
+       <img src="profile.jpeg" class="profile" type="button" id="profile" data-bs-toggle="dropdown"><span class="caret"></span>
+    
+    <!-- Page Links under nav -->
+    <div class="username">
+            <!-- To load username when page is loaded -->
+            <script>
+                var showingUserFirstName = document.getElementById('userFirstName');
+                document.write(showingUserFirstName);
+            </script>
+    </div>
+    </nav>
+      <div>
+            <div class="nav-links">
+                <li><a href="#">Placeholder</a></li>
+                <li><a href="#">Self Help</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="Login.html">Sign in</a></li>
+            </div>
+        </div>
+    <!-- Sidenav Menu from W3 -->
+    <!-- https://www.w3schools.com/howto/howto_js_sidenav.asp -->
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+      </div>
+      
+
+      <!-- Use any element to open the sidenav -->
+        <span onclick="openNav()"><button >≡</button></span>    
+            <script>
+                /* Set the width of the side navigation to 250px */
+                function openNav() {
+                    document.getElementById("mySidenav").style.width = "250px";
+                    }
+                /* Set the width of the side navigation to 0 */
+                function closeNav() {
+                    document.getElementById("mySidenav").style.width = "0";
+                }
+            </script>      
+      </section>
+
+
+<section>
+
+    <center>
+        // Following is the hard coded financial ratio chart, to show color efficency <br>
+        // https://www.accountingcoach.com/financial-ratios/explanation/6 <br>
+        // Download a template here <br> <br>
+
+        <button onclick="printFunction()">Print this page</button>
+        
+        <script>
+            function printFunction() { 
+              window.print(); 
+            }
+          </script>
+        
+        
+          
+    </center>
+
+    <style>
+        table, th, td{
+            border:1px solid;
+            border-collapse: collapse;        
+            padding:5px;
+            font-family: arial, sans-serif;
+
+
+        }
+    </style>
+
+
+    <center>
+        <table>
+            <tr>
+                <th> Ratio Type </th>
+                <th> Ratio </th>
+                <th> Description </th>
+            </tr>
+
+            <tr>
+                <td >Current Ratio</td>
+                <td > <b> 1.46 </b>
+                    <br> <i>Current Assets/ Current Liabilities </i>
+                </td>
+                <td width="400px" > Relationship of current assets to current Liabilities. <b> Ratio between 50 to 70% is considered 
+                    healthy </b>
+                </td>
+            </tr>
+        
+
+            <tr>
+                <td >Quick Ratio <br> <i>(Acid Test Ratio)</i></td>
+                <td width="275px"> <b> 0.86:1</b>
+                    <br> <i>[(Cash + Temp. Investments +
+                        Accounts Receivable) / Current
+                        Liabilities]: 1</i>
+                </td>
+                <td width="400px" > The relationship
+                    between the amount of assets that can
+                    quickly be turned into cash versus the
+                    amount of current liabilities. <b> A quick ratio of 1 or above is considered good. </b>
+                </td>
+            </tr>
+
+            </table>
+        </center>
+    <!--END OF THIS SECTION-->
+    <!--marks end of main content on this page-->
+</section>
+
+<a href = "/Users/nehadedani/SWE4713appdomain/Financial_Ratio_Template_Free_V61.xlsx" download = "Free Template.xlsx"> 
+    View a template here
+    </a>
+</body>
+</html>
+
