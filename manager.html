@@ -229,22 +229,13 @@ entering or modifying the information:
 
 <div class="adminPagebtns">
 
-    <!--Since all other Admin functions with users arent available for manager-->
-    <!--
-        <div class="adminUserbtns">
-                    USERS:
-                    <button id="viewUser" onclick="location.href='view_user.html'"> View User</button> 
-        </div>
-    -->
 
 
 <!-- Removed style="float: right; margin:  0 300px; -->
 <div id="writeEmailBtndiv" > USERS: <button id="writeEmailBtn" onclick= "writeEmail()">Send Email</button>
-
 </div>
 
-
-<br> <br> <span id="tabLarge"></span>
+<span id="tabLarge"></span>
 <!-- all account options-->
 
 <div class="adminAccountsbtns">
@@ -252,13 +243,20 @@ ACCOUNTS:
 <button id="viewAccount" onclick="location.href='view_account.html'"> View Account</button> 
 </div>
 
-
-<br> <br> <span id="tabLarge"></span>
+<span id="tabLarge"></span>
 <!-- General Ledger Options-->
 <div class="adminLedgerbtns">
 GENERAL LEDGER:
 <button id="addEntry" onclick="location.href='add_account.html'"> Add Account Entry</button> 
 <button id="viewEntry" onclick="location.href='view_entries.html'"> View Entries</button> 
+</div>
+
+
+<span id="tabLarge"></span>
+<!-- Financial Ratio Options-->
+<div class="adminRatiosbtns">
+FINANCIAL RATIO:
+<button id="viewRatios" onclick="location.href='ratios.html'"> View All Ratios</button> 
 </div>
 
 </div>
