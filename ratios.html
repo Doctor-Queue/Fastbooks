@@ -5,101 +5,18 @@
     <title>Financial Ratios</title>
 
     <link rel="stylesheet" type="text/css" href="WebNavBar.css" />
-
 </head>
 
 <body>
-
-    <!--START OF HEADER-->
-        <!--ends on line -->
-    <section>
-        <style>
-            #writeEmailBody{
-            display:none;
-            background-color: Beige ;
-            margin-left: auto;
-            margin-right: auto;
-            width: 500px;
-            height: 540px;
-            border: 0px LightGrey ;
-            text-align: left;
-            }
-    
-            .emailSent{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-direction: column;
-    
-            }
-
-    </style>
-    
-    <!-- Following will add the beige band on top with "Welcome Admin User" text -->
-    <!-- Navbar with logo and buttons-->
-    <nav>
-        <div class="logo-container">
-          <a href="index.html">
-            <img src="app_logo.png" id="Logo"></a>
-        </div>
-        <div class="welcome-txt">
-            <h2>  Fast Accounting Happens Here! </h2>
-        </div>
-        
-       <!-- Added an empty profile pic with the option of switching to the pre-set pic (SHOULD be changed!)-->
-       <img src="profile.jpeg" class="profile" type="button" id="profile" data-bs-toggle="dropdown"><span class="caret"></span>
-    
-    <!-- Page Links under nav -->
-    <div class="username">
-            <!-- To load username when page is loaded -->
-            <script>
-                var showingUserFirstName = document.getElementById('userFirstName');
-                document.write(showingUserFirstName);
-            </script>
-    </div>
-    </nav>
-      <div>
-            <div class="nav-links">
-                <li><a href="#">Placeholder</a></li>
-                <li><a href="#">Self Help</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="Login.html">Sign in</a></li>
-            </div>
-        </div>
-    <!-- Sidenav Menu from W3 -->
-    <!-- https://www.w3schools.com/howto/howto_js_sidenav.asp -->
-    <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
-      </div>
-      
-
-      <!-- Use any element to open the sidenav -->
-        <span onclick="openNav()"><button >≡</button></span>    
-            <script>
-                /* Set the width of the side navigation to 250px */
-                function openNav() {
-                    document.getElementById("mySidenav").style.width = "250px";
-                    }
-                /* Set the width of the side navigation to 0 */
-                function closeNav() {
-                    document.getElementById("mySidenav").style.width = "0";
-                }
-            </script>      
-      </section>
       <center> <h2> Financial Ratios</h2> </center>
-<section>
-
+    <section>
     <center>
+
+
         <!--All values are hard coded-->
         <!--All ratios, definitions and numbers are from: -->
             <!-- https://www.accountingcoach.com/financial-ratios/explanation/6 -->
 
-
-          
  
         <button onclick="printFunction()" style="font-family: arial, sans-serif; font-size: 16px; border: 1px solid black;">
             <b> Print this page </b></button>
@@ -125,8 +42,6 @@
             border-collapse: collapse;        
             padding:5px;
             font-family: arial, sans-serif;
-
-
         }
     </style>
 
