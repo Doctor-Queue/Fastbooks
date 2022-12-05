@@ -120,7 +120,7 @@ document.getElementById("mySidenav").style.width = "0";
         <p><label style="display:inline-block; width: 140px; margin-left: 10px;">Description:</label> <input id="DescriptionReadOnly" type="text" placeholder="Ex: Because I like money" readonly></p>
         <p><label style="display:inline-block; width: 140px; margin-left: 10px;">Accounts Debited:</label> <input id="AccountsDebited" type="number" placeholder="Only numbers" readonly></p>
         <p><label style="display:inline-block; width: 140px; margin-left: 10px;">Accounts Credited:</label> <input id="AccountsCredited" type="number" placeholder="Only numbers" readonly></p>
-        <p><label style="display:inline-block; width: 140px; margin-left: 10px;">Attachment:</label> <input id="Attachment" type="text" placeholder="For files soon" readonly></p>
+        <p><label style="display:inline-block; width: 140px; margin-left: 10px;">Attachment:</label> <input id="Attachment" type="file" placeholder="For files soon" readonly></p>
     
         <hr>
         <button style="position: relative; border: 2px solid #ccc; background-color: rgb(248, 237, 201); float: right; margin-right: 20px; display:inline;" id="resetBtn" type="button">Reset</button>
@@ -546,7 +546,6 @@ document.getElementById("mySidenav").style.width = "0";
                 AccountsDebited: AccountsDebited.value,
                 AccountsCredited: AccountsCredited.value,
                 Attachment: Attachment.value
-
             }
 
             ,await deleteDoc(doc(db, "PendingJournalEntries", EntryID.value))
