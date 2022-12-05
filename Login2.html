@@ -140,15 +140,22 @@
 
 <!-- Page Links under nav -->
 
-<div class="email">
+<div class="emailUser">
       <!-- To load email when page is loaded -->
-      <script>
-          var showingUserFirstName = document.getElementById('userFirstName');
-          document.write(showingUserFirstName);
-      </script>
-  
+      <form class="form-inline my-2 my-lg-0">
+
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a id="emailUsername" class="nav-link" href="">UsersEmail</a>
+        </li>
+        <li class="nav-item">
+          <a id="signOutUser" class="nav-link" href="">Sign Out</a>
+        </li>
+      </ul>
+    </form>
 </div>
 </nav>
+
 
 <div>
       <div class="nav-links">
@@ -188,7 +195,7 @@
 
       <!-- Added Submit button -->
     <span style="position: relative; top: -15px; right: -39%;">
-     <button type="submit" class="btn btn-primary" id="btnLogin" value="Submit">Sign in</button></span>
+     <button type="button" class="btn btn-primary" id="btnLogin">Sign in</button></span>
   </div>
 </div>
       </form>
@@ -277,92 +284,45 @@
 <!-- Adding Javascript for utilizing the majority of the password requirements -->
 <script type="module">
     // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-analytics.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+    import { getFirestore, collection, getDoc, getDocs, onSnapshot, deleteDoc, 
+        addDoc, doc, query, where } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
     import { getAuth,
       onAuthStateChanged, 
       signOut,
       createUserWithEmailAndPassword,
       signInWithEmailAndPassword,
       connectAuthEmulator} from "https://www.gstatic.com/firebasejs/9.11.0/firebase-auth.js";
-    //import { getAuth, signInWithEmailAndPassword,connectAuthEmulator } from "firebase/auth";
 
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
   
     // Your web app's Firebase configuration
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    // ********** Neha's Database **********
+    // ********** Alexander's Database **********
     const firebaseConfig = {
-      apiKey: "AIzaSyCLeXpBcmY50646HWq9RkVjf2tNcPSfXCA",
-      authDomain: "appdomain-5bc76.firebaseapp.com",
-      databaseURL: "https://appdomain-5bc76-default-rtdb.firebaseio.com",
-      projectId: "appdomain-5bc76",
-      storageBucket: "appdomain-5bc76.appspot.com",
-      messagingSenderId: "854714021617",
-      appId: "1:854714021617:web:3631bc9729ca4d87d49b50",
-      measurementId: "G-721Y65S2FV"
-    };
+          apiKey: "AIzaSyAswcBVoFfQx746ZSArJw6jZRqfa3ZmBbI",
+          authDomain: "swe-4713-application-domain.firebaseapp.com",
+          projectId: "swe-4713-application-domain",
+          storageBucket: "swe-4713-application-domain.appspot.com",
+          messagingSenderId: "210297298562",
+          appId: "1:210297298562:web:815b3cc913460d968b5e9b"
+        };
 
-    // Initialize Firebase
+    // Initialize Cloud Firestore
     const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-   
 
+    // Initialize Cloud Firestore and get a reference to the service
+    const db = getFirestore(app);
 
-    import {getDatabase, set, get, update, remove, ref, child}
-    from "https://www.gstatic.com/firebasejs/9.11.0/firebase-database.js"
-
- 
-
-    const db = getDatabase();
-    //This is a text field
-    var enterUser = document.querySelector("#searchUser");
-    var addUserName = document.querySelector("#addUserName");
-    var addEmail = document.querySelector("#addEmail");
-    var addUserPosition = document.querySelector("#addUserPosition");
-    var addUserID = document.querySelector("#addUserID");
-    const exampleDropdownFormEmail = document.querySelector("#exampleDropdownFormEmail");
-    const psw = document.querySelector("#psw");
-    //---------------------- Emulation --------------------------//
+    //This is the references
+    const exampleDropdownFormEmail = document.getElementById("exampleDropdownFormEmail");
+    const psw = document.getElementById("psw");
+    const btnLogin = document.getElementById("btnLogin");
+    //---------------------- Authentication --------------------------//
     
-    // Initialize authentication
-    export const auth = getAuth(app);
-
-    
-    //---------------------- Login with Email and Password --------------------------//
-    //Call when user taps on sumbit btn
-    const loginEmailPassword = async () => {
-      const loginPassword = psw.value;
-      const loginEmail = exampleDropdownFormEmail.value;
-      
-     
-    // step 1: try doing this w/o error handling, and then add try/catch
-      const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
-      console.log("User stuff:", userCredential.user);
-   
-  }
-  btnLogin.addEventListener("click", loginEmailPassword); 
-      //---------------------- Authentication --------------------------//
-    // Detect Auth State
-    const AuthStateChange = async () => {
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          // User is signed in, see docs for a list of available properties
-          // https://firebase.google.com/docs/reference/js/firebase.User
-         console.log(uid, 'Logged in');
-         const uid = user.uid;
-       }else{
-         // User is signed out
-
-         console.log('No user');
-       }
-     })};
-     // Monitor auth state
-   
-  AuthStateChange();
-  btnLogin.addEventListener("click", loginEmailPassword);
-  AuthStateChange();
 </script>
 
 
