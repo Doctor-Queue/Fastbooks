@@ -148,9 +148,12 @@
     <a href="#">Clients</a>
     <a href="#">Contact</a>
   </div>
+
   
   <!-- Use any element to open the sidenav -->
   <span onclick="openNav()"><button >≡</button></span>
+
+  
   
 
         <script>
@@ -235,15 +238,14 @@ USERS:
 <button id="changeUserStatus"> Change User Status</button> 
 
 </div>
+
 <!-- Removed style="float: right; margin:  0 300px; -->
-<div id="writeEmailBtndiv" ><button id="writeEmailBtn" onclick= "writeEmail()">Send Email</button>
+<div id="writeEmailBtndiv" >
+    <button id="writeEmailBtn" onclick= "writeEmail()">Send Email</button> </div>
 
-</div>
 
-
-<br> <br> <span id="tabLarge"></span>
+<span id="tabLarge"></span>
 <!-- all account options-->
-
 <div class="adminAccountsbtns">
 ACCOUNTS:
 <button id="addAccount" onclick="location.href='add_account.html'"> Add Account</button> 
@@ -252,13 +254,22 @@ ACCOUNTS:
 <button id="changeAccountStatus"> Change Account Status</button>
 </div>
 
-<br> <br> <span id="tabLarge"></span>
+<span id="tabLarge"></span>
 <!-- General Ledger Options-->
 <div class="adminLedgerbtns">
 GENERAL LEDGER:
 <button id="addEntry" onclick="location.href='add_account.html'"> Add Account Entry</button> 
 <button id="viewEntry" onclick="location.href='view_entries.html'"> View Entries</button> 
 </div>
+
+
+<span id="tabLarge"></span>
+<!-- Financial Ratio Options-->
+<div class="adminRatiosbtns">
+FINANCIAL RATIO:
+<button id="viewRatios" onclick="location.href='ratios.html'"> View All Ratios</button> 
+</div>
+
 
 </div>
 <div id="writeEmailBody">
@@ -301,8 +312,6 @@ GENERAL LEDGER:
         <a href="#">PlaceHolder</a>
         
     </ul>
-   
-    
 </footer>
 
 <script type="module">
